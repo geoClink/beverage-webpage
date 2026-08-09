@@ -978,20 +978,24 @@ footer {
     transform: rotate(0.4deg);
 }
 
+/* Fix header readability over watermark */
 .journal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
+    background: #ffffff !important;
+    border: 2px solid var(--border) !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 6px 6px 0px var(--border) !important;
+    position: relative;
+    z-index: 2;
 }
 
 .journal-header h2 {
-    font-family: var(--display-font);
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin: 0;
+    color: #111111 !important;
+}
+
+.journal-header .section-marker {
+    color: #5c6b43 !important;
+    font-weight: 700;
 }
 
 .journal-meta {

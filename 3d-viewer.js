@@ -39,6 +39,26 @@ export function initModelViewer(containerId, modelPath, customScale = 0.8, yOffs
     const loader = new GLTFLoader();
     const clock = new THREE.Clock();
 
+    // Mouse tracking variables for interactive wiggling
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetRotationX = 0;
+    let targetRotationY = 0;
+
+    const parentCard = container.closest('.product-card') || container;
+    
+    parentCard.addEventListener('mousemove', (e) => {
+        const rect = parentCard.getBoundingClientRect();
+        // Normalize mouse coordinates between -1 and 1 based on card dimensions
+        mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+    });
+
+    parentCard.addEventListener('mouseleave', () => {
+        mouseX = 0;
+        mouseY = 0;
+    });
+
     loader.load(modelPath, (gltf) => {
         model = gltf.scene;
 
@@ -49,21 +69,23 @@ export function initModelViewer(containerId, modelPath, customScale = 0.8, yOffs
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         
-        model.position.x = -center.x;
-        model.position.z = -center.z;
-
-        // If it's the beer keg, wrap it inside a pivot group so its rotation and float center 
-        // remain locked precisely to its local origin regardless of mesh offset hierarchies.
+        // If it's the beer keg, wrap it inside a pivot group with proper local centering
         if (modelPath.includes('beer-keg')) {
             const pivotGroup = new THREE.Group();
-            model.position.sub(center); // center local geometry inside the pivot group
+            
+            model.position.x = -center.x;
+            model.position.y = -center.y;
+            model.position.z = -center.z;
+            
             pivotGroup.add(model);
             
             basePosY = 0 + yOffset;
             pivotGroup.position.y = basePosY;
             scene.add(pivotGroup);
-            model = pivotGroup; // assign model reference to the pivot group for uniform animation loop
+            model = pivotGroup;
         } else {
+            model.position.x = -center.x;
+            model.position.z = -center.z;
             basePosY = -center.y + yOffset;
             model.position.y = basePosY;
             scene.add(model);
@@ -78,8 +100,17 @@ export function initModelViewer(containerId, modelPath, customScale = 0.8, yOffs
         const elapsedTime = clock.getElapsedTime();
 
         if (model) {
-            model.rotation.y = elapsedTime * 0.2;
-            model.position.y = basePosY + Math.sin(elapsedTime * 1.0) * 0.01;
+            // Smoothly interpolate towards mouse position for a spring/wiggle effect
+            targetRotationY += (mouseX * 0.8 - targetRotationY) * 0.1;
+            targetRotationX += (mouseY * 0.8 - targetRotationX) * 0.1;
+
+            // Base continuous auto-rotation + mouse directional wiggle tilt
+            model.rotation.y = (elapsedTime * 0.2) + targetRotationY;
+            model.rotation.x = targetRotationX;
+
+            // Organic floating bob with a slightly faster oscillation frequency on hover
+            const hoverSpeedMultiplier = (Math.abs(mouseX) > 0 || Math.abs(mouseY) > 0) ? 1.8 : 1.0;
+            model.position.y = basePosY + Math.sin(elapsedTime * 1.0 * hoverSpeedMultiplier) * 0.02;
         }
 
         renderer.render(scene, camera);

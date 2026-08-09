@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +10,9 @@
     <link rel="icon" type="logo-sample.png" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -26,7 +31,7 @@
             background-size: cover;
             background-position: center;
             filter: contrast(130%) brightness(60%) saturate(110%);
-            transition: transform 0.1s cubic-bezier(0,0,0.2,1), filter 1s ease;
+            transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1), filter 1s ease;
             animation: watermarkBreathe 16s ease-in-out infinite alternate;
         }
 
@@ -35,10 +40,12 @@
                 transform: scale(1) rotate(0deg);
                 filter: contrast(125%) brightness(58%) saturate(110%);
             }
+
             50% {
                 transform: scale(1.03) rotate(0.2deg);
                 filter: contrast(135%) brightness(62%) saturate(115%);
             }
+
             100% {
                 transform: scale(1.01) rotate(-0.1deg);
                 filter: contrast(130%) brightness(60%) saturate(110%);
@@ -49,14 +56,15 @@
             display: none !important;
         }
 
-        body, .zine-container {
+        body,
+        .zine-container {
             background: transparent !important;
             background-color: transparent !important;
         }
 
-        .zine-container > div,
-        .zine-container > section,
-        .zine-container > footer,
+        .zine-container>div,
+        .zine-container>section,
+        .zine-container>footer,
         .creator-hero-block,
         .strike-block,
         .architecture-grid,
@@ -70,8 +78,8 @@
         }
 
         .creator-hero-block,
-        .strike-block .left-wing > div,
-        .strike-block .right-wing > div,
+        .strike-block .left-wing>div,
+        .strike-block .right-wing>div,
         .arch-box,
         .process-ledger,
         .faq-index-card,
@@ -134,6 +142,7 @@
         }
     </script>
 </head>
+
 <body>
 
     <!-- Background Cannabis Leaf Watermark -->
@@ -170,338 +179,531 @@
         </div>
     </nav>
 
-    <!-- Main Container -->
-    <div class="zine-container">
+    <body>
 
-        <!-- Prominent Creator & Origin Hero Block with Faint Logo Watermark -->
-        <div class="creator-hero-block reveal-section" id="story" style="padding: 2.5rem; margin-bottom: 3rem; display: flex; flex-wrap: wrap; gap: 2rem; background: #ffffff !important; position: relative; overflow: hidden; isolation: isolate;">
-            
-            <!-- Subtle Faint Custom Logo Watermark Layer inside Hero Block -->
-            <div style="position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 450px; height: 450px; opacity: 0.05; pointer-events: none; background-image: url('logo-sample.png'); background-repeat: no-repeat; background-size: contain; background-position: center; z-index: 0;"></div>
+        <!-- Background Cannabis Leaf Watermark -->
+        <div class="bg-watermark" id="watermark"></div>
 
-            <div class="creator-hero-left" style="flex: 1; min-width: 280px; color: #111111 !important; position: relative; z-index: 1;">
-                <div class="section-marker" style="color: #5c6b43; font-weight: 700; margin-bottom: 0.8rem;">[FOUNDER & ORIGIN STORY]</div>
-                <h1 style="font-family: var(--display-font); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.15; color: #111111 !important; margin-bottom: 1.2rem;">From Plant Science Roots to Uncompromising Purity in Traverse City.</h1>
-                <p class="manifesto" style="color: #333333 !important; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1rem;">
-                    Our path started in the field: rooted in rigorous agricultural science and hands-on botanical research, with a commitment to pure, uncompromised cultivation standards.
-                </p>
-                <p class="manifesto" style="color: #333333 !important; font-size: 1.05rem; line-height: 1.6;">
-                    That deep scientific foundation planted a strict refusal to rely on chemical shortcuts or synthetic isolates. Botanical Archive was built out of that exact conviction—operating locally with active state licensing in Traverse City, using pure liquid pressure extraction to secure the true plant profile, and laying the groundwork toward an independent natural water source.
-                </p>
-            </div>
-            
-            <div class="creator-hero-right" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1;">
-                <div class="raw-art-module" style="background: #faf8f5; border: 2px solid var(--border); padding: 1rem; box-shadow: 4px 4px 0px var(--border);">
-                    <div class="art-badge" style="font-family: var(--mono-font); font-size: 0.75rem; margin-bottom: 0.8rem; color: #5c6b43; font-weight: 700;">FIGURE 0.1 — BATCH 01 BOTANICAL BEVERAGES</div>
-                    <div class="art-box-inner" style="background: #000; overflow: hidden; border: 1px solid var(--border);">
-                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" alt="Craft Botanical Beverage Bottles" style="width: 100%; height: auto; display: block; filter: brightness(0.9) contrast(1.1);">
-                    </div>
-                </div>
+        <!-- Ticker Bar -->
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+                <span>+ Direct Farmer's Market & Phone Orders Open</span>
+                <span>+ Nationwide Shipping Launch: October 15</span>
+                <span>+ 100% Solvent-Free Extraction</span>
+                <span>+ Rooted in Traverse City, MI</span>
+                <span>+ Direct Farmer's Market & Phone Orders Open</span>
+                <span>+ Nationwide Shipping Launch: October 15</span>
+                <span>+ 100% Solvent-Free Extraction</span>
+                <span>+ Rooted in Traverse City, MI</span>
             </div>
         </div>
 
-        <!-- Action / Allocation & Contact Row with Dynamic Tilt Contrast -->
-        <div class="strike-block reveal-section" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; background: transparent !important; box-shadow: none !important; border: none !important;">
-            <!-- Left Wing: Product Vision & Highlights -->
-            <div class="left-wing" style="display: flex; flex-direction: column; gap: 2rem; background: transparent !important; box-shadow: none !important; border: none !important;">
-                <div class="headline-wrapper" style="padding: 1.8rem; transform: rotate(-0.8deg); transition: transform 0.3s ease; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
-                    <div class="section-marker" style="color: #5c6b43; font-weight: 700;">[EXTRACTION METHODOLOGY]</div>
-                    <h2 style="font-family: var(--display-font); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.8rem; color: #111;">Zero solvents. Pure pressure.</h2>
-                    <p class="manifesto" style="color: #333;">We combine precision mechanical cold-pressing with regional micro-batching to capture authentic plant benefits without chemical distillation. Available now locally and shipping nationwide October 15.</p>
-                </div>
-
-                <!-- Stay in Touch Module -->
-                <div class="form-module" style="padding: 1.8rem; transform: rotate(0.6deg); transition: transform 0.3s ease; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
-                    <h2>Stay in Touch</h2>
-                    <div class="launch-notice">No Order Required</div>
-                    <p>Join our mailing list for creator research notes, botanical archive drops, and nationwide rollout announcements.</p>
-                    <form id="newsletter-form">
-                        <div class="input-line">
-                            <label>Email Address</label>
-                            <input type="email" id="news-email" placeholder="name@domain.com">
-                        </div>
-                        <button type="submit">Subscribe to Updates</button>
-                    </form>
+        <!-- Sticky Navigation Bar -->
+        <nav class="zine-nav">
+            <div class="nav-brand">
+                <div class="logo-container" style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="logo-sample.png" alt="Botanical Archive Logo">
+                    <span style="font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em;">BOTANICAL
+                        ARCHIVE</span>
                 </div>
             </div>
-
-            <!-- Right Wing: Allocation Form -->
-            <div class="right-wing" style="background: transparent !important; box-shadow: none !important; border: none !important;">
-                <div class="form-module" style="padding: 1.8rem; transform: rotate(0.5deg); transition: transform 0.3s ease; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
-                    <h2>Request Allocation</h2>
-                    <div class="launch-notice">Nationwide Launch: October 15</div>
-                    <p>Reserve Batch 01 inventory or coordinate regional local pickup and direct phone fulfillment.</p>
-                    <form id="allocation-form">
-                        <div class="input-line">
-                            <label>Full Name</label>
-                            <input type="text" id="alloc-name" placeholder="Enter full name...">
-                        </div>
-                        <div class="input-line">
-                            <label>Email Address</label>
-                            <input type="email" id="alloc-email" placeholder="name@domain.com">
-                        </div>
-                        <div class="input-line">
-                            <label>Allocation Notes & Volume</label>
-                            <textarea id="alloc-notes" placeholder="Specify local pickup or requested tier..."></textarea>
-                        </div>
-                        <button type="submit" id="allocation-submit-btn">Submit Reservation Request</button>
-                    </form>
-                </div>
+            <div class="nav-links">
+                <a href="#story">Creator Story</a>
+                <a href="#architecture">Product Formats</a>
+                <a href="#process">Methodology</a>
+                <a href="#faq">FAQ</a>
+                <a href="#allocation-form" class="nav-cta">Request Allocation</a>
             </div>
-        </div>
+        </nav>
 
-        <!-- Expanded Architecture Grid with Prominent Immersive 3D Showcases -->
-        <div class="architecture-grid reveal-section" id="architecture" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; margin-bottom: 3.5rem; background: transparent !important; box-shadow: none !important; border: none !important;">
-            
-            <!-- Card 01: Expanded Local Glass Bottle Showcase -->
-            <div class="arch-box" style="padding: 2.2rem; position: relative; display: flex; flex-direction: column; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
-                <div class="arch-index" style="margin-bottom: 0.5rem;">01 — Local Showcase</div>
-                <h3 style="font-family: var(--display-font); font-size: 1.5rem; margin-bottom: 1rem;">Local Glass Bottles</h3>
-                
-                <!-- Large 3D Model Stage for Maximum Brand & Logo Visibility -->
-                <div style="width: 100%; height: 260px; background: #faf8f5; border: 2px solid var(--border); margin-bottom: 1.2rem; position: relative; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);">
-                    <div id="bottle-container" style="width: 100%; height: 100%;"></div>
+        <!-- Main Container -->
+        <div class="zine-container">
+
+            <!-- Prominent Creator & Origin Hero Block with Faint Logo Watermark -->
+            <div class="creator-hero-block reveal-section" id="story"
+                style="padding: 2.5rem; margin-bottom: 3rem; display: flex; flex-wrap: wrap; gap: 2rem; background: #ffffff !important; position: relative; overflow: hidden; isolation: isolate;">
+
+                <!-- Subtle Faint Custom Logo Watermark Layer inside Hero Block -->
+                <div
+                    style="position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 450px; height: 450px; opacity: 0.05; pointer-events: none; background-image: url('logo-sample.png'); background-repeat: no-repeat; background-size: contain; background-position: center; z-index: 0;">
                 </div>
 
-                <p style="font-size: 0.95rem; line-height: 1.5; color: #333333; margin-bottom: 1.5rem;">Hand-crafted weekly in Traverse City. Fresh batches packed in ice for regional farmers markets and direct hand-to-hand pickup, featuring our custom insignia.</p>
-                
-                <div class="arch-status" style="margin-top: auto;"><span class="highlight-status">Operating Live Locally</span></div>
-            </div>
-
-            <!-- Card 02: Expanded Nationwide Can Showcase -->
-            <div class="arch-box" style="padding: 2.2rem; position: relative; display: flex; flex-direction: column; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
-                <div class="arch-index" style="margin-bottom: 0.5rem;">02 — Scale Showcase</div>
-                <h3 style="font-family: var(--display-font); font-size: 1.5rem; margin-bottom: 1rem;">Nationwide Cans</h3>
-                
-                <!-- Large 3D Model Stage -->
-                <div style="width: 100%; height: 260px; background: #faf8f5; border: 2px solid var(--border); margin-bottom: 1.2rem; position: relative; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);">
-                    <div id="coke-container" style="width: 100%; height: 100%;"></div>
-                </div>
-
-                <p style="font-size: 0.95rem; line-height: 1.5; color: #333333; margin-bottom: 1.5rem;">Shelf-stable 12oz format built for e-commerce logistics and major retail channels, prominently displaying our brand identity on the metallic cylinder wrap.</p>
-                
-                <div class="arch-status" style="margin-top: auto;"><span class="highlight-status" style="background: var(--muted);">Launching: October 15</span></div>
-            </div>
-
-            <!-- Card 03: Expanded Draft Keg Showcase -->
-            <div class="arch-box" style="padding: 2.2rem; position: relative; display: flex; flex-direction: column; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
-                <div class="arch-index" style="margin-bottom: 0.5rem;">03 — Partner Showcase</div>
-                <h3 style="font-family: var(--display-font); font-size: 1.5rem; margin-bottom: 1rem;">Draft Kegs & Partners</h3>
-                
-                <!-- Large 3D Model Stage -->
-                <div style="width: 100%; height: 260px; background: #faf8f5; border: 2px solid var(--border); margin-bottom: 1.2rem; position: relative; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);">
-                    <div id="keg-container" style="width: 100%; height: 100%;"></div>
-                </div>
-
-                <p style="font-size: 0.95rem; line-height: 1.5; color: #333333; margin-bottom: 1.5rem;">Kegged in heavy-duty stainless steel for select dining partners to serve as a non-alcoholic alternative or sophisticated botanical cocktail mixer.</p>
-                
-                <div class="arch-status" style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-                    <span class="highlight-status">Active Partner Program</span>
-                    <a href="#faq" style="font-family: var(--mono-font); font-size: 0.75rem; text-decoration: underline; color: var(--text-main);">Learn More →</a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Technical Process Ledger -->
-        <section class="process-ledger reveal-section" id="process" style="padding: 2.5rem; margin-bottom: 3rem; background: #f0f4ec !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
-            <div class="process-header" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.2rem; background: transparent !important; border: none !important; box-shadow: none !important;">
-                <div style="background: transparent !important; border: none !important; box-shadow: none !important;">
-                    <span style="font-family: var(--mono-font); font-size: 0.75rem; font-weight: 700; color: #5c6b43; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Methodology Stream</span>
-                    <h2 style="font-family: var(--display-font); font-size: 2.2rem; font-weight: 400; color: #111111 !important; margin: 0;">The Natural Extraction Blueprint</h2>
-                </div>
-                
-            </div>
-            
-            <div class="process-stream-grid" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div class="process-stream-item item-skew-left" style="background: #ffffff; border: 1px solid var(--border); padding: 1.2rem;">
-                    <div class="stream-marker-col">
-                        <span class="stream-index">01</span>
-                        <span class="stream-tag">Origin</span>
-                    </div>
-                    <div class="stream-text-col">
-                        <h3>Traverse City Rooted</h3>
-                        <p>Operating locally with active state licensing, transitioning toward our ultimate goal of an independent natural well water source.</p>
-                    </div>
-                </div>
-
-                <div class="process-stream-item item-skew-right" style="background: #ffffff; border: 1px solid var(--border); padding: 1.2rem;">
-                    <div class="stream-marker-col">
-                        <span class="stream-index">02</span>
-                        <span class="stream-tag">Purity</span>
-                    </div>
-                    <div class="stream-text-col">
-                        <h3>Zero Solvents</h3>
-                        <p>No chemical distillation or synthetic isolates. Pure liquid pressure extraction preserves the authentic, living botanical benefits.</p>
-                    </div>
-                </div>
-
-                <div class="process-stream-item item-skew-center" style="background: #ffffff; border: 1px solid var(--border); padding: 1.2rem;">
-                    <div class="stream-marker-col">
-                        <span class="stream-index">03</span>
-                        <span class="stream-tag">Logistics</span>
-                    </div>
-                    <div class="stream-text-col">
-                        <h3>Fresh Batch Packing</h3>
-                        <p>Initial batches handcrafted fresh by our team and boxed securely with eco-ice for direct shipment and regional release.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="field-journal-module">
-    <div class="journal-header">
-        <div>
-            <span class="section-marker">Field Journal // Practical Use Cases</span>
-            <h2>How to Enjoy Botanical Archive in Daily Life</h2>
-        </div>
-    </div>
-
-    <div class="use-cases-grid">
-        <div class="use-case-card">
-            <span class="use-case-index">01</span>
-            <h3>Straight Over Ice</h3>
-            <p>Pour 4oz directly over a large crystal-clear ice cube in a heavy rocks glass. Let it breathe for a minute to release the upfront floral notes and earthy finish for an effortless evening unwind.</p>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-index">02</span>
-            <h3>Craft Zero-Proof Cocktails</h3>
-            <p>Use as a sophisticated base or modifier for mocktails. Mix equal parts with tonic water or fresh grapefruit juice, garnished with a sprig of rosemary for a complex bar-quality drink.</p>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-index">03</span>
-            <h3>Hospitality & Draft Service</h3>
-            <p>Served on tap from stainless steel kegs at partner restaurants and lounges. Perfect for high-volume service, pouring crisp and refreshing directly for guests seeking clean non-alcoholic options.</p>
-        </div>
-    </div>
-
-    <div class="allocation-footer-box">
-        <div class="allocation-text">
-            <h3>Experience The Archive</h3>
-            <p>Ready to secure your local pickup or reserve an upcoming national release allocation?</p>
-        </div>
-        <a href="#" class="allocation-cta">Secure Your Allocation →</a>
-    </div>
-</section>
-
-        <!-- FAQ Section with Clean 2x2 Grid Layout & Light Green Styling for Q2 & Q3 -->
-        <section class="faq-module reveal-section" id="faq" style="margin-bottom: 3rem; background: #ffffff !important; border: 2px solid var(--border) !important; padding: 2.5rem; box-shadow: 6px 6px 0px var(--border) !important;">
-            <div class="section-marker" style="font-family: var(--mono-font); font-size: 0.75rem; font-weight: 700; color: #5c6b43; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;">Knowledge Base & FAQ</div>
-            <div class="faq-index-grid" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem;">
-                
-                <!-- Q1: Top Left -->
-                <div class="faq-index-card" style="background: #ffffff; border: 2px solid var(--border); padding: 1.8rem; box-shadow: 4px 4px 0px var(--border);">
-                    <div class="faq-index-header">
-                        <span class="faq-index-code" style="font-weight: 700; color: #5c6b43;">Q1</span>
-                        <span class="faq-index-category" style="background: #111111; color: #ffffff; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-family: var(--mono-font); font-weight: 700;">EXTRACTION</span>
-                    </div>
-                    <h3 style="font-family: var(--display-font); font-size: 1.25rem; color: #111111 !important; margin: 0.6rem 0;">What does "liquid pressure extraction" mean?</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.5; color: #333333;">We use a mechanical cold-press pressure system rather than chemical solvents like hexane or ethanol. It preserves the natural botanical profile without leaving synthetic residue.</p>
-                </div>
-
-                <!-- Q2: Top Right (Zero Solvents Card / Light Green Accent Tint) -->
-                <div class="faq-index-card" style="background: #f0f4ec !important; border: 2px solid var(--border); padding: 1.8rem; box-shadow: 4px 4px 0px var(--border);">
-                    <div class="faq-index-header">
-                        <span class="faq-index-code" style="font-weight: 700; color: #5c6b43;">Q2</span>
-                        <span class="faq-index-category" style="background: #5c6b43; color: #ffffff; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-family: var(--mono-font); font-weight: 700;">ZERO SOLVENTS</span>
-                    </div>
-                    <h3 style="font-family: var(--display-font); font-size: 1.25rem; color: #111111 !important; margin: 0.6rem 0;">When does nationwide shipping begin?</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.5; color: #333333;">Our e-commerce portal and nationwide logistics officially launch on October 15. Until then, we are exclusively fulfilling local pickups and priority phone orders.</p>
-                </div>
-
-                <!-- Q3: Bottom Left (Light Green Accent Tint) -->
-                <div class="faq-index-card" style="background: #f0f4ec !important; color: var(--text-main); border: 2px solid var(--border); padding: 1.8rem; box-shadow: 4px 4px 0px var(--border);">
-                    <div class="faq-index-header">
-                        <span class="faq-index-code" style="font-weight: 700; color: #5c6b43;">Q3</span>
-                        <span class="faq-index-category" style="background: #5c6b43; color: #ffffff; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-family: var(--mono-font); font-weight: 700;">STORAGE</span>
-                    </div>
-                    <h3 style="font-family: var(--display-font); font-size: 1.25rem; color: #111111 !important; margin: 0.6rem 0;">Do the beverages need to be refrigerated?</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.5; color: #333333;">Our Batch 01 local glass bottles are fresh and should be kept cold. Our upcoming 12oz cans (launching Oct 15) are shelf-stable and can be stored at ambient temperatures.</p>
-                </div>
-
-                <!-- Q4: Bottom Right -->
-                <div class="faq-index-card" style="background: #ffffff; border: 2px solid var(--border); padding: 1.8rem; box-shadow: 4px 4px 0px var(--border);">
-                    <div class="faq-index-header">
-                        <span class="faq-index-code" style="font-weight: 700; color: #5c6b43;">Q4</span>
-                        <span class="faq-index-category" style="background: #111111; color: #ffffff; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-family: var(--mono-font); font-weight: 700;">PARTNERSHIPS</span>
-                    </div>
-                    <h3 style="font-family: var(--display-font); font-size: 1.25rem; color: #111111 !important; margin: 0.6rem 0;">How do I join the partnership or draft keg project?</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.5; color: #333333;">Submit your venue or hospitality details via our reservation form or contact our direct phone line. We review partner allocations weekly to supply draft kegs and dedicated mixers.</p>
-                    <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
-                        <a href="#allocation-form" style="font-family: var(--mono-font); font-size: 0.75rem; text-decoration: underline; color: #111111 !important; font-weight: 700;">Learn More & Request Allocation →</a>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Footer -->
-<footer class="reveal-section" style="background: #18281a !important; border: 2px solid var(--border) !important; padding: 2.5rem; box-shadow: 6px 6px 0px var(--border) !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 4rem; color: #ffffff !important;">
-    <div class="footer-col" style="background: transparent !important; border: none !important; box-shadow: none !important; color: #ffffff !important;">
-        <div class="footer-brand" style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; background: transparent !important;">
-            <span style="font-size: 1.2rem; font-weight: 700; color: #ffffff !important; font-family: var(--display-font);">Botanical Archive</span>
-        </div>
-        <p style="color: #cccccc !important; font-size: 0.9rem; line-height: 1.6; background: transparent !important; font-family: var(--mono-font);">Botanical Archive is a licensed botanical beverage company based in Traverse City, Michigan, dedicated to crafting 100% solvent-free botanical extractions and small-batch beverages.</p>
-        <div style="font-family: var(--mono-font); font-size: 0.75rem; color: #8fa38c; margin-top: 1rem;">Version 2.4.0 — Active</div>
-    </div>
+                <div class="creator-hero-left" style="flex: 1; min-width: 280px; color: #111111 !important; position: relative; overflow: hidden; isolation: isolate; padding: 2.5rem;">
     
-    <div class="footer-col" style="background: transparent !important; border: none !important; box-shadow: none !important; color: #ffffff !important;">
-        <div class="footer-heading" style="font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: #ffffff !important; margin-bottom: 0.8rem; background: transparent !important; font-family: var(--mono-font); border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.4rem;">Direct Coordinates</div>
-        <div class="footer-links" style="display: flex; flex-direction: column; gap: 0.5rem; color: #cccccc !important; font-size: 0.85rem; background: transparent !important; font-family: var(--mono-font);">
-            <span style="color: #cccccc !important; background: transparent !important;">Traverse City, Michigan</span>
-            <span style="color: #cccccc !important; background: transparent !important;">Direct Phone: +1 (555) 019-2834</span>
-            <span style="color: #cccccc !important; background: transparent !important;">Email: contact@botanicalarchive.com</span>
-            <span style="color: #cccccc !important; background: transparent !important;">State Licensed Operations</span>
+    <!-- Dynamic Large Background Logo Watermark -->
+    <div style="position: absolute; right: 110px; bottom: 140px; width: 780px; height: 780px; opacity: 0.1; pointer-events: none; background-image: url('logo-sample.png'); background-repeat: no-repeat; background-size: contain; background-position: center; transform: rotate(-12deg); z-index: 0;"></div>
+
+    <!-- Hero Content Layer -->
+    <div style="position: relative; z-index: 1;">
+        <div class="section-marker" style="color: #5c6b43; font-weight: 700; margin-bottom: 0.8rem;">FOUNDER & ORIGIN STORY</div>
+        <h1 style="font-family: var(--display-font); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.15; color: #111111 !important; margin-bottom: 1.2rem;">From Plant Science Roots to Uncompromising Purity in Traverse City.</h1>
+        <p class="manifesto" style="color: #333333 !important; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1rem;">
+            Our path started in the field: rooted in rigorous agricultural science and hands-on botanical research, with a commitment to pure, uncompromised cultivation standards.
+        </p>
+        <p class="manifesto" style="color: #333333 !important; font-size: 1.05rem; line-height: 1.6;">
+            That deep scientific foundation planted a strict refusal to rely on chemical shortcuts or synthetic isolates. Botanical Archive was built out of that exact conviction—operating locally with active state licensing in Traverse City, using pure liquid pressure extraction to secure the true plant profile, and laying the groundwork toward an independent natural water source.
+        </p>
+    </div>
+</div>
+
+                <div class="creator-hero-right" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1;">
+    
+    <!-- Heroic Full-Bleed Image Container -->
+    <div class="raw-art-module" style="background: #ffffff; border: 2px solid var(--border); overflow: hidden; box-shadow: 8px 8px 0px var(--border); position: relative;">
+        
+        <!-- Image with Edge-to-Edge Bleed -->
+        <div class="art-box-inner" style="background: #000; overflow: hidden; line-height: 0;">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" alt="Craft Botanical Beverage Bottles" style="width: 100%; height: 420px; object-fit: cover; display: block; filter: brightness(0.95) contrast(1.05); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
         </div>
-    </div>
 
-    <div class="footer-col" style="background: transparent !important; border: none !important; box-shadow: none !important; color: #ffffff !important;">
-        <div class="footer-heading" style="font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: #ffffff !important; margin-bottom: 0.8rem; background: transparent !important; font-family: var(--mono-font); border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.4rem;">Quick Links</div>
-        <div class="footer-links" style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; background: transparent !important; font-family: var(--mono-font);">
-            <a href="#" style="color: #cccccc !important; text-decoration: underline; background: transparent !important;">Batch 01 Manifest</a>
-            <a href="#" style="color: #cccccc !important; text-decoration: underline; background: transparent !important;">Extraction Specs</a>
-            <a href="#" style="color: #cccccc !important; text-decoration: underline; background: transparent !important;">Wholesale Inquiries</a>
-            <a href="#" style="color: #cccccc !important; text-decoration: underline; background: transparent !important;">Privacy & Terms</a>
+        <!-- Elegant Floating Caption Bar -->
+        <div style="padding: 1.2rem 1.5rem; background: #faf8f5; border-top: 2px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <span class="art-badge" style="font-family: var(--display-font); font-style: italic; font-size: 0.95rem; color: #111111;">
+                Small-Batch Botanical Extractions
+            </span>
+            
         </div>
-    </div>
-</footer>
 
     </div>
+</div>
+            </div>
 
-    <!-- Scripts for Scroll Observer & Mouse Parallax Watermark -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
+            <!-- Action / Allocation & Contact Row with Dynamic Tilt Contrast -->
+            <div class="strike-block reveal-section"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; background: transparent !important; box-shadow: none !important; border: none !important;">
+                <!-- Left Wing: Product Vision & Highlights -->
+                <div class="left-wing"
+                    style="display: flex; flex-direction: column; gap: 2rem; background: transparent !important; box-shadow: none !important; border: none !important;">
+                    <div class="headline-wrapper"
+                        style="padding: 1.8rem; transform: rotate(-0.8deg); transition: transform 0.3s ease; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
+                        <div class="section-marker" style="color: #5c6b43; font-weight: 700;">EXTRACTION METHODOLOGY
+                        </div>
+                        <h2
+                            style="font-family: var(--display-font); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.8rem; color: #111;">
+                            Zero solvents. Pure pressure.</h2>
+                        <p class="manifesto" style="color: #333;">We combine precision mechanical cold-pressing with
+                            regional micro-batching to capture authentic plant benefits without chemical distillation.
+                            Available now locally and shipping nationwide October 15.</p>
+                    </div>
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
+                    <!-- Stay in Touch Module -->
+                    <div class="form-module"
+                        style="padding: 1.8rem; transform: rotate(0.6deg); transition: transform 0.3s ease; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
+                        <h2>Stay in Touch</h2>
+                        <div class="launch-notice">No Order Required</div>
+                        <p>Join our mailing list for creator research notes, botanical archive drops, and nationwide
+                            rollout announcements.</p>
+                        <form id="newsletter-form">
+                            <div class="input-line">
+                                <label>Email Address</label>
+                                <input type="email" id="news-email" placeholder="name@domain.com">
+                            </div>
+                            <button type="submit">Subscribe to Updates</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Wing: Allocation Form -->
+                <div class="right-wing"
+                    style="background: transparent !important; box-shadow: none !important; border: none !important;">
+                    <div class="form-module"
+                        style="padding: 1.8rem; transform: rotate(0.5deg); transition: transform 0.3s ease; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
+                        <h2>Request Allocation</h2>
+                        <div class="launch-notice">Nationwide Launch: October 15</div>
+                        <p>Reserve Batch 01 inventory or coordinate regional local pickup and direct phone fulfillment.
+                        </p>
+                        <form id="allocation-form">
+                            <div class="input-line">
+                                <label>Full Name</label>
+                                <input type="text" id="alloc-name" placeholder="Enter full name...">
+                            </div>
+                            <div class="input-line">
+                                <label>Email Address</label>
+                                <input type="email" id="alloc-email" placeholder="name@domain.com">
+                            </div>
+                            <div class="input-line">
+                                <label>Allocation Notes & Volume</label>
+                                <textarea id="alloc-notes"
+                                    placeholder="Specify local pickup or requested tier..."></textarea>
+                            </div>
+                            <button type="submit" id="allocation-submit-btn">Submit Reservation Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expanded Architecture Grid with Prominent Immersive 3D Showcases -->
+            <div class="architecture-grid reveal-section" id="architecture"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; margin-bottom: 3.5rem; background: transparent !important; box-shadow: none !important; border: none !important;">
+
+                <!-- Card 01: Expanded Local Glass Bottle Showcase -->
+                <div class="arch-box"
+                    style="padding: 2.2rem; position: relative; display: flex; flex-direction: column; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
+                    <div class="arch-index" style="margin-bottom: 0.5rem;">01 — Local Showcase</div>
+                    <h3 style="font-family: var(--display-font); font-size: 1.5rem; margin-bottom: 1rem;">Local Glass
+                        Bottles</h3>
+
+                    <!-- Large 3D Model Stage for Maximum Brand & Logo Visibility -->
+                    <div
+                        style="width: 100%; height: 260px; background: #faf8f5; border: 2px solid var(--border); margin-bottom: 1.2rem; position: relative; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);">
+                        <div id="bottle-container" style="width: 100%; height: 100%;"></div>
+                    </div>
+
+                    <p style="font-size: 0.95rem; line-height: 1.5; color: #333333; margin-bottom: 1.5rem;">Hand-crafted
+                        weekly in Traverse City. Fresh batches packed in ice for regional farmers markets and direct
+                        hand-to-hand pickup, featuring our custom insignia.</p>
+
+                    <div class="arch-status" style="margin-top: auto;"><span class="highlight-status">Operating Live
+                            Locally</span></div>
+                </div>
+
+                <!-- Card 02: Expanded Nationwide Can Showcase -->
+                <div class="arch-box"
+                    style="padding: 2.2rem; position: relative; display: flex; flex-direction: column; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
+                    <div class="arch-index" style="margin-bottom: 0.5rem;">02 — Scale Showcase</div>
+                    <h3 style="font-family: var(--display-font); font-size: 1.5rem; margin-bottom: 1rem;">Nationwide
+                        Cans</h3>
+
+                    <!-- Large 3D Model Stage -->
+                    <div
+                        style="width: 100%; height: 260px; background: #faf8f5; border: 2px solid var(--border); margin-bottom: 1.2rem; position: relative; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);">
+                        <div id="coke-container" style="width: 100%; height: 100%;"></div>
+                    </div>
+
+                    <p style="font-size: 0.95rem; line-height: 1.5; color: #333333; margin-bottom: 1.5rem;">Shelf-stable
+                        12oz format built for e-commerce logistics and major retail channels, prominently displaying our
+                        brand identity on the metallic cylinder wrap.</p>
+
+                    <div class="arch-status" style="margin-top: auto;"><span class="highlight-status"
+                            style="background: var(--muted);">Launching: October 15</span></div>
+                </div>
+
+                <!-- Card 03: Expanded Draft Keg Showcase -->
+                <div class="arch-box"
+                    style="padding: 2.2rem; position: relative; display: flex; flex-direction: column; background: #ffffff !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
+                    <div class="arch-index" style="margin-bottom: 0.5rem;">03 — Partner Showcase</div>
+                    <h3 style="font-family: var(--display-font); font-size: 1.5rem; margin-bottom: 1rem;">Draft Kegs &
+                        Partners</h3>
+
+                    <!-- Large 3D Model Stage -->
+                    <div
+                        style="width: 100%; height: 260px; background: #faf8f5; border: 2px solid var(--border); margin-bottom: 1.2rem; position: relative; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);">
+                        <div id="keg-container" style="width: 100%; height: 100%;"></div>
+                    </div>
+
+                    <p style="font-size: 0.95rem; line-height: 1.5; color: #333333; margin-bottom: 1.5rem;">Kegged in
+                        heavy-duty stainless steel for select dining partners to serve as a non-alcoholic alternative or
+                        sophisticated botanical cocktail mixer.</p>
+
+                    <div class="arch-status"
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                        <span class="highlight-status">Active Partner Program</span>
+                        <a href="#faq"
+                            style="font-family: var(--mono-font); font-size: 0.75rem; text-decoration: underline; color: var(--text-main);">Learn
+                            More →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Technical Process Ledger -->
+            <section class="process-ledger reveal-section" id="process"
+                style="padding: 2.5rem; margin-bottom: 3rem; background: #f0f4ec !important; border: 2px solid var(--border) !important; box-shadow: 6px 6px 0px var(--border) !important;">
+                <div class="process-header"
+                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.2rem; background: transparent !important; border: none !important; box-shadow: none !important;">
+                    <div
+                        style="background: transparent !important; border: none !important; box-shadow: none !important;">
+                        <span
+                            style="font-family: var(--mono-font); font-size: 0.75rem; font-weight: 700; color: #5c6b43; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Methodology
+                            Stream</span>
+                        <h2
+                            style="font-family: var(--display-font); font-size: 2.2rem; font-weight: 400; color: #111111 !important; margin: 0;">
+                            The Natural Extraction Blueprint</h2>
+                    </div>
+
+                </div>
+
+                <div class="process-stream-grid" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="process-stream-item item-skew-left"
+                        style="background: #ffffff; border: 1px solid var(--border); padding: 1.2rem;">
+                        <div class="stream-marker-col">
+                            <span class="stream-index">01</span>
+                            <span class="stream-tag">Origin</span>
+                        </div>
+                        <div class="stream-text-col">
+                            <h3>Traverse City Rooted</h3>
+                            <p>Operating locally with active state licensing, transitioning toward our ultimate goal of
+                                an independent natural well water source.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-stream-item item-skew-right"
+                        style="background: #ffffff; border: 1px solid var(--border); padding: 1.2rem;">
+                        <div class="stream-marker-col">
+                            <span class="stream-index">02</span>
+                            <span class="stream-tag">Purity</span>
+                        </div>
+                        <div class="stream-text-col">
+                            <h3>Zero Solvents</h3>
+                            <p>No chemical distillation or synthetic isolates. Pure liquid pressure extraction preserves
+                                the authentic, living botanical benefits.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-stream-item item-skew-center"
+                        style="background: #ffffff; border: 1px solid var(--border); padding: 1.2rem;">
+                        <div class="stream-marker-col">
+                            <span class="stream-index">03</span>
+                            <span class="stream-tag">Logistics</span>
+                        </div>
+                        <div class="stream-text-col">
+                            <h3>Fresh Batch Packing</h3>
+                            <p>Initial batches handcrafted fresh by our team and boxed securely with eco-ice for direct
+                                shipment and regional release.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="field-journal-module"
+                style="background: #ffffff !important; border: 2px solid var(--border) !important; padding: 2.5rem; box-shadow: 6px 6px 0px var(--border) !important; margin-bottom: 3rem; position: relative; z-index: 2;">
+
+                <div class="journal-header" style="margin-bottom: 2rem;">
+                    <span class="section-marker" style="color: #5c6b43; font-weight: 700;">Practical
+                        Use Cases</span>
+                    <h2
+                        style="font-family: var(--display-font); font-size: clamp(1.8rem, 3vw, 2.4rem); color: #111111; margin-top: 0.4rem;">
+                        How to Enjoy Botanical Archive in Daily Life</h2>
+                </div>
+
+                <div class="use-cases-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="use-case-card"
+                        style="background: #faf8f5; border: 2px solid var(--border); padding: 1.5rem; box-shadow: 4px 4px 0px var(--border);">
+                        <span class="use-case-index"
+                            style="font-family: var(--mono-font); font-weight: 700; color: #5c6b43;">01</span>
+                        <h3 style="font-family: var(--display-font); font-size: 1.4rem; margin: 0.6rem 0 0.8rem 0;">
+                            Straight Over Ice</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.5; color: #333;">Pour 4oz directly over a large
+                            crystal-clear ice cube in a heavy rocks glass. Let it breathe for a minute to release the
+                            upfront floral notes and earthy finish for an effortless evening unwind.</p>
+                    </div>
+
+                    <div class="use-case-card"
+                        style="background: #faf8f5; border: 2px solid var(--border); padding: 1.5rem; box-shadow: 4px 4px 0px var(--border);">
+                        <span class="use-case-index"
+                            style="font-family: var(--mono-font); font-weight: 700; color: #5c6b43;">02</span>
+                        <h3 style="font-family: var(--display-font); font-size: 1.4rem; margin: 0.6rem 0 0.8rem 0;">
+                            Craft Zero-Proof Cocktails</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.5; color: #333;">Use as a sophisticated base or
+                            modifier for mocktails. Mix equal parts with tonic water or fresh grapefruit juice,
+                            garnished with a sprig of rosemary for a complex bar-quality drink.</p>
+                    </div>
+
+                    <div class="use-case-card"
+                        style="background: #faf8f5; border: 2px solid var(--border); padding: 1.5rem; box-shadow: 4px 4px 0px var(--border);">
+                        <span class="use-case-index"
+                            style="font-family: var(--mono-font); font-weight: 700; color: #5c6b43;">03</span>
+                        <h3 style="font-family: var(--display-font); font-size: 1.4rem; margin: 0.6rem 0 0.8rem 0;">
+                            Hospitality & Draft Service</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.5; color: #333;">Served on tap from stainless steel
+                            kegs at partner restaurants and lounges. Perfect for high-volume service, pouring crisp and
+                            refreshing directly for guests seeking clean non-alcoholic options.</p>
+                    </div>
+                </div>
+
+                <div class="allocation-footer-box"
+                    style="background: #faf8f5; border: 2px solid var(--border); padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; box-shadow: 4px 4px 0px var(--border);">
+                    <div class="allocation-text">
+                        <h3 style="font-family: var(--display-font); font-size: 1.3rem; margin-bottom: 0.2rem;">
+                            Experience The Archive</h3>
+                        <p style="font-size: 0.95rem; color: #333;">Ready to secure your local pickup or reserve an
+                            upcoming national release allocation?</p>
+                    </div>
+                    <a href="#allocation-form" class="allocation-cta"
+                        style="background: #18281a; color: #ffffff; padding: 0.75rem 1.4rem; font-family: var(--mono-font); font-size: 0.85rem; font-weight: 700; text-decoration: none; border: 2px solid #18281a; box-shadow: 3px 3px 0px var(--border);">Secure
+                        Your Allocation →</a>
+                </div>
+
+            </section>
+
+            <!-- FAQ Section with Clean 2x2 Grid Layout & Light Green Styling for Q2 & Q3 -->
+            <section class="faq-module reveal-section" id="faq"
+                style="margin-bottom: 3rem; background: #ffffff !important; border: 2px solid var(--border) !important; padding: 2.5rem; box-shadow: 6px 6px 0px var(--border) !important;">
+                <div class="section-marker"
+                    style="font-family: var(--mono-font); font-size: 0.75rem; font-weight: 700; color: #5c6b43; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;">
+                    Knowledge Base & FAQ</div>
+                <div class="faq-index-grid"
+                    style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem;">
+
+                    <!-- Q1: Top Left -->
+                    <div class="faq-index-card"
+                        style="background: #ffffff; border: 2px solid var(--border); padding: 1.8rem; box-shadow: 4px 4px 0px var(--border);">
+                        <div class="faq-index-header">
+                            <span class="faq-index-code" style="font-weight: 700; color: #5c6b43;">Q1</span>
+                            <span class="faq-index-category"
+                                style="background: #111111; color: #ffffff; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-family: var(--mono-font); font-weight: 700;">EXTRACTION</span>
+                        </div>
+                        <h3
+                            style="font-family: var(--display-font); font-size: 1.25rem; color: #111111 !important; margin: 0.6rem 0;">
+                            What does "liquid pressure extraction" mean?</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: #333333;">We use a mechanical cold-press
+                            pressure system rather than chemical solvents like hexane or ethanol. It preserves the
+                            natural botanical profile without leaving synthetic residue.</p>
+                    </div>
+
+                    <!-- Q2: Top Right (Zero Solvents Card / Light Green Accent Tint) -->
+                    <div class="faq-index-card"
+                        style="background: #f0f4ec !important; border: 2px solid var(--border); padding: 1.8rem; box-shadow: 4px 4px 0px var(--border);">
+                        <div class="faq-index-header">
+                            <span class="faq-index-code" style="font-weight: 700; color: #5c6b43;">Q2</span>
+                            <span class="faq-index-category"
+                                style="background: #5c6b43; color: #ffffff; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-family: var(--mono-font); font-weight: 700;">ZERO
+                                SOLVENTS</span>
+                        </div>
+                        <h3
+                            style="font-family: var(--display-font); font-size: 1.25rem; color: #111111 !important; margin: 0.6rem 0;">
+                            When does nationwide shipping begin?</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: #333333;">Our e-commerce portal and
+                            nationwide logistics officially launch on October 15. Until then, we are exclusively
+                            fulfilling local pickups and priority phone orders.</p>
+                    </div>
+
+                    <!-- Q3: Bottom Left (Light Green Accent Tint) -->
+                    <div class="faq-index-card"
+                        style="background: #f0f4ec !important; color: var(--text-main); border: 2px solid var(--border); padding: 1.8rem; box-shadow: 4px 4px 0px var(--border);">
+                        <div class="faq-index-header">
+                            <span class="faq-index-code" style="font-weight: 700; color: #5c6b43;">Q3</span>
+                            <span class="faq-index-category"
+                                style="background: #5c6b43; color: #ffffff; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-family: var(--mono-font); font-weight: 700;">STORAGE</span>
+                        </div>
+                        <h3
+                            style="font-family: var(--display-font); font-size: 1.25rem; color: #111111 !important; margin: 0.6rem 0;">
+                            Do the beverages need to be refrigerated?</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: #333333;">Our Batch 01 local glass bottles
+                            are fresh and should be kept cold. Our upcoming 12oz cans (launching Oct 15) are
+                            shelf-stable and can be stored at ambient temperatures.</p>
+                    </div>
+
+                    <!-- Q4: Bottom Right -->
+                    <div class="faq-index-card"
+                        style="background: #ffffff; border: 2px solid var(--border); padding: 1.8rem; box-shadow: 4px 4px 0px var(--border);">
+                        <div class="faq-index-header">
+                            <span class="faq-index-code" style="font-weight: 700; color: #5c6b43;">Q4</span>
+                            <span class="faq-index-category"
+                                style="background: #111111; color: #ffffff; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-family: var(--mono-font); font-weight: 700;">PARTNERSHIPS</span>
+                        </div>
+                        <h3
+                            style="font-family: var(--display-font); font-size: 1.25rem; color: #111111 !important; margin: 0.6rem 0;">
+                            How do I join the partnership or draft keg project?</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: #333333;">Submit your venue or hospitality
+                            details via our reservation form or contact our direct phone line. We review partner
+                            allocations weekly to supply draft kegs and dedicated mixers.</p>
+                        <div
+                            style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                            <a href="#allocation-form"
+                                style="font-family: var(--mono-font); font-size: 0.75rem; text-decoration: underline; color: #111111 !important; font-weight: 700;">Learn
+                                More & Request Allocation →</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <footer class="reveal-section"
+                style="background: #18281a !important; border: 2px solid var(--border) !important; padding: 2.5rem; box-shadow: 6px 6px 0px var(--border) !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 4rem; color: #ffffff !important;">
+                <div class="footer-col"
+                    style="background: transparent !important; border: none !important; box-shadow: none !important; color: #ffffff !important;">
+                    <div class="footer-brand"
+                        style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; background: transparent !important;">
+                        <img src="logo-sample.png" alt="Botanical Archive Logo"
+                            style="height: 36px; width: auto; object-fit: contain; filter: brightness(0) invert(1);">
+                        <span
+                            style="font-size: 1.2rem; font-weight: 700; color: #ffffff !important; font-family: var(--display-font);">Botanical
+                            Archive</span>
+                    </div>
+                    <p
+                        style="color: #cccccc !important; font-size: 0.9rem; line-height: 1.6; background: transparent !important; font-family: var(--mono-font);">
+                        Botanical Archive is a licensed botanical beverage company based in Traverse City, Michigan,
+                        dedicated to crafting 100% solvent-free botanical extractions and small-batch beverages.</p>
+                </div>
+
+                <div class="footer-col"
+                    style="background: transparent !important; border: none !important; box-shadow: none !important; color: #ffffff !important;">
+                    <div class="footer-heading"
+                        style="font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: #ffffff !important; margin-bottom: 0.8rem; background: transparent !important; font-family: var(--mono-font); border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.4rem;">
+                        Direct Coordinates</div>
+                    <div class="footer-links"
+                        style="display: flex; flex-direction: column; gap: 0.5rem; color: #cccccc !important; font-size: 0.85rem; background: transparent !important; font-family: var(--mono-font);">
+                        <span style="color: #cccccc !important; background: transparent !important;">Traverse City,
+                            Michigan</span>
+                        <span style="color: #cccccc !important; background: transparent !important;">Direct Phone: +1
+                            (555) 019-2834</span>
+                        <span style="color: #cccccc !important; background: transparent !important;">Email:
+                            contact@botanicalarchive.com</span>
+                        <span style="color: #cccccc !important; background: transparent !important;">State Licensed
+                            Operations</span>
+                    </div>
+                </div>
+
+                <div class="footer-col"
+                    style="background: transparent !important; border: none !important; box-shadow: none !important; color: #ffffff !important;">
+                    <div class="footer-heading"
+                        style="font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: #ffffff !important; margin-bottom: 0.8rem; background: transparent !important; font-family: var(--mono-font); border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.4rem;">
+                        Quick Links</div>
+                    <div class="footer-links"
+                        style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; background: transparent !important; font-family: var(--mono-font);">
+                        <a href="#"
+                            style="color: #cccccc !important; text-decoration: underline; background: transparent !important;">Batch
+                            01 Manifest</a>
+                        <a href="#"
+                            style="color: #cccccc !important; text-decoration: underline; background: transparent !important;">Extraction
+                            Specs</a>
+                        <a href="#"
+                            style="color: #cccccc !important; text-decoration: underline; background: transparent !important;">Wholesale
+                            Inquiries</a>
+                        <a href="#"
+                            style="color: #cccccc !important; text-decoration: underline; background: transparent !important;">Privacy
+                            & Terms</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Scripts for Scroll Observer & Mouse Parallax Watermark -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.reveal-section').forEach(section => {
+                    observer.observe(section);
                 });
-            }, observerOptions);
 
-            document.querySelectorAll('.reveal-section').forEach(section => {
-                observer.observe(section);
+                const watermark = document.getElementById('watermark');
+                document.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 25;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 25;
+                    watermark.style.transform = `translate(${x}px, ${y}px) scale(1.01)`;
+                });
             });
+        </script>
 
-            const watermark = document.getElementById('watermark');
-            document.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth - 0.5) * 25;
-                const y = (e.clientY / window.innerHeight - 0.5) * 25;
-                watermark.style.transform = `translate(${x}px, ${y}px) scale(1.01)`;
-            });
-        });
-    </script>
+        <!-- JavaScript Controller -->
+        <script type="module" src="script.js"></script>
+    </body>
 
-    <!-- JavaScript Controller -->
-    <script type="module" src="script.js"></script>
-</body>
 </html>
