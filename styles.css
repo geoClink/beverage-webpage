@@ -1,8 +1,7 @@
-/* 
-  BRUTALIST SOFTWARE ZINE — FULL-ROW ORIGIN STORY
-  Expands the Origin Story block to span the full width of the left column 
-  underneath the hero text, matching the width of the cards below it.
-*/
+/* =================================================================
+   BRUTALIST SOFTWARE ZINE — FULL SYSTEM STYLESHEET
+   Includes: Terminal Reviews, Offset Process Ledger, and FAQ
+   ================================================================ */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -20,16 +19,42 @@
     --accent-light: #d8decd;/* Active indicator highlight */
     --border: #111210;      /* Solid 2px hard border */
     --radius: 0px;          /* Zero curves */
+    --display-font: 'DM Serif Display', serif;
+    --mono-font: 'Space Mono', monospace;
 }
 
 body {
     background-color: var(--bg);
     color: var(--text-main);
-    font-family: 'Space Mono', monospace;
+    font-family: var(--mono-font);
     font-size: 13px;
     line-height: 1.4;
     padding: 2rem 1rem;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Hemp Leaf Watermark */
+.bg-watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(70vw, 700px);
+    height: min(70vh, 700px);
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-watermark svg {
+    width: 100%;
+    height: 100%;
+    color: var(--border);
 }
 
 /* Ticker Bar */
@@ -71,9 +96,11 @@ body {
     margin: 3rem auto 2rem auto;
     background-color: var(--bg);
     color: var(--text-main);
+    position: relative;
+    z-index: 1;
 }
 
-/* Header */
+/* Header & Brand Mark */
 header {
     display: flex;
     justify-content: space-between;
@@ -85,15 +112,34 @@ header {
     box-shadow: 3px 3px 0px var(--border);
 }
 
-.brand-mark {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: var(--text-main);
-    text-transform: uppercase;
+.brand-logo-area {
+    display: flex;
+    align-items: center;
 }
 
-.brand-mark span {
+.simple-logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.6rem;
+    background: #fff;
+}
+
+.logo-icon {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.brand-text {
+    font-family: var(--display-font);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-size: 1.1rem;
+}
+
+.brand-text span {
     color: var(--accent);
 }
 
@@ -132,7 +178,7 @@ header {
     gap: 1.5rem;
 }
 
-/* Raw Art Module with Crooked Tilt */
+/* Raw Art Module */
 .raw-art-module {
     background: var(--surface);
     border: 2px solid var(--border);
@@ -163,19 +209,21 @@ header {
     border: 1px solid var(--border);
 }
 
-/* Headline Wrapper */
+/* Headline & Typography */
 .headline-wrapper h1 {
-    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    font-family: var(--display-font);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
     margin-bottom: 0.8rem;
     color: var(--text-main);
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .headline-wrapper h1 span {
     color: var(--accent);
+    font-style: italic;
 }
 
 .manifesto {
@@ -184,7 +232,7 @@ header {
     line-height: 1.5;
 }
 
-/* Founder Block / Origin Story - Now Expanded to Fill Full Width of Left Column */
+/* Founder Block / Origin Story */
 .founder-section-wrapper {
     margin-top: 0;
     border-top: none;
@@ -238,11 +286,12 @@ header {
 }
 
 .form-module h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-family: var(--display-font);
+    font-size: 1.5rem;
+    font-weight: 400;
     letter-spacing: -0.02em;
     margin-bottom: 0.2rem;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .launch-notice {
@@ -279,7 +328,7 @@ input, textarea {
     background: var(--surface-tint);
     border: 2px solid var(--border);
     padding: 0.7rem 0.8rem;
-    font-family: 'Space Mono', monospace;
+    font-family: var(--mono-font);
     font-size: 0.82rem;
     color: var(--text-main);
     outline: none;
@@ -303,7 +352,7 @@ button[type="submit"] {
     color: #f7f6f2;
     border: 2px solid var(--border);
     padding: 0.8rem;
-    font-family: 'Space Mono', monospace;
+    font-family: var(--mono-font);
     font-weight: 700;
     font-size: 0.82rem;
     cursor: pointer;
@@ -324,7 +373,70 @@ button[type="submit"]:active {
     box-shadow: 1px 1px 0px var(--border);
 }
 
-/* Architecture Grid with Alternate Tilts */
+/* =================================================================
+   REVIEWS MODULE (TERMINAL DISPATCH LOG)
+   ================================================================ */
+
+.reviews-module {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 1.5rem;
+    box-shadow: 4px 4px 0px var(--border);
+    margin-top: 1.5rem;
+    position: relative;
+}
+
+.reviews-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+.review-card {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    padding: 1rem;
+    box-shadow: 2px 2px 0px var(--border);
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.review-card:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--border);
+}
+
+.review-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.review-author::after {
+    content: "VERIFIED";
+    font-size: 0.55rem;
+    background: var(--border);
+    color: var(--bg);
+    padding: 0.1rem 0.3rem;
+}
+
+.review-quote {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--text-main);
+    line-height: 1.45;
+}
+
+/* Architecture Grid */
 .architecture-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -382,11 +494,12 @@ button[type="submit"]:active {
 }
 
 .arch-box h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-family: var(--display-font);
+    font-size: 1.25rem;
+    font-weight: 400;
     margin-bottom: 0.5rem;
     letter-spacing: -0.01em;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .arch-box p {
@@ -413,18 +526,75 @@ button[type="submit"]:active {
     border: 1px solid var(--border);
 }
 
-/* Process Ledger with Slight Tilt */
-.process-ledger {
+/* =================================================================
+   FAQ SECTION (NEW)
+   ================================================================ */
+
+.faq-module {
     background: var(--surface);
     border: 2px solid var(--border);
     padding: 2rem;
     margin-bottom: 1.5rem;
     box-shadow: 4px 4px 0px var(--border);
-    transform: rotate(0.4deg);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+}
+
+.faq-item {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    padding: 1.2rem;
+    box-shadow: 3px 3px 0px var(--border);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.faq-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--border);
+}
+
+.faq-q {
+    font-family: var(--display-font);
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 0.6rem;
+    text-transform: none;
+    letter-spacing: -0.01em;
+}
+
+.faq-a {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+
+/* =================================================================
+   TECHNICAL PROCESS LEDGER (ASYNCHRONOUS MARQUEE CARDS)
+   ================================================================ */
+
+.process-ledger {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 2.2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 4px 4px 0px var(--border);
+    transform: rotate(-0.3deg);
+    position: relative;
+    overflow: hidden;
 }
 
 .process-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 1rem;
 }
 
 .process-header span {
@@ -438,16 +608,27 @@ button[type="submit"]:active {
 }
 
 .process-header h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: var(--display-font);
+    font-size: 1.6rem;
+    font-weight: 400;
     letter-spacing: -0.02em;
+    text-transform: none;
+    margin: 0;
+}
+
+.process-header-meta {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--muted);
     text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .process-timeline {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
+    gap: 1.5rem;
+    position: relative;
 }
 
 @media(max-width: 960px) {
@@ -457,29 +638,91 @@ button[type="submit"]:active {
 .process-row {
     background: var(--bg);
     border: 2px solid var(--border);
-    padding: 1.2rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 3px 3px 0px var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.process-row:nth-child(1) {
+    transform: translateY(0px) rotate(0.4deg);
+}
+
+.process-row:nth-child(2) {
+    transform: translateY(12px) rotate(-0.6deg);
+    background: var(--surface-tint);
+}
+
+.process-row:nth-child(3) {
+    transform: translateY(-6px) rotate(0.5deg);
+}
+
+.process-row:hover {
+    transform: translateY(-3px) rotate(0deg);
+    box-shadow: 5px 5px 0px var(--border);
+}
+
+.process-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 0.6rem;
+    margin-bottom: 1rem;
 }
 
 .process-num {
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-family: var(--display-font);
+    font-size: 1.4rem;
     color: var(--accent);
     line-height: 1;
-    display: block;
-    margin-bottom: 0.6rem;
+}
+
+.process-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: var(--border);
+    color: var(--bg);
+    padding: 0.15rem 0.4rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .process-content h3 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    text-transform: uppercase;
+    font-family: var(--display-font);
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    text-transform: none;
+    letter-spacing: -0.01em;
 }
 
 .process-content p {
     font-size: 0.8rem;
     color: var(--muted);
-    line-height: 1.4;
+    line-height: 1.45;
+}
+
+.process-footer-strip {
+    margin-top: 1.2rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.process-footer-strip::before {
+    content: "✦";
+    font-size: 0.6rem;
 }
 
 /* Footer */
@@ -498,10 +741,11 @@ footer {
 }
 
 .footer-brand {
-    font-weight: 700;
-    font-size: 0.95rem;
+    font-family: var(--display-font);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-main);
     margin-bottom: 0.3rem;
-    text-transform: uppercase;
 }
 
 .footer-col p {
