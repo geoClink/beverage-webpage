@@ -73,6 +73,14 @@ body {
     background: transparent; 
 }
 
+.zine-nav .logo-container img {
+    height: 300px !important; 
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+
+
 .creator-hero-block {
     margin-top: 5rem;
 }
@@ -115,6 +123,7 @@ body {
     position: fixed;
     top: 28px;
     left: 0;
+    height: 100px;
     width: 100%;
     background: var(--surface);
     border-bottom: 2px solid var(--border);
@@ -839,6 +848,19 @@ footer {
         width: 100%;
     }
 
+    /* Add this inside your @media (max-width: 768px) block */
+    button, 
+    .nav-cta, 
+    .form-module button, 
+    input[type="submit"] {
+        width: 100% !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+        padding: 0.8rem 1rem !important;
+        white-space: normal !important;
+    }
+    
     /* Convert sticky nav to relative and make links stack neatly */
     .zine-nav {
         position: relative;
