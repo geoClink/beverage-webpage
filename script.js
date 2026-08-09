@@ -1,81 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Allocation Form Interaction
-    const form = document.getElementById('allocation-form');
+    // Audio Toggle Simulation
+    const audioToggle = document.getElementById('audio-toggle');
+    const audioLabel = document.getElementById('audio-label');
+    let audioActive = false;
 
-    if (form) {
-        form.addEventListener('submit', (e) => {
+    audioToggle.addEventListener('click', () => {
+        audioActive = !audioActive;
+        if (audioActive) {
+            audioLabel.textContent = '[AUDIO: ON]';
+            audioToggle.style.borderColor = 'var(--accent)';
+            audioToggle.style.background = 'var(--accent-light)';
+        } else {
+            audioLabel.textContent = '[AUDIO: OFF]';
+            audioToggle.style.borderColor = 'var(--border)';
+            audioToggle.style.background = 'var(--surface)';
+        }
+    });
+
+    // Form Submission Handling
+    const allocationForm = document.getElementById('allocation-form');
+    if(allocationForm) {
+        allocationForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            const nameInput = document.getElementById('name').value;
-            const submitButton = form.querySelector('button');
-
-            submitButton.textContent = 'ALLOCATION SECURED ✓';
-            submitButton.style.background = 'var(--accent)';
-            submitButton.style.color = 'var(--paper)';
-            submitButton.disabled = true;
-
-            console.log(`Allocation registered for: ${nameInput}`);
-        });
-    }
-
-    // 2. Brand Header Glitch Easter Egg
-    console.log("%c[FLAGSHIP BEVERAGE CO.] // SYSTEM ACTIVE", "background: #52733d; color: #f4f0ea; padding: 4px 8px; font-weight: bold;");
-
-    const brandMark = document.querySelector('.brand-mark');
-    if (brandMark) {
-        brandMark.addEventListener('mouseover', () => {
-            brandMark.classList.add('glitch-active');
-            setTimeout(() => {
-                brandMark.classList.remove('glitch-active');
-            }, 300);
-        });
-    }
-
-    // 3. Ambient Audio Synth & Visual Pulse Toggle
-    const soundToggle = document.getElementById('sound-toggle');
-    let audioCtx = null;
-    let oscillator = null;
-    let gainNode = null;
-    let isPlaying = false;
-
-    if (soundToggle) {
-        soundToggle.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-
-            if (isPlaying) {
-                soundToggle.textContent = '[AUDIO: ON]';
-                soundToggle.classList.add('active');
-                document.body.classList.add('pulse-active');
-
-                try {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                    oscillator = audioCtx.createOscillator();
-                    gainNode = audioCtx.createGain();
-
-                    oscillator.type = 'sine';
-                    oscillator.frequency.setValueAtTime(55, audioCtx.currentTime);
-                    gainNode.gain.setValueAtTime(0.03, audioCtx.currentTime);
-
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioCtx.destination);
-                    oscillator.start();
-                } catch (err) {
-                    console.log('Web Audio API not fully supported or blocked by browser policy.');
-                }
-
-            } else {
-                soundToggle.textContent = '[AUDIO: OFF]';
-                soundToggle.classList.remove('active');
-                document.body.classList.remove('pulse-active');
-
-                if (oscillator) {
-                    oscillator.stop();
-                    oscillator.disconnect();
-                }
-                if (audioCtx) {
-                    audioCtx.close();
-                }
+            const name = document.getElementById('alloc-name').value;
+            const email = document.getElementById('alloc-email').value;
+            if(!email) {
+                alert('CRITICAL ERROR: Secure Dispatch Line (Email) is required for allocation.');
+                return;
             }
+            alert(`RESERVATION LOGGED: Thank you, ${name || 'Operator'}. Your allocation request has been queued.`);
+            allocationForm.reset();
+        });
+    }
+
+    const newsletterForm = document.getElementById('newsletter-form');
+    if(newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('news-email').value;
+            if(!email) {
+                alert('CRITICAL ERROR: Email is required to subscribe to the dispatch log.');
+                return;
+            }
+            alert('BROADCAST SUBSCRIBED: You will receive upcoming botanical archive drops and rollout notices.');
+            newsletterForm.reset();
         });
     }
 });
