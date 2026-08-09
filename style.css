@@ -1127,3 +1127,12 @@ footer {
     transform: translate(-2px, -2px);
     box-shadow: 5px 5px 0px var(--border);
 }
+
+::selection {
+    background: var(--accent);
+    color: #ffffff;
+}
+::-moz-selection {
+    background: var(--accent);
+    color: #ffffff;
+}

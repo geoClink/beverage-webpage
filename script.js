@@ -33,15 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const name = document.getElementById('alloc-name').value;
             const email = document.getElementById('alloc-email').value;
+            
+            // Check if email is missing
             if (!email) {
                 alert('CRITICAL ERROR: Secure Dispatch Line (Email) is required for allocation.');
                 return;
             }
+            
+            // Success State UI Update (Runs when email is provided)
+            const submitBtn = document.getElementById('allocation-submit-btn');
+            submitBtn.textContent = 'TRANSACTION LOGGED // BATCH 01 SECURED';
+            submitBtn.style.background = '#2d5a27';
+            submitBtn.disabled = true;
+
             alert(`RESERVATION LOGGED: Thank you, ${name || 'Operator'}. Your allocation request has been queued.`);
             allocationForm.reset();
         });
     }
-
+    
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
