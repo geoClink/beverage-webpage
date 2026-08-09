@@ -35,24 +35,37 @@ body {
     padding-top: 4rem;
 }
 
-/* Sharp Leaves with Softened Seams */
 .bg-watermark {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0.40;
+    top: -10%;
+    left: -10%;
+    width: 120vw;
+    height: 120vh;
+    z-index: -999;
+    opacity: 0.45;
     pointer-events: none;
-    z-index: -1;
-    background-image: url('https://images.unsplash.com/photo-1498671546682-94a232c26d17?w=600&auto=format&fit=crop&q=60');
-    background-repeat: repeat;
-    background-size: 420px;
-    mix-blend-mode: multiply;
-    filter: contrast(120%) brightness(95%);
-    -webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 95%);
-    mask-image: radial-gradient(circle at center, black 50%, transparent 95%);
-    border-radius: 0;
+    overflow: hidden;
+    background-image: url('cannabis-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: contrast(130%) brightness(60%) saturate(110%);
+    transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1), filter 1s ease;
+    animation: watermarkBreathe 16s ease-in-out infinite alternate;
+}
+
+@keyframes watermarkBreathe {
+    0% {
+        transform: scale(1) rotate(0deg);
+        filter: contrast(125%) brightness(58%) saturate(110%);
+    }
+    50% {
+        transform: scale(1.03) rotate(0.2deg);
+        filter: contrast(135%) brightness(62%) saturate(115%);
+    }
+    100% {
+        transform: scale(1.01) rotate(-0.1deg);
+        filter: contrast(130%) brightness(60%) saturate(110%);
+    }
 }
 
 /* IMPORTANT: Ensure container is transparent so the leaf shows through */
