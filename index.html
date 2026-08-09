@@ -3,202 +3,987 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLAGSHIP — Natural Extraction // Traverse City</title>
+    <title>Brutalist Software Zine — Natural Extraction Blueprint</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+/* =================================================================
+   BRUTALIST SOFTWARE ZINE — FULL SYSTEM STYLESHEET
+   Includes: Wiggling Assets, Terminal Reviews, Offset Process Ledger, FAQ, and Inverted Footer
+   ================================================================ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #eceae3;          /* Industrial concrete canvas */
+    --surface: #f7f6f2;     /* Terminal panel background */
+    --surface-tint: #e3e0d8;/* Input field background */
+    --text-main: #111210;   /* Hard black ink */
+    --muted: #52554c;       /* Raw utility gray */
+    --accent: #3b4a22;      /* Muted technical olive accent */
+    --accent-light: #d8decd;/* Active indicator highlight */
+    --border: #111210;      /* Solid 2px hard border */
+    --radius: 0px;          /* Zero curves */
+    --display-font: 'DM Serif Display', serif;
+    --mono-font: 'Space Mono', monospace;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: var(--mono-font);
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Hemp Leaf Watermark */
+.bg-watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(70vw, 700px);
+    height: min(70vh, 700px);
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-watermark svg {
+    width: 100%;
+    height: 100%;
+    color: var(--border);
+}
+
+/* Ticker Bar */
+.ticker-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--text-main);
+    color: var(--bg);
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 1000;
+    padding: 0.35rem 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ticker-move {
+    display: inline-block;
+    animation: ticker 25s linear infinite;
+}
+
+.ticker-move span {
+    margin-right: 2.5rem;
+}
+
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Main Container */
+.zine-container {
+    max-width: 1200px;
+    margin: 3rem auto 2rem auto;
+    background-color: var(--bg);
+    color: var(--text-main);
+    position: relative;
+    z-index: 1;
+}
+
+/* Header & Brand Mark */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 3px 3px 0px var(--border);
+}
+
+.brand-logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.simple-logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.6rem;
+    background: #fff;
+}
+
+.logo-icon {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.brand-text {
+    font-family: var(--display-font);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-size: 1.1rem;
+}
+
+.brand-text span {
+    color: var(--accent);
+}
+
+.header-meta {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.batch-tag {
+    background: var(--accent);
+    color: #f7f6f2;
+    padding: 0.25rem 0.6rem;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    letter-spacing: 0.05em;
+}
+
+/* Hero Strike Block Layout */
+.strike-block {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
+}
+
+@media(max-width: 960px) {
+    .strike-block { grid-template-columns: 1fr; }
+}
+
+.left-wing, .right-wing {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Raw Art Module */
+.raw-art-module {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 0.75rem;
+    box-shadow: 4px 4px 0px var(--border);
+    transform: rotate(-1deg);
+    transition: transform 0.2s ease;
+}
+
+.raw-art-module:hover {
+    transform: rotate(0deg);
+}
+
+.art-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.art-box-inner img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.3);
+    border: 1px solid var(--border);
+}
+
+/* Headline & Typography */
+.headline-wrapper h1 {
+    font-family: var(--display-font);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.8rem;
+    color: var(--text-main);
+    text-transform: none;
+}
+
+.headline-wrapper h1 span {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.manifesto {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* Founder Block / Origin Story */
+.founder-section-wrapper {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+    width: 100%;
+}
+
+.section-marker {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.founder-block {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 1.5rem;
+    box-shadow: 4px 4px 0px var(--border);
+    transform: rotate(0.4deg);
+    width: 100%;
+}
+
+.founder-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent);
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.founder-block p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* Form Module */
+.form-module {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 1.8rem;
+    box-shadow: 4px 4px 0px var(--border);
+}
+
+.form-module h2 {
+    font-family: var(--display-font);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.2rem;
+    text-transform: none;
+}
+
+.launch-notice {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+}
+
+.form-module > p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+}
+
+.input-line {
+    margin-bottom: 0.9rem;
+}
+
+.input-line label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+    color: var(--text-main);
+}
+
+input, textarea {
+    width: 100%;
+    background: var(--surface-tint);
+    border: 2px solid var(--border);
+    padding: 0.7rem 0.8rem;
+    font-family: var(--mono-font);
+    font-size: 0.82rem;
+    color: var(--text-main);
+    outline: none;
+    border-radius: 0;
+}
+
+input:focus, textarea:focus {
+    background: var(--surface);
+    border-color: var(--accent);
+    box-shadow: 2px 2px 0px var(--border);
+}
+
+textarea {
+    resize: none;
+    height: 75px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background: var(--accent);
+    color: #f7f6f2;
+    border: 2px solid var(--border);
+    padding: 0.8rem;
+    font-family: var(--mono-font);
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    margin-top: 0.4rem;
+    box-shadow: 3px 3px 0px var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--border);
+}
+
+button[type="submit"]:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--border);
+}
+
+/* Architecture Grid */
+.architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media(max-width: 960px) {
+    .architecture-grid { grid-template-columns: 1fr; }
+}
+
+.arch-box {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 1.5rem;
+    box-shadow: 4px 4px 0px var(--border);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.arch-box:nth-child(1) { transform: rotate(-0.8deg); }
+.arch-box:nth-child(2) { transform: rotate(0.6deg); }
+.arch-box:nth-child(3) { transform: rotate(-0.5deg); }
+
+.arch-box:hover {
+    transform: rotate(0deg) scale(1.01);
+}
+
+/* Wiggling Digital Asset Badge */
+@keyframes wiggle {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-5deg) scale(1.05); }
+    50% { transform: rotate(0deg) scale(1); }
+    75% { transform: rotate(5deg) scale(1.05); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+.arch-badge-corner {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface-tint);
+    animation: wiggle 3s ease-in-out infinite;
+}
+
+.arch-box:nth-child(1) .arch-badge-corner { animation-delay: 0s; }
+.arch-box:nth-child(2) .arch-badge-corner { animation-delay: 0.8s; }
+.arch-box:nth-child(3) .arch-badge-corner { animation-delay: 1.6s; }
+
+.arch-badge-corner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.4);
+    transition: filter 0.2s ease;
+}
+
+.arch-box:hover .arch-badge-corner img {
+    filter: grayscale(0%) contrast(1);
+}
+
+.arch-index {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+}
+
+.arch-box h3 {
+    font-family: var(--display-font);
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+    text-transform: none;
+}
+
+.arch-box p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+}
+
+.arch-status {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    border-top: 1px dashed var(--border);
+    padding-top: 0.7rem;
+    text-transform: uppercase;
+}
+
+.highlight-status {
+    background: var(--accent);
+    color: #f7f6f2;
+    padding: 0.25rem 0.5rem;
+    display: inline-block;
+    border: 1px solid var(--border);
+}
+
+/* =================================================================
+   TECHNICAL PROCESS LEDGER
+   ================================================================ */
+
+.process-ledger {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 2.2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 4px 4px 0px var(--border);
+    transform: rotate(-0.3deg);
+    position: relative;
+    overflow: hidden;
+}
+
+.process-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.process-header span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.process-header h2 {
+    font-family: var(--display-font);
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    margin: 0;
+}
+
+.process-header-meta {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.process-stream-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 0.6rem 0;
+}
+
+.process-stream-item {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    padding: 1.4rem 1.6rem;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    box-shadow: 4px 4px 0px var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.process-stream-item.item-skew-left {
+    transform: rotate(-0.9deg) translateX(-10px);
+}
+
+.process-stream-item.item-skew-right {
+    transform: rotate(0.7deg) translateX(14px);
+    background: var(--surface-tint);
+}
+
+.process-stream-item.item-skew-center {
+    transform: rotate(-0.4deg) translateX(-4px);
+}
+
+.process-stream-item:hover {
+    transform: translateY(-3px) rotate(0deg) translateX(0px);
+    box-shadow: 6px 6px 0px var(--border);
+}
+
+.stream-marker-col {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-right: 1px dashed var(--border);
+    padding-right: 1rem;
+}
+
+.stream-index {
+    font-family: var(--display-font);
+    font-size: 1.6rem;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.stream-tag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    background: var(--border);
+    color: var(--bg);
+    padding: 0.15rem 0.35rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.stream-text-col h3 {
+    font-family: var(--display-font);
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.01em;
+}
+
+.stream-text-col p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+@media(max-width: 768px) {
+    .process-stream-item,
+    .process-stream-item.item-skew-left,
+    .process-stream-item.item-skew-right,
+    .process-stream-item.item-skew-center {
+        transform: none;
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        transform: translateX(0);
+    }
+    .stream-marker-col {
+        border-right: none;
+        border-bottom: 1px dashed var(--border);
+        padding-right: 0;
+        padding-bottom: 0.6rem;
+    }
+}
+
+/* =================================================================
+   FAQ SECTION
+   ================================================================ */
+
+.faq-module {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 2.2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 4px 4px 0px var(--border);
+}
+
+.faq-index-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+@media(max-width: 768px) {
+    .faq-index-grid { grid-template-columns: 1fr; }
+}
+
+.faq-index-card {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    padding: 1.4rem;
+    position: relative;
+    box-shadow: 3px 3px 0px var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-index-card:nth-child(odd) { transform: rotate(-0.3deg); }
+.faq-index-card:nth-child(even) { transform: rotate(0.3deg); background: var(--surface-tint); }
+
+.faq-index-card:hover {
+    transform: translateY(-2px) rotate(0deg);
+    box-shadow: 5px 5px 0px var(--border);
+}
+
+.faq-index-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.faq-index-code {
+    font-family: var(--display-font);
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.faq-index-category {
+    font-size: 0.6rem;
+    font-weight: 700;
+    background: var(--border);
+    color: var(--bg);
+    padding: 0.15rem 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.faq-index-card h3 {
+    font-family: var(--display-font);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+}
+
+.faq-index-card p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+/* =================================================================
+   TERMINAL INVERTED FOOTER
+   ================================================================ */
+
+footer {
+    background: var(--text-main);
+    color: var(--bg);
+    border: 2px solid var(--border);
+    padding: 2.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+    box-shadow: 6px 6px 0px var(--accent);
+    margin-top: 2rem;
+    position: relative;
+}
+
+@media(max-width: 768px) {
+    footer { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.footer-brand {
+    font-family: var(--display-font);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0.4rem;
+}
+
+.footer-col p {
+    font-size: 0.8rem;
+    color: #b5b3a8;
+    line-height: 1.5;
+}
+
+.footer-heading {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.08em;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 0.3rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-links a, .footer-links span {
+    font-size: 0.8rem;
+    color: #b5b3a8;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Sound Toggle Widget */
+.sound-toggle {
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--border);
+    z-index: 1000;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+}
+
+.sound-toggle:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0px var(--border);
+}
+    </style>
 </head>
 <body>
 
-    <!-- Scrolling Ticker Bar -->
+    <!-- Background Watermark -->
+    <div class="bg-watermark">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+        </svg>
+    </div>
+
+    <!-- Ticker Bar -->
     <div class="ticker-wrap">
         <div class="ticker-move">
-            <span>✦ Nationwide Shipping Launch: October 15</span>
-            <span>✦ 100% Solvent-Free Extraction</span>
-            <span>✦ Rooted in Traverse City, MI</span>
-            <span>✦ Direct Farmer's Market & Phone Orders Open</span>
-            <span>✦ Nationwide Shipping Launch: October 15</span>
-            <span>✦ 100% Solvent-Free Extraction</span>
-            <span>✦ Rooted in Traverse City, MI</span>
-            <span>✦ Direct Farmer's Market & Phone Orders Open</span>
+            <span>+ Direct Farmer's Market & Phone Orders Open</span>
+            <span>+ Nationwide Shipping Launch: October 15</span>
+            <span>+ 100% Solvent-Free Extraction</span>
+            <span>+ Rooted in Traverse City, MI</span>
+            <span>+ Direct Farmer's Market & Phone Orders Open</span>
+            <span>+ Nationwide Shipping Launch: October 15</span>
+            <span>+ 100% Solvent-Free Extraction</span>
+            <span>+ Rooted in Traverse City, MI</span>
         </div>
     </div>
 
+    <!-- Main Container -->
     <div class="zine-container">
-        
-        <!-- Header with Basic Logo Asset Space -->
+
+        <!-- Header -->
         <header>
             <div class="brand-logo-area">
                 <div class="simple-logo-mark">
-                    <span class="logo-icon">+</span>
-                    <span class="brand-text">FLAGSHIP<span>.</span></span>
+                    <span class="logo-icon">▲</span>
+                    <div class="brand-text">BOTANICAL <span>ARCHIVE</span></div>
                 </div>
             </div>
             <div class="header-meta">
-                <span>Traverse City, MI</span>
-                <span>Est. 2026</span>
+                <span class="batch-tag">BATCH 01 // ACTIVE</span>
             </div>
-            <div class="header-meta batch-tag">Batch 01 // Live Release</div>
         </header>
 
-        <!-- Hero Section -->
-        <main class="strike-block">
+        <!-- Hero Strike Block Layout -->
+        <div class="strike-block">
+            <!-- Left Wing: Image & Headline -->
             <div class="left-wing">
                 <div class="raw-art-module">
-                    <div class="art-badge">ARCHIVE 01 // BOTANICAL</div>
+                    <div class="art-badge">FIG 0.1 // FIELD EXTRACTION</div>
                     <div class="art-box-inner">
-                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1000&auto=format&fit=crop" alt="Botanical Plant Drawing">
+                        <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=800&q=80" alt="Botanical Field Extraction">
                     </div>
                 </div>
-
                 <div class="headline-wrapper">
-                    <h1>
-                        Crafted in <span>Traverse City</span>.<br>
-                        Extracted by nature.
-                    </h1>
-                    <p class="manifesto">
-                        Stripped of all artificial additives and harsh chemical solvents. Our liquid extraction captures the complete vital spectrum of the plant—built with an organic, uncompromising appreciation for the craft.
-                    </p>
-                </div>
-
-                <!-- Founder Block -->
-                <div class="founder-section-wrapper">
-                    <div class="section-marker">THE ORIGIN STORY</div>
-                    <div class="founder-block">
-                        <div class="founder-meta">
-                            <span>ESTABLISHMENT: 2026</span>
-                            <span>TRAVERSE CITY, MI</span>
-                        </div>
-                        <p>
-                            Built from the ground up in Northern Michigan, Flagship was founded to strip away the synthetic additives and chemical shortcuts dominating modern beverage production. Operating locally with a commitment to pure liquid pressure extraction, our work is rooted in unyielding transparency, regional craftsmanship, and a deep connection to the Northern landscape.
-                        </p>
-                    </div>
+                    <h1>Pure liquid pressure extraction, <span>traverse city rooted</span> & solvent-free.</h1>
+                    <p class="manifesto">We combine precision mechanical cold-pressing with regional micro-batching to secure the true plant profile without chemical distillation or isolates.</p>
                 </div>
             </div>
 
-            <!-- Allocation Form & Client Reviews Section -->
+            <!-- Right Wing: Form & Founder Origin -->
             <div class="right-wing">
                 <div class="form-module">
-                    <h2>Secure Allocation</h2>
-                    <div class="launch-notice">✦ Nationwide Shipping Drops October 15</div>
-                    <p>Reserve your allocation for our limited inaugural release or request priority telephone fulfillment below.</p>
-
+                    <h2>Request Allocation</h2>
+                    <div class="launch-notice">Nationwide Launch: Oct 15</div>
+                    <p>Reserve Batch 01 inventory or coordinate regional local pickup and direct phone fulfillment.</p>
                     <form id="allocation-form">
                         <div class="input-line">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Jordan Vance">
+                            <label>Operator / Name</label>
+                            <input type="text" id="alloc-name" placeholder="Enter full name...">
                         </div>
-
                         <div class="input-line">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="jordan@domain.com">
+                            <label>Secure Dispatch Line (Email)</label>
+                            <input type="email" id="alloc-email" placeholder="name@domain.com">
                         </div>
-
                         <div class="input-line">
-                            <label for="note">Inquiry / Phone Order Note (Optional)</label>
-                            <textarea id="note" name="note" placeholder="Farmers market pickup, phone order inquiry, or special request..."></textarea>
+                            <label>Allocation Notes / Volume</label>
+                            <textarea id="alloc-notes" placeholder="Specify local pickup or requested tier..."></textarea>
                         </div>
-
-                        <button type="submit">Claim Allocation Drop</button>
+                        <button type="submit">Initialize Reservation Request</button>
                     </form>
                 </div>
 
-                <!-- Reviews Module Added to Right Column -->
-                <div class="reviews-module">
-                    <div class="section-marker" style="margin-bottom: 0.8rem;">FIELD DISPATCHES // REVIEWS</div>
-                    <div class="reviews-stack">
-                        <div class="review-card">
-                            <span class="review-author">Marcus L. // Local Pickup</span>
-                            <p class="review-quote">"Cleanest extraction profile I've tasted out of the Midwest. You can genuinely feel the care put into the botanical balance."</p>
+                <!-- Stay in Touch Module -->
+                <div class="form-module">
+                    <h2>Stay in Touch</h2>
+                    <div class="launch-notice">No Order Required</div>
+                    <p>Join our broadcast list for botanical archive drops, research notes, and nationwide rollout announcements.</p>
+                    <form id="newsletter-form">
+                        <div class="input-line">
+                            <label>Secure Broadcast Line (Email)</label>
+                            <input type="email" id="news-email" placeholder="name@domain.com">
                         </div>
-                        <div class="review-card">
-                            <span class="review-author">Elena R. // Traverse City Resident</span>
-                            <p class="review-quote">"Absolute game-changer. So glad to see a local producer refusing to cut corners with chemical shortcuts."</p>
+                        <button type="submit" style="background: var(--text-main);">Subscribe to Dispatch Log</button>
+                    </form>
+                </div>
+
+                <div class="founder-section-wrapper">
+                    <div class="section-marker">ORIGIN MANIFESTO</div>
+                    <div class="founder-block">
+                        <div class="founder-meta">
+                            <span>SYS.NOTE // FOUNDER</span>
+                            <span>TC, MICHIGAN</span>
                         </div>
+                        <p>Built out of a strict refusal to compromise botanical integrity. Every drop reflects active state licensing and a clear pathway toward an independent natural water source.</p>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
 
-        <!-- Vessel Architecture Grid -->
-        <section class="architecture-grid">
+        <!-- Top Row Architecture Grid with Wiggling Assets -->
+        <div class="architecture-grid">
             <div class="arch-box">
                 <div class="arch-badge-corner">
-                    <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=200&auto=format&fit=crop" alt="Glass Bottle Icon">
+                    <img src="https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?auto=format&fit=crop&w=120&q=80" alt="Glass Bottle Asset">
                 </div>
-                <div class="arch-index">01 // Local</div>
+                <div class="arch-index">01 // LOCAL</div>
                 <h3>Local Glass Bottles</h3>
                 <p>Hand-crafted weekly in Traverse City. Fresh batches packed in ice for regional farmers markets and direct hand-to-hand pickup.</p>
-                <div class="arch-status">Operating Live Locally</div>
+                <div class="arch-status"><span class="highlight-status">Operating Live Locally</span></div>
             </div>
 
             <div class="arch-box">
                 <div class="arch-badge-corner">
-                    <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?q=80&w=200&auto=format&fit=crop" alt="Aluminum Can Icon">
+                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=120&q=80" alt="Can Asset">
                 </div>
-                <div class="arch-index">02 // Scale</div>
+                <div class="arch-index">02 // SCALE</div>
                 <h3>Nationwide Cans</h3>
                 <p>Shelf-stable 12oz format built for e-commerce logistics, major retail channels, and scaled half-million unit production runs.</p>
-                <div class="arch-status highlight-status">Launching: October 15</div>
+                <div class="arch-status"><span class="highlight-status" style="background: var(--muted);">Launching: October 15</span></div>
             </div>
 
             <div class="arch-box">
                 <div class="arch-badge-corner">
-                    <img src="https://images.unsplash.com/photo-1543255006-d6395b6f147f?q=80&w=200&auto=format&fit=crop" alt="Draft Keg Icon">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=120&q=80" alt="Keg Asset">
                 </div>
-                <div class="arch-index">03 // Partners</div>
+                <div class="arch-index">03 // PARTNERS</div>
                 <h3>Draft Kegs & Partners</h3>
                 <p>Kegged for select dining partners to serve as a non-alcoholic alternative or a sophisticated botanical cocktail mixer.</p>
-                <div class="arch-status">Active Partner Program</div>
+                <div class="arch-status"><span class="highlight-status">Active Partner Program</span></div>
             </div>
-        </section>
-
-        <!-- FAQ Section -->
-<section class="faq-module">
-    <div class="section-marker" style="margin-bottom: 1rem;">COMMONLY ASKED // FAQ</div>
-    <div class="faq-grid">
-        <div class="faq-item">
-            <div class="faq-q">What does "liquid pressure extraction" mean?</div>
-            <div class="faq-a">We use a mechanical cold-press pressure system rather than chemical solvents like hexane or ethanol. It preserves the natural botanical profile without leaving synthetic residue.</div>
         </div>
-        <div class="faq-item">
-            <div class="faq-q">When does nationwide shipping begin?</div>
-            <div class="faq-a">Our e-commerce portal and nationwide logistics officially launch on October 15. Until then, we are exclusively fulfilling local pickups and priority phone orders.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Do the beverages need to be refrigerated?</div>
-            <div class="faq-a">Our Batch 01 local glass bottles are fresh and should be kept cold. Our upcoming 12oz cans (launching Oct 15) are shelf-stable and can be stored at ambient temperatures.</div>
-        </div>
-    </div>
-</section>
 
         <!-- Technical Process Ledger -->
         <section class="process-ledger">
             <div class="process-header">
-                <span>METHODOLOGY</span>
-                <h2>The Natural Extraction Blueprint</h2>
+                <div>
+                    <span>METHODOLOGY STREAM</span>
+                    <h2>The Natural Extraction Blueprint</h2>
+                </div>
+                <div class="process-header-meta">SYS.LOG // 2026.REV</div>
             </div>
-            <div class="process-timeline">
-                <div class="process-row">
-                    <div class="process-num">01</div>
-                    <div class="process-content">
+            
+            <div class="process-stream-grid">
+                <div class="process-stream-item item-skew-left">
+                    <div class="stream-marker-col">
+                        <span class="stream-index">01</span>
+                        <span class="stream-tag">ORIGIN</span>
+                    </div>
+                    <div class="stream-text-col">
                         <h3>Traverse City Rooted</h3>
                         <p>Operating locally with active state licensing, transitioning toward our ultimate goal of an independent natural well water source.</p>
                     </div>
                 </div>
-                <div class="process-row">
-                    <div class="process-num">02</div>
-                    <div class="process-content">
+
+                <div class="process-stream-item item-skew-right">
+                    <div class="stream-marker-col">
+                        <span class="stream-index">02</span>
+                        <span class="stream-tag">PURITY</span>
+                    </div>
+                    <div class="stream-text-col">
                         <h3>Zero Solvents</h3>
                         <p>No chemical distillation or synthetic isolates. Pure liquid pressure extraction preserves the authentic, living botanical benefits.</p>
                     </div>
                 </div>
-                <div class="process-row">
-                    <div class="process-num">03</div>
-                    <div class="process-content">
+
+                <div class="process-stream-item item-skew-center">
+                    <div class="stream-marker-col">
+                        <span class="stream-index">03</span>
+                        <span class="stream-tag">LOGISTICS</span>
+                    </div>
+                    <div class="stream-text-col">
                         <h3>Fresh Batch Packing</h3>
                         <p>Initial batches handcrafted fresh by our team and boxed securely with eco-ice for direct shipment and regional release.</p>
                     </div>
@@ -206,42 +991,135 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer>
-            <div class="footer-col">
-                <div class="footer-brand">Flagship Beverage Co.</div>
-                <p>Traverse City, Michigan • Est. 2026</p>
-                <p style="margin-top: 0.8rem; color: var(--accent);">Natural Extraction Systems</p>
-            </div>
-            
-            <div class="footer-col">
-                <div class="footer-heading">Navigation & Legal</div>
-                <div class="footer-links">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Service</a>
-                    <a href="#allocation">Allocation Rules</a>
-                    <a href="#licensing">State Licensing Data</a>
+        <!-- FAQ Section -->
+        <section class="faq-module">
+            <div class="section-marker">COMMONLY ASKED // KNOWLEDGE BASE ARCHIVE</div>
+            <div class="faq-index-grid">
+                <div class="faq-index-card">
+                    <div class="faq-index-header">
+                        <span class="faq-index-code">Q.01</span>
+                        <span class="faq-index-category">EXTRACTION</span>
+                    </div>
+                    <h3>What does "liquid pressure extraction" mean?</h3>
+                    <p>We use a mechanical cold-press pressure system rather than chemical solvents like hexane or ethanol. It preserves the natural botanical profile without leaving synthetic residue.</p>
+                </div>
+
+                <div class="faq-index-card">
+                    <div class="faq-index-header">
+                        <span class="faq-index-code">Q.02</span>
+                        <span class="faq-index-category">LOGISTICS</span>
+                    </div>
+                    <h3>When does nationwide shipping begin?</h3>
+                    <p>Our e-commerce portal and nationwide logistics officially launch on October 15. Until then, we are exclusively fulfilling local pickups and priority phone orders.</p>
+                </div>
+
+                <div class="faq-index-card">
+                    <div class="faq-index-header">
+                        <span class="faq-index-code">Q.03</span>
+                        <span class="faq-index-category">STORAGE</span>
+                    </div>
+                    <h3>Do the beverages need to be refrigerated?</h3>
+                    <p>Our Batch 01 local glass bottles are fresh and should be kept cold. Our upcoming 12oz cans (launching Oct 15) are shelf-stable and can be stored at ambient temperatures.</p>
+                </div>
+
+                <div class="faq-index-card">
+                    <div class="faq-index-header">
+                        <span class="faq-index-code">Q.04</span>
+                        <span class="faq-index-category">PARTNERSHIPS</span>
+                    </div>
+                    <h3>How do I join the partnership or draft keg project?</h3>
+                    <p>Submit your venue or hospitality details via our reservation form or contact our direct dispatch line. We review partner allocations weekly to supply draft kegs and dedicated mixers.</p>
                 </div>
             </div>
+        </section>
 
+        <!-- Inverted Terminal Footer -->
+        <footer>
             <div class="footer-col">
-                <div class="footer-heading">Direct Contact</div>
+                <div class="footer-brand">BOTANICAL ARCHIVE // SYS</div>
+                <p>Engineered with raw typography, hard borders, and zero-curve structural interfaces. Designed for high-clarity technical review.</p>
+                <div style="margin-top: 1rem; font-size: 0.7rem; color: #8c9b73;">SYS.VER // 2.4.0 - ACTIVE</div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-heading">Direct Coordinates</div>
                 <div class="footer-links">
-                    <a href="mailto:orders@flagshipbeverage.com">orders@flagshipbeverage.com</a>
-                    <a href="tel:+12315550199">+1 (231) 555-0199</a>
-                    <span>Hours: Mon–Fri, 9am–5pm EST</span>
+                    <span>Traverse City, Michigan</span>
+                    <span>Direct Line: +1 (555) 019-2834</span>
+                    <span>Dispatch: contact@botanicalarchive.sys</span>
+                    <span>State Licensed Operations</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-heading">System Links</div>
+                <div class="footer-links">
+                    <a href="#">Batch 01 Manifest</a>
+                    <a href="#">Extraction Specs</a>
+                    <a href="#">Wholesale Inquiries</a>
+                    <a href="#">Privacy & Terms</a>
                 </div>
             </div>
         </footer>
 
     </div>
 
-    <!-- Ambient Audio & Visualizer Toggle Button -->
-    <button class="sound-toggle" id="sound-toggle" title="Toggle Ambient Pulse">
-        <span>[AUDIO: OFF]</span>
-        <canvas id="mini-viz" width="30" height="12"></canvas>
-    </button>
+    <!-- Sound Toggle Widget -->
+    <div class="sound-toggle" id="audio-toggle">
+        <span id="audio-label">[AUDIO: OFF]</span>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- JavaScript Interactive Controller -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Audio Toggle Simulation
+            const audioToggle = document.getElementById('audio-toggle');
+            const audioLabel = document.getElementById('audio-label');
+            let audioActive = false;
+
+            audioToggle.addEventListener('click', () => {
+                audioActive = !audioActive;
+                if (audioActive) {
+                    audioLabel.textContent = '[AUDIO: ON]';
+                    audioToggle.style.borderColor = 'var(--accent)';
+                    audioToggle.style.background = 'var(--accent-light)';
+                } else {
+                    audioLabel.textContent = '[AUDIO: OFF]';
+                    audioToggle.style.borderColor = 'var(--border)';
+                    audioToggle.style.background = 'var(--surface)';
+                }
+            });
+
+            // Allocation Form Handler
+            const allocationForm = document.getElementById('allocation-form');
+            allocationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('alloc-name').value.trim();
+                const email = document.getElementById('alloc-email').value.trim();
+                
+                if (!name || !email) {
+                    alert('SYS.ERROR // Please input required operator name and dispatch email.');
+                    return;
+                }
+
+                alert(`SUCCESS // Allocation request logged for operator: ${name}. Transmission verified.`);
+                allocationForm.reset();
+            });
+
+            // Newsletter Form Handler
+            const newsletterForm = document.getElementById('newsletter-form');
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('news-email').value.trim();
+
+                if (!email) {
+                    alert('SYS.ERROR // Please input a valid broadcast email line.');
+                    return;
+                }
+
+                alert(`SUCCESS // Secure broadcast line registered: ${email}`);
+                newsletterForm.reset();
+            });
+        });
+    </script>
+
 </body>
 </html>
