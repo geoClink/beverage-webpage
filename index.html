@@ -8,6 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -144,8 +154,9 @@
             </div>
 
             <div class="arch-box">
-                <div class="arch-badge-corner">
-                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=120&q=80" alt="Can Asset">
+                <div class="arch-badge-corner" style="border: none; background: transparent; padding: 0; overflow: hidden; width: 120px; height: 120px;">
+                    <!-- Interactive 3D Coke Can Container -->
+                    <div id="webgl-container" style="width: 100%; height: 100%;"></div>
                 </div>
                 <div class="arch-index">02 — Scale</div>
                 <h3>Nationwide Cans</h3>
@@ -287,6 +298,7 @@
     </div>
 
     <!-- JavaScript Controller -->
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
+</html>
 </html>

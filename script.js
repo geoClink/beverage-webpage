@@ -1,30 +1,37 @@
+import { initCokeCanViewer } from './3d-viewer.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize the 3D Coke Can Canvas
+    initCokeCanViewer('webgl-container');
+
     // Audio Toggle Simulation
     const audioToggle = document.getElementById('audio-toggle');
     const audioLabel = document.getElementById('audio-label');
     let audioActive = false;
 
-    audioToggle.addEventListener('click', () => {
-        audioActive = !audioActive;
-        if (audioActive) {
-            audioLabel.textContent = '[AUDIO: ON]';
-            audioToggle.style.borderColor = 'var(--accent)';
-            audioToggle.style.background = 'var(--accent-light)';
-        } else {
-            audioLabel.textContent = '[AUDIO: OFF]';
-            audioToggle.style.borderColor = 'var(--border)';
-            audioToggle.style.background = 'var(--surface)';
-        }
-    });
+    if (audioToggle && audioLabel) {
+        audioToggle.addEventListener('click', () => {
+            audioActive = !audioActive;
+            if (audioActive) {
+                audioLabel.textContent = '[AUDIO: ON]';
+                audioToggle.style.borderColor = 'var(--accent)';
+                audioToggle.style.background = 'var(--accent-light)';
+            } else {
+                audioLabel.textContent = '[AUDIO: OFF]';
+                audioToggle.style.borderColor = 'var(--border)';
+                audioToggle.style.background = 'var(--surface)';
+            }
+        });
+    }
 
     // Form Submission Handling
     const allocationForm = document.getElementById('allocation-form');
-    if(allocationForm) {
+    if (allocationForm) {
         allocationForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('alloc-name').value;
             const email = document.getElementById('alloc-email').value;
-            if(!email) {
+            if (!email) {
                 alert('CRITICAL ERROR: Secure Dispatch Line (Email) is required for allocation.');
                 return;
             }
@@ -34,11 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const newsletterForm = document.getElementById('newsletter-form');
-    if(newsletterForm) {
+    if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('news-email').value;
-            if(!email) {
+            if (!email) {
                 alert('CRITICAL ERROR: Email is required to subscribe to the dispatch log.');
                 return;
             }
