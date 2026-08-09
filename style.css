@@ -810,7 +810,7 @@ footer {
 }
 
 /* =================================================================
-   ROBUST MOBILE FIXES
+   ROBUST MOBILE FIXES (PRESERVING ROTATIONS & EFFECTS)
    ================================================================ */
 
 @media (max-width: 768px) {
@@ -862,7 +862,7 @@ footer {
         padding: 1rem;
     }
 
-    /* Force all multi-column grids to single column and remove rotation skews */
+    /* Force multi-column grids to single column while PRESERVING rotation effects */
     .creator-hero-block,
     .strike-block,
     .architecture-grid,
@@ -870,7 +870,6 @@ footer {
     .process-stream-item,
     footer {
         grid-template-columns: 1fr !important;
-        transform: none !important;
         width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -972,10 +971,25 @@ footer {
     justify-content: space-between;
 }
 
-/* Make the middle use case card solid white */
-.use-case-card:nth-child(2) {
-    background: var(--surface) !important;
-    transform: rotate(0.4deg);
+
+/* Ensure the use case cards have distinct organic rotations */
+.use-case-card:nth-child(1) { 
+    transform: rotate(-1.5deg) !important; 
+}
+
+.use-case-card:nth-child(2) { 
+    transform: rotate(1.2deg) !important; 
+    background: var(--surface) !important; 
+}
+
+.use-case-card:nth-child(3) { 
+    transform: rotate(-0.8deg) !important; 
+}
+
+.use-case-card:hover {
+    transform: translateY(-3px) rotate(0deg) !important;
+    box-shadow: 6px 6px 0px rgba(45, 90, 39, 0.2);
+    z-index: 2;
 }
 
 /* Fix header readability over watermark */
