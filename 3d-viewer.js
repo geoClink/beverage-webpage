@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-export function initModelViewer(containerId, modelPath, customScale = 0.8, yOffset = 0) {
+export function initModelViewer(containerId, modelPath, customScale = 0.8, yOffset = 0, labelTexturePath = null) {
     const container = document.getElementById(containerId);
     if (!container) {
         console.error(`Container with ID "${containerId}" not found.`);
@@ -32,6 +32,16 @@ export function initModelViewer(containerId, modelPath, customScale = 0.8, yOffs
     const backLight = new THREE.DirectionalLight(0xffffff, 2.0);
     backLight.position.set(0, -2, -4);
     scene.add(backLight);
+
+    // Texture Loader setup
+    const textureLoader = new THREE.TextureLoader();
+    let labelTexture = null;
+    if (labelTexturePath) {
+        labelTexture = textureLoader.load(labelTexturePath, (texture) => {
+            texture.colorSpace = THREE.SRGBColorSpace;
+            texture.flipY = false;
+        });
+    }
 
     let model;
     let basePosY = 0;
@@ -92,6 +102,40 @@ export function initModelViewer(containerId, modelPath, customScale = 0.8, yOffs
 
     loader.load(modelPath, (gltf) => {
         model = gltf.scene;
+
+        // Apply label texture to matching meshes if provided, or fallback to all meshes if none match names
+        if (labelTexture) {
+            let matchedMeshCount = 0;
+            
+            model.traverse((child) => {
+                if (child.isMesh) {
+                    const meshName = child.name ? child.name.toLowerCase() : '';
+                    if (meshName.includes('label') || meshName.includes('body') || meshName === '') {
+                        child.material = new THREE.MeshStandardMaterial({
+                            map: labelTexture,
+                            roughness: 0.3,
+                            metalness: 0.1
+                        });
+                        child.material.needsUpdate = true;
+                        matchedMeshCount++;
+                    }
+                }
+            });
+
+            // Fallback: If no meshes were matched by name, apply texture to all meshes
+            if (matchedMeshCount === 0) {
+                model.traverse((child) => {
+                    if (child.isMesh) {
+                        child.material = new THREE.MeshStandardMaterial({
+                            map: labelTexture,
+                            roughness: 0.3,
+                            metalness: 0.1
+                        });
+                        child.material.needsUpdate = true;
+                    }
+                });
+            }
+        }
 
         // Apply scale parameter
         model.scale.set(customScale, customScale, customScale);

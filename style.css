@@ -832,6 +832,90 @@ footer {
 }
 
 /* =================================================================
+   PRODUCT FORMAT LABELED CARDS
+   ================================================================ */
+
+/* Container wrapping the product display card */
+.product-card {
+    position: relative;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    overflow: hidden;
+    box-shadow: 4px 4px 0px rgba(45, 90, 39, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Image wrapper keeping the asset responsive and centered */
+.product-card .product-image-container {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbf9f4; /* Clean warm paper background tone */
+    border: 1px solid var(--border);
+    margin-bottom: 1.2rem;
+}
+
+.product-card .product-image-container img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Specific styling variants for styling can, bottle, and keg cards */
+.product-card.bottle .product-image-container {
+    background: linear-gradient(135deg, #fbf9f4 0%, #f3efe6 100%);
+}
+
+.product-card.can .product-image-container {
+    background: linear-gradient(135deg, #f5f5f3 0%, #e8e8e5 100%);
+}
+
+.product-card.keg .product-image-container {
+    background: linear-gradient(135deg, #eaf0eb 0%, #d8e2dc 100%);
+}
+
+/* Product typography and metadata inside the card */
+.product-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+    color: var(--text-main);
+}
+
+.product-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+/* Badge or spec tag matching your zine aesthetic */
+.product-spec-tag {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+    font-weight: 600;
+}
+
+/* =================================================================
    ROBUST MOBILE FIXES (PRESERVING ROTATIONS & EFFECTS)
    ================================================================ */
 
@@ -860,7 +944,7 @@ footer {
         padding: 0.8rem 1rem !important;
         white-space: normal !important;
     }
-    
+
     /* Convert sticky nav to relative and make links stack neatly */
     .zine-nav {
         position: relative;

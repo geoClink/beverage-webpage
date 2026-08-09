@@ -2,9 +2,9 @@ import { initModelViewer } from './3d-viewer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all three 3D Product Viewers cleanly
-    initModelViewer('bottle-container', './glass-bottle.glb', 1.4, 0);
-    initModelViewer('coke-container', './coke-can.glb', 1.4, 0);
-    initModelViewer('keg-container', './beer-keg.glb', 1.2, 0);
+    initModelViewer('bottle-container', './glass-bottle.glb', 2.4, 0);
+    initModelViewer('coke-container', './coke-can.glb', 2.4, 0);
+    initModelViewer('keg-container', './beer-keg.glb', 2.2, 0);
 
     // Audio Toggle Simulation
     const audioToggle = document.getElementById('audio-toggle');
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             allocationForm.reset();
         });
     }
-    
+
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
