@@ -929,3 +929,12 @@ footer {
     animation: shadowScale 6s ease-in-out infinite;
     z-index: 0;
 }
+
+.brand-logo-area .logo-container img,
+.nav-brand .logo-container img {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}

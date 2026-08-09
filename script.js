@@ -1,8 +1,10 @@
-import { initCokeCanViewer } from './3d-viewer.js';
+import { initModelViewer } from './3d-viewer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize the 3D Coke Can Canvas
-    initCokeCanViewer('webgl-container');
+    // Initialize all three 3D Product Viewers cleanly
+    initModelViewer('bottle-container', './glass-bottle.glb', 1.4, 0);
+    initModelViewer('coke-container', './coke-can.glb', 1.4, 0);
+    initModelViewer('keg-container', './beer-keg.glb', 1.2, 0);
 
     // Audio Toggle Simulation
     const audioToggle = document.getElementById('audio-toggle');
