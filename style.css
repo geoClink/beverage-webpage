@@ -800,54 +800,87 @@ footer {
 }
 
 /* =================================================================
-   MOBILE RESPONSIVE ADJUSTMENTS
+   ROBUST MOBILE FIXES
    ================================================================ */
 
-@media(max-width: 768px) {
-    /* Adjust body padding for mobile screens */
+@media (max-width: 768px) {
+    /* Prevent horizontal page stretching */
     body {
-        padding: 1rem 0.5rem;
+        padding: 1rem 0.4rem;
+        overflow-x: hidden;
     }
 
-    /* Scale down the background watermark size on mobile so the pattern stays dense and clear */
-    .bg-watermark {
-        background-size: 260px;
-        opacity: 0.35;
+    /* Keep the ticker static on mobile so it doesn't break layout bounds */
+    .ticker-wrap {
+        position: relative;
+        width: 100%;
     }
 
-    /* Stack navigation cleanly on mobile */
+    /* Convert sticky nav to relative and make links stack neatly */
     .zine-nav {
-        padding: 0.5rem 1rem;
+        position: relative;
+        top: 0;
         flex-direction: column;
-        gap: 0.4rem;
+        gap: 0.5rem;
+        padding: 0.6rem 0.8rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .nav-links {
-        gap: 1rem;
+        gap: 0.6rem;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    /* Adjust container spacing below fixed header/nav */
-    .zine-container {
-        margin: 6.5rem auto 1rem auto;
-        padding: 0 0.5rem;
+    .nav-links a {
+        font-size: 0.65rem;
     }
 
-    /* Ensure brutalist offset shadows don't cause horizontal overflow */
+    /* Fit the main container cleanly to mobile margins */
+    .zine-container {
+        max-width: 100%;
+        margin: 1rem auto;
+        padding: 0 0.4rem;
+    }
+
+    /* Stack header component */
+    header {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    /* Force all multi-column grids to single column and remove rotation skews */
+    .creator-hero-block,
+    .strike-block,
+    .architecture-grid,
+    .faq-index-grid,
+    .process-stream-item,
+    footer {
+        grid-template-columns: 1fr !important;
+        transform: none !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Normalize padding and box-shadows for cards on mobile */
     .creator-hero-block,
     .form-module,
-    .arch-box,
     .process-ledger,
     .faq-module,
+    .arch-box,
+    .raw-art-module,
     footer {
-        box-shadow: 3px 3px 0px rgba(45, 90, 39, 0.15);
-        padding: 1.2rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 2px 2px 0px rgba(45, 90, 39, 0.15);
     }
 
-    /* Streamline footer layout on mobile */
-    footer {
-        grid-template-columns: 1fr;
-        padding: 1.5rem 1rem;
+    /* Scale down images */
+    .art-box-inner img {
+        height: 180px;
     }
 }
