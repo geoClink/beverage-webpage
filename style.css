@@ -945,6 +945,30 @@ footer {
     position: relative;
 }
 
+/* Shared Button Class Styles */
+.brand-btn, 
+button[type="submit"], 
+.form-module button, 
+input[type="submit"] {
+    background-color: #2d5a27;
+    color: #ffffff;
+    border: 2px solid #1a2318;
+    box-shadow: 3px 3px 0px #1a2318;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Hover State: Pale green color change with tactile press animation */
+.brand-btn:hover, 
+button[type="submit"]:hover, 
+.form-module button:hover, 
+input[type="submit"]:hover {
+    background-color: #d4ebd0 !important; /* Pale high-contrast green */
+    color: #1a2318 !important;            /* Dark text contrast */
+    border-color: #1a2318 !important;
+    transform: translate(2px, 2px);        /* Tactile button press effect */
+    box-shadow: 1px 1px 0px #1a2318 !important;
+}
+
 .story-watermark-card::before {
     content: "";
     position: absolute;
