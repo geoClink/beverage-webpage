@@ -75,7 +75,7 @@ body {
 
 /* AFTER */
 .zine-nav .logo-container img {
-    height: 40px !important; 
+    height: 300px !important; 
     width: auto !important;
     object-fit: contain !important;
 }
@@ -916,6 +916,68 @@ footer {
     font-weight: 600;
 }
 
+/* Ensure the white card container has relative positioning */
+.white-card-selector {
+  position: relative;
+  overflow: hidden; /* Keeps the watermark contained inside the card */
+}
+
+/* Watermark styling */
+.creator-hero-block reveal-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; /* Adjust size as needed */
+  height: 60%;
+  background-image: url('logo-sample.png'); /* Replace with your logo path */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.08; /* Low opacity for a subtle watermark effect */
+  pointer-events: none; /* Ensures clicks pass through the watermark */
+  z-index: 0; /* Places it behind the text content */
+}
+
+/* Creates a dedicated, faint watermark layer strictly behind the text column */
+.story-watermark-card {
+    position: relative;
+}
+
+.story-watermark-card::before {
+    content: "";
+    position: absolute;
+    top: -300px;
+    left: -500px;
+    width: 105%;
+    height: 150%;
+    background-image: url('logo-sample.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.06; /* Makes it faint like a real watermark */
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Ensure text stays crisp and layered above the watermark */
+.story-watermark-card .creator-hero-left {
+    position: relative;
+    z-index: 2;
+}
+
+/* Watermark overlay effect for background logos */
+#story {
+    background-blend-mode: soft-light !important;
+}
+
+/* Ensure your text container sits above the watermark */
+.white-card-selector > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* =================================================================
    ROBUST MOBILE FIXES (PRESERVING ROTATIONS & EFFECTS)
    ================================================================ */
@@ -948,12 +1010,13 @@ footer {
         border-top: none !important;
         border-bottom: 2px solid var(--border) !important;
         display: flex !important;
-        justify-content: space-between !important;
         align-items: center !important;
-        padding: 0.5rem 1rem !important;
+        padding: 0rem 0rem !important;
         z-index: 1000 !important;
         box-sizing: border-box !important;
         margin: 0 !important;
+        justify-content: flex-start !important;
+        gap: 1rem !important;
     }
 
     /* 4. Enforce button width behavior */
@@ -969,16 +1032,25 @@ footer {
         white-space: normal !important;
     }
 
+    .zine-nav .logo-container {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
     /* 5. Hide brand text and size the logo properly */
     .zine-nav .logo-container span {
         display: none !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
     }
 
     .zine-nav .logo-container img {
-        height: 104px !important;
+        height: 200px !important;
         width: auto !important;
         max-width: none !important;
         object-fit: contain !important;
+        margin-left: -40px !important;
+        padding-left: 0 !important;
     }
 
     /* 6. Clean up nav links and keep only the green CTA button */
@@ -988,7 +1060,7 @@ footer {
 
     .zine-nav .nav-links {
         display: flex !important;
-        margin: 0 !important;
+       margin-right: 0.4rem !important;
     }
 
     .zine-nav .nav-links .nav-cta {
@@ -996,6 +1068,8 @@ footer {
         font-size: 0.7rem !important;
         padding: 0.5rem 0.8rem !important;
         white-space: nowrap !important;
+        margin-left: -20px !important;
+        margin-right: 10rem !important;
     }
 
     /* 7. Stack header component */
@@ -1125,6 +1199,62 @@ footer {
         box-sizing: border-box !important;
         margin-left: auto !important;
         margin-right: auto !important;
+    }
+
+    /* 1. Transform the first section into a striking magazine Hero */
+    .creator-hero-block:first-of-type,
+    section:first-of-type {
+        background: var(--surface, #ffffff) !important;
+        border: 3px solid var(--border, #2d5a27) !important;
+        border-radius: 0px !important;
+        padding: 1.8rem 1.2rem !important;
+        margin-top: 0.5rem !important;
+        box-shadow: 5px 5px 0px var(--border, #2d5a27) !important;
+        position: relative !important;
+    }
+
+    /* 2. Add an eye-catching magazine edition/kicker badge */
+    .creator-hero-block:first-of-type::before {
+        content: "VOL. 01 // FOUNDER'S BRIEFING" !important;
+        display: inline-block !important;
+        background: var(--border, #2d5a27) !important;
+        color: var(--surface, #ffffff) !important;
+        font-size: 0.6rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.15em !important;
+        text-transform: uppercase !important;
+        padding: 0.25rem 0.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* 3. Give the headline true hero weight and presence */
+    .creator-hero-block:first-of-type h1,
+    .creator-hero-block:first-of-type h2 {
+        font-size: 2rem !important;
+        line-height: 1.1 !important;
+        font-weight: 900 !important;
+        letter-spacing: -0.03em !important;
+        margin-bottom: 1.2rem !important;
+        text-transform: uppercase !important;
+    }
+
+    /* 4. Style the introductory text to read like a bold lead paragraph */
+    .creator-hero-block:first-of-type p {
+        font-size: 1.05rem !important;
+        line-height: 1.5 !important;
+        font-weight: 600 !important;
+        border-left: 3px solid var(--border, #2d5a27) !important;
+        padding-left: 0.8rem !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    .mobile-primary-hero {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-primary-hero h1 {
+        font-size: 2rem !important;
     }
 }
 
