@@ -23,7 +23,7 @@
 }
 
 body {
-    background-color: var(--bg);
+background-color: transparent !important;
     color: var(--text-main);
     font-family: var(--mono-font);
     font-size: 13px;
@@ -35,6 +35,7 @@ body {
     padding-top: 4rem;
 }
 
+/* Animated Breathing Cannabis Background */
 .bg-watermark {
     position: fixed;
     top: -10%;
@@ -42,36 +43,56 @@ body {
     width: 120vw;
     height: 120vh;
     z-index: -999;
-    opacity: 0.45;
+    opacity: 0.38; /* Balanced visibility through gaps */
     pointer-events: none;
     overflow: hidden;
     background-image: url('cannabis-bg.jpg');
     background-size: cover;
     background-position: center;
-    filter: contrast(130%) brightness(60%) saturate(110%);
+    filter: contrast(130%) brightness(65%) saturate(110%);
     transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1), filter 1s ease;
     animation: watermarkBreathe 16s ease-in-out infinite alternate;
 }
 
+/* Smooth Pulse and Scale Keyframes */
 @keyframes watermarkBreathe {
     0% {
         transform: scale(1) rotate(0deg);
-        filter: contrast(125%) brightness(58%) saturate(110%);
+        filter: contrast(125%) brightness(62%) saturate(110%);
     }
     50% {
-        transform: scale(1.03) rotate(0.2deg);
-        filter: contrast(135%) brightness(62%) saturate(115%);
+        transform: scale(1.04) rotate(0.3deg);
+        filter: contrast(135%) brightness(67%) saturate(115%);
     }
     100% {
-        transform: scale(1.01) rotate(-0.1deg);
-        filter: contrast(130%) brightness(60%) saturate(110%);
+        transform: scale(1.01) rotate(-0.2deg);
+        filter: contrast(130%) brightness(65%) saturate(110%);
     }
 }
 
+.creator-hero-block,
+.form-module,
+.arch-box,
+.process-ledger,
+.faq-index-card,
+.use-case-card,
+.journal-header,
+header,
+footer {
+    background: var(--surface) !important; /* Forces solid background so text never washes out */
+    opacity: 1 !important;
+}
+
+/* Keep tinted cards cleanly styled using your surface-tint variable */
+.use-case-card:nth-child(even),
+.process-stream-item.item-skew-right {
+    background: var(--surface-tint) !important;
+}
+
+
 /* IMPORTANT: Ensure container is transparent so the leaf shows through */
 .zine-container {
-    background: transparent; 
-}
+background-color: transparent !important;}
 
 /* AFTER */
 .zine-nav .logo-container img {
@@ -287,6 +308,38 @@ header {
         transform: none;
         padding: 1.5rem;
     }
+
+    .creator-hero-block {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 1.2rem !important;
+        box-sizing: border-box !important;
+        transform: none !important; /* Removes desktop rotation tilt that causes clipping */
+    }
+
+    .creator-hero-left, 
+    .creator-hero-right, 
+    .creator-hero-block > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Ensure any image or raw art module inside the hero scales neatly */
+    .creator-hero-block img,
+    .creator-hero-block .raw-art-module {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 240px !important;
+        object-fit: cover !important;
+    }
+    
 }
 
 /* Strike Block Layout */
@@ -972,6 +1025,58 @@ input[type="submit"]:hover {
 /* Fix anchor jump offset caused by fixed navigation bar */
 html {
     scroll-padding-top: 130px; /* Adjusts clearance so section headings appear fully below the sticky nav */
+}
+
+/* 1. Hero Section Breathing Room & Layout */
+.hero-section {
+    position: relative;
+    padding: 60px 40px 80px 40px; /* Increased bottom padding to separate from lower cards */
+    margin-bottom: 40px;          /* Adds clear separation before the methodology/form grid */
+    background-color: var(--surface);
+    overflow: hidden;
+}
+
+/* 2. Improve Background Watermark Contrast */
+.bg-watermark {
+    position: absolute;
+    inset: 0;
+    background-image: url('./cannabis-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15; /* Adjust opacity so text stands out sharply */
+    z-index: 0;
+}
+
+/* Ensure hero text content sits cleanly above the background overlay */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 3. Hero CTA Button Separation */
+.hero-cta-container {
+    margin-top: 30px;
+}
+
+.hero-cta-button {
+    display: inline-block;
+    padding: 16px 28px;
+    background: var(--primary, #1e3f1e);
+    color: #ffffff;
+    font-family: monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid var(--border);
+    box-shadow: 4px 4px 0px var(--border);
+    text-decoration: none;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.hero-cta-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--border);
 }
 
 .story-watermark-card::before {
