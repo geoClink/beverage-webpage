@@ -1,12 +1,48 @@
 import { initModelViewer } from './3d-viewer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all three 3D Product Viewers cleanly (added label image path to the bottle)
-    initModelViewer('bottle-container', './glass-bottle.glb', 0.4, 0, './bottle-label.png');
-initModelViewer('coke-container', './coke-can.glb', 2.4, 0);
-initModelViewer('keg-container', './beer-keg.glb', 2.2, 0);
+    // ----------------------------------------------------
+    // PERFORMANCE OPTIMIZATION: Lazy Load 3D Model Viewers
+    // ----------------------------------------------------
+    const viewerConfigs = [
+        { containerId: 'bottle-container', modelPath: './glass-bottle.glb', scale: 0.4, yOffset: 0, labelPath: './bottle-label.png' },
+        { containerId: 'coke-container', modelPath: './coke-can.glb', scale: 2.4, yOffset: 0 },
+        { containerId: 'keg-container', modelPath: './beer-keg.glb', scale: 2.2, yOffset: 0 }
+    ];
 
+    const observerOptions = {
+        root: null,
+        rootMargin: '100px 0px',
+        threshold: 0.01
+    };
+
+    const viewerObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const container = entry.target;
+                const configId = container.id;
+                
+                const config = viewerConfigs.find(c => c.containerId === configId);
+                if (config) {
+                    if (config.labelPath) {
+                        initModelViewer(config.containerId, config.modelPath, config.scale, config.yOffset, config.labelPath);
+                    } else {
+                        initModelViewer(config.containerId, config.modelPath, config.scale, config.yOffset);
+                    }
+                }
+                observer.unobserve(container);
+            }
+        });
+    }, observerOptions);
+
+    viewerConfigs.forEach(config => {
+        const el = document.getElementById(config.containerId);
+        if (el) viewerObserver.observe(el);
+    });
+
+    // ----------------------------------------------------
     // Audio Toggle Simulation
+    // ----------------------------------------------------
     const audioToggle = document.getElementById('audio-toggle');
     const audioLabel = document.getElementById('audio-label');
     let audioActive = false;
@@ -26,41 +62,76 @@ initModelViewer('keg-container', './beer-keg.glb', 2.2, 0);
         });
     }
 
-    // Form Submission Handling
+    // ----------------------------------------------------
+    // HELPER: Display In-Page Alert Banner
+    // ----------------------------------------------------
+    const showInPageAlert = (form, message, isError = false) => {
+        let feedback = form.querySelector('.form-feedback');
+        if (!feedback) {
+            feedback = document.createElement('div');
+            feedback.className = 'form-feedback';
+            form.appendChild(feedback);
+        }
+
+        if (isError) {
+            // Bright red warning background with dark text/border for high visibility
+            feedback.style.cssText = 'margin-top: 12px; padding: 12px; background: #ffcccc; border: 2px solid #990000; color: #990000; font-weight: bold; font-family: monospace; text-transform: uppercase;';
+        } else {
+            // Bright high-contrast success state (e.g., bright yellow-green or off-white)
+            feedback.style.cssText = 'margin-top: 12px; padding: 12px; background: #e2f0d9; border: 2px solid #1e3f1e; color: #1e3f1e; font-weight: bold; font-family: monospace; text-transform: uppercase;';
+        }
+
+        feedback.textContent = message;
+
+        if (!isError) {
+            setTimeout(() => {
+                feedback.remove();
+            }, 4000);
+        }
+    };
+
+    // ----------------------------------------------------
+    // ENHANCED FORM SUBMISSION & IN-PAGE FEEDBACK
+    // ----------------------------------------------------
+    
+    // Allocation Form Setup
     const allocationForm = document.getElementById('allocation-form');
     if (allocationForm) {
         allocationForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('alloc-name').value;
-            const email = document.getElementById('alloc-email').value;
+            const email = document.getElementById('alloc-email')?.value;
+            const name = document.getElementById('alloc-name')?.value;
             
-            // Check if email is missing
             if (!email) {
-                alert('CRITICAL ERROR: Secure Dispatch Line (Email) is required for allocation.');
+                showInPageAlert(allocationForm, 'CRITICAL ERROR: Secure Dispatch Line (Email) is required for allocation.', true);
                 return;
             }
             
-            // Success State UI Update (Runs when email is provided)
             const submitBtn = document.getElementById('allocation-submit-btn');
-            submitBtn.textContent = 'TRANSACTION LOGGED // BATCH 01 SECURED';
-            submitBtn.style.background = '#2d5a27';
-            submitBtn.disabled = true;
+            if (submitBtn) {
+                submitBtn.textContent = 'TRANSACTION LOGGED // BATCH 01 SECURED';
+                submitBtn.style.background = '#2d5a27';
+                submitBtn.disabled = true;
+            }
 
-            alert(`RESERVATION LOGGED: Thank you, ${name || 'Operator'}. Your allocation request has been queued.`);
+            showInPageAlert(allocationForm, `RESERVATION LOGGED: Thank you, ${name || 'Operator'}. Your allocation request has been queued.`);
             allocationForm.reset();
         });
     }
 
+    // Newsletter Form Setup
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = document.getElementById('news-email').value;
+            const email = document.getElementById('news-email')?.value;
+            
             if (!email) {
-                alert('CRITICAL ERROR: Email is required to subscribe to the dispatch log.');
+                showInPageAlert(newsletterForm, 'CRITICAL ERROR: Email is required to subscribe to the dispatch log.', true);
                 return;
             }
-            alert('BROADCAST SUBSCRIBED: You will receive upcoming botanical archive drops and rollout notices.');
+            
+            showInPageAlert(newsletterForm, 'BROADCAST SUBSCRIBED: You will receive upcoming botanical archive drops.');
             newsletterForm.reset();
         });
     }
