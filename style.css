@@ -73,8 +73,9 @@ body {
     background: transparent; 
 }
 
+/* AFTER */
 .zine-nav .logo-container img {
-    height: 300px !important; 
+    height: 40px !important; 
     width: auto !important;
     object-fit: contain !important;
 }
@@ -918,21 +919,44 @@ footer {
 /* =================================================================
    ROBUST MOBILE FIXES (PRESERVING ROTATIONS & EFFECTS)
    ================================================================ */
-
 @media (max-width: 768px) {
-    /* Prevent horizontal page stretching */
+    /* 1. Remove body padding and set top clearance equal to ticker + nav height */
     body {
-        padding: 1rem 0.4rem;
+        padding: 0 0.4rem 1rem 0.4rem !important;
+        padding-top: 30px !important; 
         overflow-x: hidden;
     }
 
-    /* Keep the ticker static on mobile so it doesn't break layout bounds */
+    /* 2. Pin the Ticker directly to the absolute top of the screen */
     .ticker-wrap {
-        position: relative;
-        width: 100%;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 1001 !important;
+        margin: 0 !important;
     }
 
-    /* Add this inside your @media (max-width: 768px) block */
+    /* 3. Pin the Navigation bar directly flush under the ticker */
+    .zine-nav {
+        position: fixed !important;
+        top: 26px !important; /* Adjust this if needed to match ticker height exactly */
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important;
+        background: var(--surface) !important;
+        border-top: none !important;
+        border-bottom: 2px solid var(--border) !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0.5rem 1rem !important;
+        z-index: 1000 !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+    }
+
+    /* 4. Enforce button width behavior */
     button, 
     .nav-cta, 
     .form-module button, 
@@ -945,35 +969,36 @@ footer {
         white-space: normal !important;
     }
 
-    /* Convert sticky nav to relative and make links stack neatly */
-    .zine-nav {
-        position: relative;
-        top: 0;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 0.6rem 0.8rem;
-        width: 100%;
-        box-sizing: border-box;
+    /* 5. Hide brand text and size the logo properly */
+    .zine-nav .logo-container span {
+        display: none !important;
     }
 
-    .nav-links {
-        gap: 0.6rem;
-        flex-wrap: wrap;
-        justify-content: center;
+    .zine-nav .logo-container img {
+        height: 104px !important;
+        width: auto !important;
+        max-width: none !important;
+        object-fit: contain !important;
     }
 
-    .nav-links a {
-        font-size: 0.65rem;
+    /* 6. Clean up nav links and keep only the green CTA button */
+    .zine-nav .nav-links a:not(.nav-cta) {
+        display: none !important;
     }
 
-    /* Fit the main container cleanly to mobile margins */
-    .zine-container {
-        max-width: 100%;
-        margin: 1rem auto;
-        padding: 0 0.4rem;
+    .zine-nav .nav-links {
+        display: flex !important;
+        margin: 0 !important;
     }
 
-    /* Stack header component */
+    .zine-nav .nav-links .nav-cta {
+        display: inline-block !important;
+        font-size: 0.7rem !important;
+        padding: 0.5rem 0.8rem !important;
+        white-space: nowrap !important;
+    }
+
+    /* 7. Stack header component */
     header {
         flex-direction: column;
         gap: 0.8rem;
@@ -981,7 +1006,7 @@ footer {
         padding: 1rem;
     }
 
-    /* Force multi-column grids to single column while PRESERVING rotation effects */
+    /* 8. Grid and card layout adjustments for single-column mobile view */
     .creator-hero-block,
     .strike-block,
     .architecture-grid,
@@ -994,7 +1019,6 @@ footer {
         margin-right: 0 !important;
     }
 
-    /* Normalize padding and box-shadows for cards on mobile */
     .creator-hero-block,
     .form-module,
     .process-ledger,
@@ -1007,9 +1031,100 @@ footer {
         box-shadow: 2px 2px 0px rgba(45, 90, 39, 0.15);
     }
 
-    /* Scale down images */
     .art-box-inner img {
         height: 180px;
+    }
+
+    .faq-index-grid { 
+        grid-template-columns: 1fr; 
+    }
+
+    .allocation-footer-box {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    footer { 
+        grid-template-columns: 1fr; 
+        gap: 2rem; 
+    }
+
+    /* Fix text wall layout on mobile */
+    .creator-hero-block p, 
+    .creator-hero-block h2,
+    .creator-hero-block h3,
+    .zine-content p,
+    .zine-content span {
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+
+    /* Scale down overly massive headings that force awkward word-wrapping */
+    .creator-hero-block h1, 
+    .creator-hero-block h2 {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Adjust body text size and spacing inside content blocks */
+    .creator-hero-block p, 
+    .zine-content p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        letter-spacing: normal !important;
+    }
+
+    /* Force card action containers/buttons to stack vertically */
+    .arch-box-actions,
+    .strike-actions,
+    .card-buttons,
+    .zine-card-footer,
+    .strike-block div[style*="flex"],
+    .arch-box div[style*="flex"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.8rem !important;
+        align-items: stretch !important;
+        width: 100% !important;
+    }
+
+    /* Ensure every button inside these blocks takes full width */
+    .arch-box a,
+    .strike-block a,
+    .arch-box button,
+    .strike-block button {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Fix card container overflowing the mobile screen width */
+    .architecture-grid,
+    .zine-container,
+    .main-content,
+    section {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Force inner content boxes to respect screen bounds */
+    .arch-box, 
+    .form-module, 
+    .raw-art-module,
+    .strike-block {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 }
 
