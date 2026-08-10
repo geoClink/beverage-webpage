@@ -99,6 +99,7 @@ background-color: transparent !important;}
     height: 400px !important; 
     width: auto !important;
     object-fit: contain !important;
+    margin-right: -90px !important;
 }
 
 
@@ -1113,97 +1114,138 @@ html {
 }
 
 /* =================================================================
+   FOOTER LAYOUT ALIGNMENT FOR 320PX LOGO
+   ================================================================ */
+
+/* 1. Target the main footer container wrapper */
+footer,
+.footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    position: relative !important;
+    overflow: hidden !important; /* Contains any negative-margin overflow */
+}
+
+/* 2. Style the image container/wrapper holding the 320px logo */
+footer img,
+.footer img,
+footer .logo-container img {
+    height: 320px !important;
+    width: auto !important;
+    max-width: none !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin-bottom: -3rem !important;
+    margin-right: -3rem !important;
+    margin-left: -4rem !important;
+}
+
+.creator-hero-block,
+.form-module,
+.arch-box,
+.process-ledger,
+.faq-index-card,
+.use-case-card,
+.journal-header {
+    background: rgba(255, 255, 255, 0.92) !important; /* Semi-transparent white lets the background peek through subtly */
+}
+/* 3. Position the brand text/title so it flows naturally alongside or below the huge graphic */
+footer h3,
+footer .brand-title,
+footer .footer-brand-text {
+    display: inline-block !important;
+    margin-top: 1rem !important;
+    margin-left: 0 !important;
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+    vertical-align: middle !important;
+}
+
+/* 4. If the text and logo share a parent flex row, align them cleanly */
+footer .footer-top,
+footer .footer-brand-container {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    width: 100% !important;
+}
+
+/* =================================================================
    ROBUST MOBILE FIXES (PRESERVING ROTATIONS & EFFECTS)
    ================================================================ */
 @media (max-width: 768px) {
-    /* 1. Remove body padding and set top clearance equal to ticker + nav height */
+    /* 1. Reset body and html padding to prevent horizontal shift */
     body {
-        padding: 0 0.4rem 1rem 0.4rem !important;
-        padding-top: 30px !important; 
-        overflow-x: hidden;
+       padding: 0 0.5rem 1rem 0.5rem !important;
+        padding-top: 45px !important;
     }
 
-    /* 2. Pin the Ticker directly to the absolute top of the screen */
+    /* 2. Pin and stabilize the Ticker Bar */
     .ticker-wrap {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
-        width: 100% !important;
-        z-index: 1001 !important;
-        margin: 0 !important;
+        width: 100vw !important;
+        z-index: 1002 !important;
     }
 
-    /* 3. Pin the Navigation bar directly flush under the ticker */
-    .zine-nav {
+   .zine-nav {
         position: fixed !important;
-        top: 26px !important; /* Adjust this if needed to match ticker height exactly */
+        top: 25px !important;
         left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        background: var(--surface) !important;
-        border-top: none !important;
-        border-bottom: 2px solid var(--border) !important;
+        width: 100vw !important;
+        height: 60px !important;
+        padding: 0 1rem !important;
         display: flex !important;
-        align-items: center !important;
-        padding: 0rem 0rem !important;
-        z-index: 1000 !important;
-        box-sizing: border-box !important;
-        margin: 0 !important;
         justify-content: flex-start !important;
-        gap: 1rem !important;
-    }
-
-    /* 4. Enforce button width behavior */
-    button, 
-    .nav-cta, 
-    .form-module button, 
-    input[type="submit"] {
-        width: 100% !important;
-        display: block !important;
+        align-items: center !important;
+        background: var(--surface) !important;
+        z-index: 1001 !important;
         box-sizing: border-box !important;
-        text-align: center !important;
-        padding: 0.8rem 1rem !important;
-        white-space: normal !important;
+        box-shadow: 0px 3px 0px rgba(45, 90, 39, 0.15) !important;
+        overflow: visible !important;
     }
 
+    /* Position the massive 185px stamp to overhang on mobile screens */
     .zine-nav .logo-container {
-        margin-left: 0 !important;
-        padding-left: 0 !important;
-    }
-
-    /* 5. Hide brand text and size the logo properly */
-    .zine-nav .logo-container span {
-        display: none !important;
-        margin-left: 0 !important;
-        margin-left: -90;
+        position: absolute !important;
+        top: -25px !important; 
+        left: 1.2rem !important;
+        z-index: 1003 !important;
     }
 
     .zine-nav .logo-container img {
-        height: 200px !important;
+        height: 185px !important;
         width: auto !important;
         max-width: none !important;
-        object-fit: contain !important;
-        margin-left: -40px !important;
-        padding-left: 0 !important;
+        top: -70px !important; /* Increase this negative value to push the logo higher up */
     }
 
-    /* 6. Clean up nav links and keep only the green CTA button */
+    .zine-nav .logo-container span {
+        display: none !important;
+    }
+
+    /* Shift navigation items over so they clear the 185px wide logo graphic */
+    .zine-nav .nav-links {
+        display: flex !important;
+        align-items: center !important;
+        margin-left: 155px !important; 
+        margin-top: 0 !important;
+    }
+
     .zine-nav .nav-links a:not(.nav-cta) {
         display: none !important;
     }
 
-    .zine-nav .nav-links {
-        display: flex !important;
-       margin-right: 0.4rem !important;
-    }
-
     .zine-nav .nav-links .nav-cta {
         display: inline-block !important;
-        font-size: 0.7rem !important;
-        padding: 0.5rem 0.8rem !important;
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.7rem !important;
+        margin: 0 !important;
         white-space: nowrap !important;
-        margin-left: -20px !important;
-        margin-right: 10rem !important;
+        box-shadow: 2px 2px 0px var(--border) !important;
     }
 
     /* 7. Stack header component */
@@ -1349,7 +1391,6 @@ html {
 
     /* 2. Add an eye-catching magazine edition/kicker badge */
     .creator-hero-block:first-of-type::before {
-        content: "VOL. 01 // FOUNDER'S BRIEFING" !important;
         display: inline-block !important;
         background: var(--border, #2d5a27) !important;
         color: var(--surface, #ffffff) !important;
