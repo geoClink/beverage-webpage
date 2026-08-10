@@ -969,6 +969,11 @@ input[type="submit"]:hover {
     box-shadow: 1px 1px 0px #1a2318 !important;
 }
 
+/* Fix anchor jump offset caused by fixed navigation bar */
+html {
+    scroll-padding-top: 130px; /* Adjusts clearance so section headings appear fully below the sticky nav */
+}
+
 .story-watermark-card::before {
     content: "";
     position: absolute;
