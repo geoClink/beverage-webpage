@@ -96,7 +96,7 @@ background-color: transparent !important;}
 
 /* AFTER */
 .zine-nav .logo-container img {
-    height: 300px !important; 
+    height: 400px !important; 
     width: auto !important;
     object-fit: contain !important;
 }
@@ -1175,7 +1175,7 @@ html {
     .zine-nav .logo-container span {
         display: none !important;
         margin-left: 0 !important;
-        padding-left: 0 !important;
+        margin-left: -90;
     }
 
     .zine-nav .logo-container img {
