@@ -109,12 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const submitBtn = document.getElementById('allocation-submit-btn');
             if (submitBtn) {
-                submitBtn.textContent = 'TRANSACTION LOGGED // BATCH 01 SECURED';
+                submitBtn.textContent = 'TRANSACTION LOGGED';
                 submitBtn.style.background = '#2d5a27';
                 submitBtn.disabled = true;
             }
 
-            showInPageAlert(allocationForm, `RESERVATION LOGGED: Thank you, ${name || 'Operator'}. Your allocation request has been queued.`);
+            showInPageAlert(allocationForm, `RESERVATION LOGGED: Thank you, ${name || 'Operator'}. Your request has been queued.`);
             allocationForm.reset();
         });
     }
