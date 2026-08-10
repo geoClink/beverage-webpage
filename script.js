@@ -1,8 +1,8 @@
 import { initModelViewer } from './3d-viewer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all three 3D Product Viewers cleanly
-    initModelViewer('bottle-container', './glass-bottle.glb', 2.4, 0);
+    // Initialize all three 3D Product Viewers cleanly (added label image path to the bottle)
+    initModelViewer('bottle-container', './glass-bottle.glb', 2.4, 0, './images/bottle-label.png');
     initModelViewer('coke-container', './coke-can.glb', 2.4, 0);
     initModelViewer('keg-container', './beer-keg.glb', 2.2, 0);
 
