@@ -129,6 +129,13 @@ background-color: transparent !important;}
 
 /* Mobile Logo Sizing & Position */
 @media (max-width: 768px) {
+
+    .zine-nav {
+  background-color: #ffffff; /* Ensures it stays white */
+  padding: 3rem 1rem;     /* Increases top/bottom padding to make it taller */
+  /* Keep your existing flex, position, and border rules here */
+}
+
     .zine-nav .logo-container {
         position: absolute !important;
         top: 18px !important;
