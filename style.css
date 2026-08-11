@@ -1260,7 +1260,7 @@ html {
     .faq-module,
     .arch-box,
     .raw-art-module {
-        padding: 1rem;
+        padding: 1rem !important;
         margin-bottom: 1rem;
         box-shadow: 2px 2px 0px rgba(45, 90, 39, 0.15);
     }
@@ -1271,6 +1271,10 @@ html {
 
     .faq-index-grid { 
         grid-template-columns: 1fr; 
+    }
+
+    .process-header {
+        margin-bottom: 0.8rem !important;
     }
 
     .allocation-footer-box {
@@ -1867,7 +1871,7 @@ button:hover,
         background: var(--accent-light);
         border: 1.5px solid var(--border);
         padding: 0.45rem 0.8rem;
-        margin: -0.25rem 0 0.5rem 1rem;
+        margin: -1.8rem 0 1.5rem 1rem;
         width: fit-content;
         box-shadow: 2px 2px 0px var(--border);
         animation: swipeNudge 1.8s ease-in-out infinite;
@@ -1890,6 +1894,12 @@ button:hover,
         padding: 0.5rem 1rem 1.5rem 1rem !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .architecture-grid::-webkit-scrollbar {
+        display: none !important;
     }
 
     .architecture-grid .arch-box {
