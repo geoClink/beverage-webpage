@@ -94,21 +94,19 @@ footer {
 .zine-container {
 background-color: transparent !important;}
 
-/* AFTER */
-/* 1. Desktop Logo Sizing */
+/* Desktop Logo Sizing */
 .zine-nav .logo-container img {
-    height: 120px !important;
-    width: auto !important;
-    max-height: none !important;
-    max-width: none !important;
-    object-fit: contain !important;
-    margin-right: 0 !important;
-    border-radius: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    position: relative !important;
-    top: 10px !important;
-    z-index: 1005 !important;
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.zine-nav .logo-container img:hover {
+    transform: scale(1.05);
 }
 
 .arch-box div[id$="-container"] {
@@ -1266,19 +1264,19 @@ footer .footer-brand-container {
         overflow: visible !important;
     }
 
-    /* Position the massive 185px stamp to overhang on mobile screens */
+    /* Logo overhangs above the nav bar as a stamp effect */
     .zine-nav .logo-container {
         position: absolute !important;
-        top: -25px !important; 
-        left: 1.2rem !important;
-        z-index: 1003 !important;
+        top: -28px !important;
+        left: 1rem !important;
+        z-index: 1005 !important;
     }
 
     .zine-nav .logo-container img {
-        height: 185px !important;
+        height: 90px !important;
         width: auto !important;
-        max-width: none !important;
-        top: -70px !important; /* Increase this negative value to push the logo higher up */
+        position: static !important;
+        top: auto !important;
     }
 
     .zine-nav .logo-container span {
@@ -1892,4 +1890,19 @@ footer .footer-col {
         width: 100% !important;
         padding: 4px 0 !important;
     }
+}
+
+/* Section Wiggle — fires when nav or footer anchor links are clicked */
+@keyframes shake {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    15%       { transform: translate(-5px, 0) rotate(-1.2deg); }
+    30%       { transform: translate(5px, 0) rotate(1.2deg); }
+    45%       { transform: translate(-4px, 0) rotate(-0.8deg); }
+    60%       { transform: translate(4px, 0) rotate(0.8deg); }
+    75%       { transform: translate(-2px, 0) rotate(-0.4deg); }
+    90%       { transform: translate(2px, 0) rotate(0.4deg); }
+}
+
+.shake-animation {
+    animation: shake 0.65s ease-in-out;
 }

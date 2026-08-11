@@ -129,21 +129,6 @@
             transform: translateY(0);
         }
 
-        .zine-nav .logo-container img {
-            height: 48px !important;
-            width: auto !important;
-            object-fit: contain !important;
-            border-radius: 0 !important;
-            border: none !important;
-            box-shadow: none !important;
-            -webkit-mask-image: none !important;
-            mask-image: none !important;
-            transition: transform 0.3s ease;
-        }
-
-        .zine-nav .logo-container img:hover {
-            transform: scale(1.05);
-        }
     </style>
 
     <!-- Three.js Import Map -->
@@ -186,10 +171,10 @@
                 </div>
             </div>
             <div class="nav-links">
-                <a href="#story">Creator Story</a>
-                <a href="#architecture">Product Formats</a>
-                <a href="#process">Methodology</a>
-                <a href="#faq">FAQ</a>
+                <a href="#story" onclick="triggerShake('story')">Creator Story</a>
+                <a href="#architecture" onclick="triggerShake('architecture')">Product Formats</a>
+                <a href="#process" onclick="triggerShake('process')">Methodology</a>
+                <a href="#faq" onclick="triggerShake('faq')">FAQ</a>
                 <a href="#allocation-form" class="nav-cta">Request Beverages</a>
             </div>
         </nav>
@@ -644,15 +629,19 @@
 
        <!-- Scripts for Scroll Observer & Mouse Parallax Watermark -->
         <script>
-            // Define triggerShake globally so inline onclick handlers can access it
-            window.triggerShake = function(targetId, extraParam) {
+            // Shake the target section after scroll finishes so the user knows where to look
+            window.triggerShake = function(targetId) {
                 const element = document.getElementById(targetId);
-                if (element) {
+                if (!element) return;
+                // Small delay lets smooth-scroll reach the element before the shake starts
+                setTimeout(function() {
                     element.classList.remove('shake-animation');
-                    void element.offsetWidth; // Force reflow to restart animation
+                    void element.offsetWidth; // force reflow so animation restarts
                     element.classList.add('shake-animation');
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }
+                    element.addEventListener('animationend', function() {
+                        element.classList.remove('shake-animation');
+                    }, { once: true });
+                }, 450);
             };
 
             document.addEventListener("DOMContentLoaded", function () {
