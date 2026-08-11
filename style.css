@@ -1201,7 +1201,7 @@ html {
     .zine-nav .logo-container {
         position: absolute !important;
         top: 18px !important;
-        left: -4.5rem !important;
+        left: -5.5rem !important;
         z-index: 1005 !important;
         overflow: visible !important;
     }
@@ -1233,9 +1233,9 @@ html {
 
     .zine-nav .nav-links .nav-cta {
         display: inline-block !important;
-        font-size: 0.65rem !important;
-        padding: 0.4rem 0.7rem !important;
-        margin: 0 !important;
+        font-size: 0.85rem !important;
+        padding: 0.6rem 0.7rem !important;
+        margin: -30px !important;
         white-space: nowrap !important;
         box-shadow: 2px 2px 0px var(--border) !important;
     }
