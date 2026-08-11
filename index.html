@@ -15,12 +15,14 @@
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Botanical Archive — Creator & Origin Story">
     <meta property="og:description" content="Explore the origin story and creator behind the Botanical Archive.">
-    <meta property="og:image" content="og-image.svg">
+    <meta property="og:image" content="https://oasa-webpage.vercel.app/og-image.png">
+    <meta property="og:url" content="https://oasa-webpage.vercel.app/">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags (Optional, for Twitter/X previews) -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="og-image.svg">
+    <meta name="twitter:image" content="https://oasa-webpage.vercel.app/og-image.png">
+    <meta name="description" content="Botanical Archive — 100% solvent-free botanical extraction, handcrafted in Traverse City, Michigan. Fresh glass bottles available locally. Nationwide shipping launching October 15.">
 
     <link rel="icon" type="image/png" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,13 +81,11 @@
 
         .zine-container>div,
         .zine-container>section,
-        .zine-container>footer,
         .creator-hero-block,
         .strike-block,
         .architecture-grid,
         .process-ledger,
-        .faq-module,
-        footer {
+        .faq-module {
             background: transparent !important;
             background-color: transparent !important;
             border: none !important;
@@ -98,7 +98,6 @@
         .arch-box,
         .process-ledger,
         .faq-index-card,
-        footer,
         .form-module,
         .headline-wrapper,
         section.reveal-section[style*="background"],
@@ -178,7 +177,8 @@
                 <a href="#architecture" onclick="triggerShake('architecture')">Product Formats</a>
                 <a href="#process" onclick="triggerShake('process')">Methodology</a>
                 <a href="#faq" onclick="triggerShake('faq')">FAQ</a>
-                <a href="#allocation-form" class="nav-cta">Request Beverages</a>
+                <a href="#licensing" onclick="triggerShake('licensing')">Partners</a>
+                <a href="#allocation-form" class="nav-cta" onclick="triggerShake('allocation-card')">Request Beverages</a>
             </div>
         </nav>
 
@@ -200,7 +200,7 @@
 </p>
 
     <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-      <a href="#allocation" class="brand-btn nav-cta" style="text-align: center; padding: 0.9rem; font-weight: 700; text-decoration: none; display: block; border: 2px solid #000; box-shadow: 3px 3px 0px #000;">
+      <a href="#allocation-form" class="brand-btn nav-cta" onclick="triggerShake('allocation-card')" style="text-align: center; padding: 0.9rem; font-weight: 700; text-decoration: none; display: block; border: 2px solid #000; box-shadow: 3px 3px 0px #000;">
     SECURE YOUR BEVERAGES &rarr;
 </a>
     </div>
@@ -221,7 +221,7 @@
                             style="font-family: var(--display-font); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.8rem; color: #111;">
                             Zero solvents. Pure pressure.</h2>
                         <p class="manifesto" style="color: #333;">We combine <strong>precision mechanical cold-pressing</strong> with
-                            <strong>regional micro-batching</strong> to capture authentic plant benefits without chemical distillation.
+                            <strong>regional micro-batching</strong> to capture the full botanical character without chemical distillation.
                             Available now locally and shipping nationwide <strong>October 15.</strong></p>
                     </div>
 
@@ -310,7 +310,7 @@
                     </div>
 
                     <p style="font-size: 0.95rem; line-height: 1.5; color: #333333; margin-bottom: 1.5rem;"><strong>Shelf-stable</strong>
-                        12oz format built for e-commerce logistics and major retail channels, prominently displaying our
+                        12oz cans, available in <strong>12-count cases</strong>. Built for e-commerce logistics and major retail channels, prominently displaying our
                         brand identity on the metallic cylinder wrap.</p>
 
                     <div class="arch-status" style="margin-top: auto;"><span class="highlight-status"
@@ -337,7 +337,7 @@
                     <div class="arch-status"
                         style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
                         <span class="highlight-status">Active Partner Program</span>
-                        <a href="#faq"
+                        <a href="#faq" onclick="triggerShake('faq')"
                             style="font-family: var(--mono-font); font-size: 0.75rem; text-decoration: underline; color: var(--text-main);">Learn
                             More →</a>
                     </div>
@@ -387,8 +387,7 @@
                         </div>
                         <div class="stream-text-col">
                             <h3>Zero Solvents</h3>
-                            <p><strong>No chemical distillation</strong> or <strong>synthetic isolates.</strong> Pure liquid pressure extraction preserves
-                                the authentic, living botanical benefits.</p>
+                            <p><strong>No chemical distillation</strong> or <strong>synthetic isolates.</strong> Pure liquid pressure extraction captures the full botanical character and complexity.</p>
                         </div>
                     </div>
 
@@ -462,7 +461,7 @@
                         <p style="font-size: 0.95rem; color: #333;">Ready to secure your local pickup or reserve an
                             upcoming national release?</p>
                     </div>
-                    <a href="#allocation-form" class="allocation-cta">Secure Your Beverages →</a>
+                    <a href="#allocation-form" class="allocation-cta" onclick="triggerShake('allocation-card')">Secure Your Beverages →</a>
                 </div>
 
             </section>
@@ -506,7 +505,7 @@
         <div class="raw-art-module frame-wiggle-module" style="background: #ffffff; border: 2px solid var(--border); overflow: hidden; box-shadow: 6px 6px 0px var(--border); position: relative;">
             
             <div class="art-box-inner" style="background: #000; overflow: hidden; line-height: 0;">
-                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" alt="Craft Botanical Beverage Bottles" style="width: 100%; height: 360px; object-fit: cover; display: block; filter: brightness(0.95) contrast(1.05);">
+                <img src="sample-add-image.jpg" alt="Craft Botanical Beverage Bottles" style="width: 100%; height: 360px; object-fit: cover; display: block; filter: brightness(0.95) contrast(1.05);">
             </div>
 
             <div style="padding: 1rem 1.2rem; background: #faf8f5; border-top: 2px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
@@ -594,7 +593,7 @@
                             allocations weekly to supply <strong>draft kegs and dedicated mixers.</strong></p>
                         <div
                             style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
-                            <a href="#allocation-form"
+                            <a href="#allocation-form" onclick="triggerShake('allocation-card')"
                                 style="font-family: var(--mono-font); font-size: 0.75rem; text-decoration: underline; color: #111111 !important; font-weight: 700;">Learn
                                 More & Request Beverages →</a>
 
@@ -604,29 +603,123 @@
                 </div>
             </section>
 
+            <!-- Licensing & Partner Program -->
+            <section class="reveal-section" id="licensing"
+                style="margin-bottom: 3rem; background: #ffffff !important; border: 2px solid var(--border) !important; padding: 2.5rem; box-shadow: 6px 6px 0px var(--border) !important; position: relative; z-index: 2;">
+
+                <div style="margin-bottom: 2rem;">
+                    <span class="section-marker" style="color: #5c6b43; font-weight: 700;">Licensing & Partnerships</span>
+                    <h2 style="font-family: var(--display-font); font-size: clamp(1.8rem, 3vw, 2.4rem); color: #111111; margin-top: 0.4rem; margin-bottom: 1rem;">
+                        Become a Botanical Archive Partner.
+                    </h2>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #333333; max-width: 680px;">
+                        We license the Botanical Archive recipe and brand to vetted bottling partners worldwide. Partners handle regional production and distribution; we hold equity stake in each program and maintain strict quality standards.
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+
+                    <div class="partner-card" style="background: #faf8f5; border: 2px solid var(--border); padding: 1.5rem; box-shadow: 4px 4px 0px var(--border); transform: rotate(-0.6deg);">
+                        <span style="font-family: var(--mono-font); font-weight: 700; font-size: 0.7rem; color: #5c6b43; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.6rem;">Domestic</span>
+                        <h3 style="font-family: var(--display-font); font-size: 1.25rem; margin-bottom: 0.6rem; color: #111;">U.S. Bottling Partners</h3>
+                        <p style="font-size: 0.85rem; line-height: 1.5; color: #333;">U.S.-based co-packers and bottling facilities. Distribute Botanical Archive across regional and national retail channels under the licensed program.</p>
+                    </div>
+
+                    <div class="partner-card" style="background: #f0f4ec; border: 2px solid var(--border); padding: 1.5rem; box-shadow: 4px 4px 0px var(--border); transform: rotate(0.5deg);">
+                        <span style="font-family: var(--mono-font); font-weight: 700; font-size: 0.7rem; color: #5c6b43; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.6rem;">International</span>
+                        <h3 style="font-family: var(--display-font); font-size: 1.25rem; margin-bottom: 0.6rem; color: #111;">Global Bottling Programs</h3>
+                        <p style="font-size: 0.85rem; line-height: 1.5; color: #333;">Active programs in development across Colombia, Europe, and Asia-Pacific. Licensing includes recipe rights, brand use, and an equity stake in each regional program.</p>
+                    </div>
+
+                    <div class="partner-card" style="background: #faf8f5; border: 2px solid var(--border); padding: 1.5rem; box-shadow: 4px 4px 0px var(--border); transform: rotate(-0.3deg);">
+                        <span style="font-family: var(--mono-font); font-weight: 700; font-size: 0.7rem; color: #5c6b43; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.6rem;">Hospitality</span>
+                        <h3 style="font-family: var(--display-font); font-size: 1.25rem; margin-bottom: 0.6rem; color: #111;">Venue & Hotel Partners</h3>
+                        <p style="font-size: 0.85rem; line-height: 1.5; color: #333;">Draft keg supply and exclusive on-menu placement for hotels, restaurants, and lounges. Non-alcoholic program integration for high-volume service environments.</p>
+                    </div>
+
+                </div>
+
+                <div style="background: #faf8f5; border: 2px solid var(--border); padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; box-shadow: 4px 4px 0px var(--border);">
+                    <div>
+                        <h3 style="font-family: var(--display-font); font-size: 1.2rem; margin-bottom: 0.2rem; color: #111;">Ready to Partner?</h3>
+                        <p style="font-size: 0.85rem; color: #333;">Submit your venue or facility details and we'll be in touch within the week.</p>
+                    </div>
+                    <a href="#allocation-form" class="allocation-cta" onclick="triggerShake('allocation-card')">Submit Partnership Inquiry →</a>
+                </div>
+
+            </section>
+
+            <!-- TikTok Follow Section -->
+            <section class="reveal-section tiktok-section"
+                style="margin-bottom: 3rem; background: #d4ebd0 !important; border: 2px solid var(--border) !important; padding: 3rem 2.5rem 3rem 2.5rem; box-shadow: 6px 6px 0px var(--border) !important; position: relative; z-index: 2; transform: rotate(-0.3deg); overflow: visible;">
+
+                <!-- Brand logo top-left -->
+                <img src="logo-sample.png" alt="" class="tiktok-corner-logo" aria-hidden="true">
+
+                <!-- Two-column layout -->
+                <div class="tiktok-inner">
+
+                    <!-- Left: text content -->
+                    <div class="tiktok-text-col">
+                        <span style="font-family: var(--mono-font); font-size: 0.72rem; font-weight: 700; color: #5c6b43; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 1rem;">Follow the Archive</span>
+
+                        <!-- TikTok Logo -->
+                        <div style="margin-bottom: 1.2rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="52" height="52" fill="#1a2318" aria-label="TikTok">
+                                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.28 8.28 0 004.84 1.55V6.78a4.85 4.85 0 01-1.07-.09z"/>
+                            </svg>
+                        </div>
+
+                        <h2 style="font-family: var(--display-font); font-size: clamp(2rem, 3.5vw, 2.8rem); color: #111111; font-weight: 400; margin-bottom: 1rem; line-height: 1.1;">
+                            Watch It Being Made.
+                        </h2>
+                        <p style="font-size: 0.95rem; line-height: 1.7; color: #333333; margin-bottom: 2.5rem; max-width: 420px;">
+                            Behind-the-scenes: harvest days, cold-press sessions, weekly batch drops, and farmers market setups. Follow along as we build from the ground up.
+                        </p>
+                        <a href="https://www.tiktok.com/@botanicalarchive" target="_blank" rel="noopener noreferrer" class="tiktok-cta"
+                            style="display: inline-flex; align-items: center; gap: 0.5rem; background: #1a2318; color: #ffffff; border: 2px solid #1a2318; padding: 0.9rem 2.2rem; font-family: var(--mono-font); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; box-shadow: 4px 4px 0px rgba(26,35,24,0.35);">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+                                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.28 8.28 0 004.84 1.55V6.78a4.85 4.85 0 01-1.07-.09z"/>
+                            </svg>
+                            @BotanicalArchive on TikTok &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Right: iPhone mockup (bezel included in image) -->
+                    <div class="phone-mockup-wrap">
+                        <img src="beverage-drank-sample-screenshot.png" alt="Botanical Archive on TikTok" class="phone-screenshot">
+                    </div>
+
+                </div>
+
+            </section>
+
       <!-- Footer -->
-        <footer style="background-color: #1a2318 !important; opacity: 1 !important; color: #ffffff !important; position: relative !important; z-index: 9999 !important;">
-            <div class="footer-col" style="color: #ffffff !important;">
-                <div class="footer-brand" style="color: #ffffff !important;">Botanical Archive</div>
-                <p style="color: #ffffff !important;">Direct Coordinates<br>Traverse City, Michigan<br>Direct Phone: +1 (555) 019-2834<br>Email: contact@botanicalarchive.com<br>State Licensed Operations</p>
+        <footer>
+            <div class="footer-col">
+                <img src="logo-sample.png" alt="Botanical Archive Logo" class="footer-logo">
+                <div class="footer-brand">Botanical Archive</div>
+                <p>Direct Coordinates<br>Traverse City, Michigan<br>Direct Phone: +1 (555) 019-2834<br>Email: contact@botanicalarchive.com<br>State Licensed Operations</p>
             </div>
             <div class="footer-col">
-                <h4 class="footer-heading" style="color: #ffffff !important;">Quick Links</h4>
+                <h4 class="footer-heading">Quick Links</h4>
                 <div class="footer-links">
-                    <a href="#story" onclick="triggerShake('story')" style="color: #ffffff !important;">Creator Story</a>
-                    <a href="#process" onclick="triggerShake('process')" style="color: #ffffff !important;">Extraction Specs</a>
-                    <a href="#architecture" onclick="triggerShake('architecture')" style="color: #ffffff !important;">Product Scale Showcase</a>
-                    <a href="#faq" onclick="triggerShake('faq')" style="color: #ffffff !important;">Knowledge Base / FAQ</a>
-                    <a href="#allocation-form" onclick="triggerShake('allocation-card');" style="color: #ffffff !important;">Wholesale Inquiries</a>
-                    <a href="privacy.html" style="color: #ffffff !important;">Privacy & Terms</a>
+                    <a href="#story" onclick="triggerShake('story')">Creator Story</a>
+                    <a href="#process" onclick="triggerShake('process')">Extraction Specs</a>
+                    <a href="#architecture" onclick="triggerShake('architecture')">Product Scale Showcase</a>
+                    <a href="#faq" onclick="triggerShake('faq')">Knowledge Base / FAQ</a>
+                    <a href="#licensing" onclick="triggerShake('licensing')">Partner Program</a>
+                    <a href="#allocation-form" onclick="triggerShake('allocation-card')">Wholesale Inquiries</a>
+                    <a href="https://www.tiktok.com/@botanicalarchive" target="_blank" rel="noopener noreferrer">Follow on TikTok ↗</a>
+                    <a href="privacy.html">Privacy & Terms</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4 class="footer-heading" style="color: #ffffff !important;">Operations</h4>
+                <h4 class="footer-heading">Operations</h4>
                 <div class="footer-links">
-                    <span style="color: #ffffff !important;">Local: Traverse City Markets</span>
-                    <span style="color: #ffffff !important;">National: Shipping Oct 15</span>
-                    <span style="color: #ffffff !important;">Partnerships: Active</span>
+                    <span>Local: Traverse City Markets</span>
+                    <span>National: Shipping Oct 15</span>
+                    <span>Partnerships: Active</span>
                 </div>
             </div>
         </footer>

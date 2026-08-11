@@ -77,9 +77,8 @@ background-color: transparent !important;
 .faq-index-card,
 .use-case-card,
 .journal-header,
-header,
-footer {
-    background: var(--surface) !important; /* Forces solid background so text never washes out */
+header {
+    background: var(--surface) !important;
     opacity: 1 !important;
 }
 
@@ -94,7 +93,7 @@ footer {
 .zine-container {
 background-color: transparent !important;}
 
-/* Desktop Logo Sizing — overhangs below nav as a design statement */
+/* Desktop Logo Sizing */
 .zine-nav .logo-container img {
     height: 300px;
     width: auto;
@@ -111,6 +110,45 @@ background-color: transparent !important;}
 
 .zine-nav .logo-container img:hover {
     transform: rotate(-8deg) scale(1.06);
+}
+
+/* Logo roll-in animation on page load */
+@keyframes logoRoll {
+    0%   { transform: translateX(-280%) translateY(0)    rotate(600deg)  scaleY(1); }
+    60%  { transform: translateX(4%)    translateY(0)    rotate(-14deg)  scaleY(1); }
+    68%  { transform: translateX(3%)    translateY(5%)   rotate(-10deg)  scaleY(0.86); }
+    78%  { transform: translateX(-1%)   translateY(0)    rotate(-3deg)   scaleY(1.07); }
+    87%  { transform: translateX(0.5%)  translateY(2%)   rotate(-9deg)   scaleY(0.97); }
+    94%  { transform: translateX(0)     translateY(0)    rotate(-7deg)   scaleY(1); }
+    100% { transform: translateX(0)     translateY(0)    rotate(-8deg)   scaleY(1); }
+}
+
+.logo-rolling {
+    animation: logoRoll 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+/* Mobile Logo Sizing & Position */
+@media (max-width: 768px) {
+    .zine-nav .logo-container {
+        position: absolute !important;
+        top: 18px !important;
+        left: -4.5rem !important;
+        z-index: 1005 !important;
+        overflow: visible !important;
+    }
+
+    .zine-nav .logo-container img {
+        height: 270px !important;
+        width: auto !important;
+        position: static !important;
+        top: auto !important;
+        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.22)) !important;
+        transform: rotate(-8deg) !important;
+    }
+
+    .zine-nav .logo-container span {
+        display: none !important;
+    }
 }
 
 .arch-box div[id$="-container"] {
@@ -169,7 +207,7 @@ background-color: transparent !important;}
     position: fixed;
     top: 28px;
     left: 0;
-    height: 95px;
+    height: 85px;
     width: 100%;
     background: var(--surface);
     border-bottom: 2px solid var(--border);
@@ -338,7 +376,7 @@ header {
 @media(max-width: 960px) {
     .creator-hero-block {
         grid-template-columns: 1fr;
-        transform: none;
+        transform: rotate(-2deg);
         padding: 1.5rem;
     }
 
@@ -351,7 +389,7 @@ header {
         margin-right: 0 !important;
         padding: 1.2rem !important;
         box-sizing: border-box !important;
-        transform: none !important; /* Removes desktop rotation tilt that causes clipping */
+        transform: none; /* Removes desktop rotation tilt; no !important so shake animation can override */
     }
 
     .creator-hero-left, 
@@ -365,16 +403,10 @@ header {
     }
 
     /* Ensure any image or raw art module inside the hero scales neatly */
+    .creator-hero-block img,
     .creator-hero-block .raw-art-module {
         width: 100% !important;
         height: auto !important;
-        max-height: none !important;
-    }
-
-    .creator-hero-block .art-box-inner img,
-    .creator-hero-block img {
-        width: 100% !important;
-        height: 240px !important;
         max-height: 240px !important;
         object-fit: cover !important;
     }
@@ -598,20 +630,6 @@ button[type="submit"]:active {
     100% { transform: rotate(0deg) scale(1); }
 }
 
-@keyframes logoRoll {
-    0%   { transform: translateX(-280%) translateY(0)    rotate(600deg) scaleY(1); }
-    60%  { transform: translateX(4%)    translateY(0)    rotate(-14deg) scaleY(1); }
-    68%  { transform: translateX(3%)    translateY(5%)   rotate(-10deg) scaleY(0.86); }
-    78%  { transform: translateX(-1%)   translateY(0)    rotate(-3deg)  scaleY(1.07); }
-    87%  { transform: translateX(0.5%)  translateY(2%)   rotate(-9deg)  scaleY(0.97); }
-    94%  { transform: translateX(0)     translateY(0)    rotate(-7deg)  scaleY(1); }
-    100% { transform: translateX(0)     translateY(0)    rotate(-8deg)  scaleY(1); }
-}
-
-.logo-rolling {
-    animation: logoRoll 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
-}
-
 .arch-badge-corner {
     position: absolute;
     top: 1rem;
@@ -676,7 +694,7 @@ button[type="submit"]:active {
 .process-ledger {
     background: var(--surface);
     border: 2px solid var(--border);
-    padding: 2.2rem;
+    padding: 1.4rem 2.2rem 2.2rem;
     margin-bottom: 1.5rem;
     box-shadow: 5px 5px 0px rgba(45, 90, 39, 0.15);
     transform: rotate(-0.3deg);
@@ -685,12 +703,12 @@ button[type="submit"]:active {
 }
 
 .process-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     border-bottom: 2px solid var(--border);
-    padding-bottom: 1rem;
+    padding-bottom: 0.6rem;
 }
 
 .process-header span {
@@ -827,6 +845,7 @@ button[type="submit"]:active {
     border: 2px solid var(--border);
     padding: 1.4rem;
     position: relative;
+    overflow: hidden;
     box-shadow: 3px 3px 0px rgba(45, 90, 39, 0.12);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -877,74 +896,6 @@ button[type="submit"]:active {
     line-height: 1.45;
 }
 
-/* Footer */
-footer {
-    background: var(--text-main);
-    color: #ffffff;
-    border: 2px solid var(--border);
-    padding: 2.5rem 2rem;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 2rem;
-    box-shadow: 6px 6px 0px var(--accent);
-    margin-top: 2rem;
-    position: relative;
-}
-
-@media(max-width: 768px) {
-    footer { grid-template-columns: 1fr; gap: 2rem; }
-}
-
-.footer-brand {
-    font-family: var(--display-font);
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 0.4rem;
-}
-
-.footer-col p {
-    font-size: 0.8rem;
-    color: #b8c4b4;
-    line-height: 1.5;
-}
-
-.footer-heading {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #ffffff;
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.08em;
-    border-bottom: 1px dashed #3a4d36;
-    padding-bottom: 0.3rem;
-}
-
-/* Clean Vertical Alignment for Footer Links */
-.footer-links {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.6rem !important;
-    align-items: flex-start !important;
-    width: 100% !important;
-}
-
-.footer-links a, 
-.footer-links span {
-    display: block !important;
-    width: 100% !important;
-    text-align: left !important;
-    font-size: 0.8rem !important;
-    color: #b8c4b4 !important;
-    text-decoration: none !important;
-    transition: color 0.15s ease, transform 0.15s ease !important;
-}
-
-.footer-links a:hover {
-    color: #d4ebd0 !important;
-    text-decoration: underline !important;
-    transform: translateX(3px) !important;
-}
 
 /* =================================================================
    PRODUCT FORMAT LABELED CARDS
@@ -1102,9 +1053,9 @@ html {
     border-color: var(--accent) !important;
 }
 
-#allocation-form, 
+#allocation-form,
 .form-module {
-    scroll-margin-top: 130px !important;
+    scroll-margin-top: 160px !important;
     padding-top: 2.5rem !important;
 }
 
@@ -1117,6 +1068,16 @@ html {
     overflow: hidden;
 }
 
+/* 2. Improve Background Watermark Contrast */
+.hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('./cannabis-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
+}
 
 /* Ensure hero text content sits cleanly above the background overlay */
 .hero-content {
@@ -1183,33 +1144,6 @@ html {
   z-index: 1;
 }
 
-/* =================================================================
-   FOOTER LAYOUT ALIGNMENT FOR 320PX LOGO
-   ================================================================ */
-
-/* 1. Target the main footer container wrapper */
-footer,
-.footer {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    position: relative !important;
-    overflow: hidden !important; /* Contains any negative-margin overflow */
-}
-
-/* 2. Style the image container/wrapper holding the 320px logo */
-footer img,
-.footer img,
-footer .logo-container img {
-    height: 320px !important;
-    width: auto !important;
-    max-width: none !important;
-    object-fit: contain !important;
-    display: block !important;
-    margin-bottom: -3rem !important;
-    margin-right: -3rem !important;
-    margin-left: -4rem !important;
-}
 
 .creator-hero-block,
 .form-module,
@@ -1219,27 +1153,6 @@ footer .logo-container img {
 .use-case-card,
 .journal-header {
     background: rgba(255, 255, 255, 0.92) !important; /* Semi-transparent white lets the background peek through subtly */
-}
-/* 3. Position the brand text/title so it flows naturally alongside or below the huge graphic */
-footer h3,
-footer .brand-title,
-footer .footer-brand-text {
-    display: inline-block !important;
-    margin-top: 1rem !important;
-    margin-left: 0 !important;
-    font-size: 1.25rem !important;
-    line-height: 1.3 !important;
-    vertical-align: middle !important;
-}
-
-/* 4. If the text and logo share a parent flex row, align them cleanly */
-footer .footer-top,
-footer .footer-brand-container {
-    display: flex !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 1rem !important;
-    width: 100% !important;
 }
 
 /* =================================================================
@@ -1266,7 +1179,7 @@ footer .footer-brand-container {
         top: 25px !important;
         left: 0 !important;
         width: 100vw !important;
-        height: 86px !important;
+        height: 60px !important;
         padding: 0 1rem !important;
         display: flex !important;
         justify-content: flex-start !important;
@@ -1278,33 +1191,33 @@ footer .footer-brand-container {
         overflow: visible !important;
     }
 
-    /* Logo sits in the nav and overhangs downward */
+    /* Logo overhangs above the nav bar as a stamp effect */
     .zine-nav .logo-container {
         position: absolute !important;
         top: 18px !important;
-        left: -0.75rem !important;
+        left: -4.5rem !important;
         z-index: 1005 !important;
         overflow: visible !important;
     }
 
     .zine-nav .logo-container img {
-        height: 210px !important;
+        height: 270px !important;
         width: auto !important;
         position: static !important;
         top: auto !important;
         filter: drop-shadow(0 4px 10px rgba(0,0,0,0.22)) !important;
-        transform: rotate(-8deg);
+        transform: rotate(-8deg) !important;
     }
 
     .zine-nav .logo-container span {
         display: none !important;
     }
 
-    /* Shift navigation items over so they clear the logo graphic */
+    /* Shift navigation items over so they clear the 185px wide logo graphic */
     .zine-nav .nav-links {
         display: flex !important;
         align-items: center !important;
-        margin-left: 148px !important;
+        margin-left: 155px !important; 
         margin-top: 0 !important;
     }
 
@@ -1334,8 +1247,7 @@ footer .footer-brand-container {
     .strike-block,
     .architecture-grid,
     .faq-index-grid,
-    .process-stream-item,
-    footer {
+    .process-stream-item {
         grid-template-columns: 1fr !important;
         width: 100% !important;
         margin-left: 0 !important;
@@ -1347,8 +1259,7 @@ footer .footer-brand-container {
     .process-ledger,
     .faq-module,
     .arch-box,
-    .raw-art-module,
-    footer {
+    .raw-art-module {
         padding: 1rem;
         margin-bottom: 1rem;
         box-shadow: 2px 2px 0px rgba(45, 90, 39, 0.15);
@@ -1366,11 +1277,6 @@ footer .footer-brand-container {
         flex-direction: column;
         gap: 1rem;
         align-items: flex-start;
-    }
-
-    footer { 
-        grid-template-columns: 1fr; 
-        gap: 2rem; 
     }
 
     /* Fix text wall layout on mobile */
@@ -1426,7 +1332,6 @@ footer .footer-brand-container {
     }
 
     /* Fix card container overflowing the mobile screen width */
-    .architecture-grid,
     .zine-container,
     .main-content,
     section {
@@ -1460,7 +1365,6 @@ footer .footer-brand-container {
         margin-top: 0.5rem !important;
         box-shadow: 5px 5px 0px var(--border, #2d5a27) !important;
         position: relative !important;
-        transform: rotate(-1.5deg) !important;
     }
 
     /* 2. Add an eye-catching magazine edition/kicker badge */
@@ -1750,58 +1654,6 @@ footer .footer-brand-container {
     color: #ffffff;
 }
 
-/* =================================================================
-   FIXED MOBILE FOOTER LAYOUT (NO HTML CHANGES REQUIRED)
-   ================================================================ */
-
-@media (max-width: 768px) {
-    /* 1. Reset footer display to normal block flow on mobile */
-    footer,
-    .footer {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        padding: 1.5rem 1rem !important;
-        margin-top: 1.5rem !important;
-        overflow: hidden !important;
-    }
-
-    /* 2. Neutralize desktop negative-margin offsets that break mobile alignment */
-    footer img,
-    .footer img,
-    footer .logo-container img {
-        height: auto !important;
-        max-height: 120px !important; /* Scales down the 320px logo gracefully */
-        width: auto !important;
-        margin: 0 0 1rem 0 !important; /* Resets negative margins causing text overlap */
-        display: block !important;
-    }
-
-    /* 3. Stack all internal footer columns vertically and clear floats */
-    footer .footer-top,
-    footer .footer-brand-container,
-    footer > div {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        width: 100% !important;
-        gap: 1.2rem !important;
-        margin: 0 !important;
-    }
-
-    /* 4. Fix footer headings and paragraphs so they wrap inside screen bounds */
-    footer h3,
-    footer .footer-brand,
-    footer p,
-    footer a {
-        display: block !important;
-        width: 100% !important;
-        margin: 0 0 0.5rem 0 !important;
-        word-break: break-word !important;
-        overflow-wrap: break-word !important;
-    }
-}
 
 /* Shared Button Class Styles */
 .brand-btn, 
@@ -1835,80 +1687,6 @@ button:hover,
     box-shadow: 1px 1px 0px #1a2318 !important;
 }
 
-/* Responsive Footer Fix for Mobile */
-@media screen and (max-width: 768px) {
-    footer {
-        display: flex !important;
-        flex-direction: column !important;
-        padding: 10px 20px !important;
-        gap: 25px !important;
-        box-sizing: border-box !important;
-    }
-
-    footer .footer-col {
-        width: 100% !important;
-        margin-bottom: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* Clean up footer links and operations text layout */
-.footer-links {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0px !important; /* Controls exact spacing between each link */
-    margin-top: 1px !important;
-}
-
-.footer-links a, 
-.footer-links span {
-    display: block !important;
-    width: 100% !important;
-    padding: 0px 0 !important;
-}
-}
-
-/* Default Desktop Footer Layout (Side-by-Side Columns) */
-footer {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    flex-wrap: wrap !important;
-    padding: 60px 40px !important;
-    gap: 40px !important;
-}
-
-footer .footer-col {
-    flex: 1 !important;
-    min-width: 200px !important;
-}
-
-/* Mobile-Only Stacked Layout */
-@media screen and (max-width: 768px) {
-    footer {
-        flex-direction: column !important;
-        padding: 20px 16px !important;
-        gap: 12px !important;
-    }
-
-    footer .footer-col {
-        width: 100% !important;
-        min-width: unset !important;
-    }
-
-    footer .footer-links {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 4px !important;
-        margin-top: 4px !important;
-    }
-
-    footer .footer-links a,
-    footer .footer-links span {
-        display: block !important;
-        width: 100% !important;
-        padding: 1px 0 !important;
-    }
-}
 
 /* Section Wiggle — fires when nav or footer anchor links are clicked */
 @keyframes shake {
@@ -1925,68 +1703,647 @@ footer .footer-col {
     animation: shake 0.65s ease-in-out;
 }
 
-/* Swipe hint — mobile only */
+
+/* ================================================================
+   CARD WATERMARKS — logo stamp on white cards
+   ================================================================ */
+
+/* Process stream items */
+.process-stream-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.process-stream-item::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -5%;
+    width: 55%;
+    height: 160%;
+    background-image: url('logo-sample.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(8deg);
+}
+
+.process-stream-item:nth-child(2)::before {
+    top: auto; bottom: -25%; right: auto; left: -5%;
+    transform: rotate(-10deg);
+}
+
+.process-stream-item:nth-child(3)::before {
+    top: 10%; right: 20%;
+    transform: rotate(4deg);
+}
+
+.process-stream-item:nth-child(4)::before {
+    top: auto; bottom: -20%; right: -8%;
+    transform: rotate(-6deg);
+}
+
+/* FAQ cards */
+.faq-index-card::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -15%;
+    width: 90%;
+    height: 150%;
+    background-image: url('logo-sample.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-8deg);
+}
+
+.faq-index-card:nth-child(2)::before { top: auto; bottom: -20%; left: auto; right: -10%; transform: rotate(12deg); width: 38%; height: 65%; }
+.faq-index-card:nth-child(3)::before { top: 10%; left: 30%; transform: rotate(-4deg); width: 65%; height: 115%; }
+.faq-index-card:nth-child(4)::before { top: auto; bottom: -10%; left: 5%; transform: rotate(6deg); width: 85%; height: 140%; }
+.faq-index-card:nth-child(5)::before { top: -10%; right: 5%; transform: rotate(-14deg); width: 42%; height: 75%; }
+.faq-index-card:nth-child(6)::before { top: 20%; left: -10%; transform: rotate(10deg); width: 70%; height: 120%; }
+
+/* Use-case cards */
+.use-case-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.use-case-card::before {
+    content: "";
+    position: absolute;
+    top: -15%;
+    right: -15%;
+    width: 40%;
+    height: 72%;
+    background-image: url('logo-sample.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(10deg);
+}
+
+.use-case-card:nth-child(2)::before { top: auto; bottom: -20%; right: auto; left: -10%; transform: rotate(-12deg); width: 95%; height: 155%; }
+.use-case-card:nth-child(3)::before { top: 15%; right: auto; left: 20%; transform: rotate(5deg); width: 62%; height: 108%; }
+
+/* Product cards */
+.product-card::before {
+    content: "";
+    position: absolute;
+    top: -15%;
+    left: -10%;
+    width: 75%;
+    height: 75%;
+    background-image: url('logo-sample.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-12deg);
+}
+
+.product-card:nth-child(2)::before { top: auto; bottom: -10%; left: auto; right: -10%; transform: rotate(15deg); width: 38%; height: 62%; }
+.product-card:nth-child(3)::before { top: 20%; left: 15%; transform: rotate(5deg); width: 80%; height: 130%; }
+
+/* Allocation form */
+.form-module {
+    position: relative;
+    overflow: hidden;
+}
+
+.form-module::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 100%;
+    background-image: url('logo-sample.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ================================================================
+   SWIPE HINT
+   ================================================================ */
 .swipe-hint {
-    display: none;
+    display: none; /* hidden on desktop */
+}
+
+@keyframes swipeNudge {
+    0%, 100% { transform: rotate(-2.2deg) translateX(0); }
+    40%       { transform: rotate(-2.2deg) translateX(6px); }
+    60%       { transform: rotate(-2.2deg) translateX(-2px); }
 }
 
 @media (max-width: 768px) {
     .swipe-hint {
-        display: block;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
         font-family: var(--mono-font);
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 0.12em;
-        color: var(--accent);
         text-transform: uppercase;
-        margin: -0.5rem 0 1rem 0;
-        opacity: 0.8;
+        color: var(--accent);
+        background: var(--accent-light);
+        border: 1.5px solid var(--border);
+        padding: 0.45rem 0.8rem;
+        margin: -0.25rem 0 0.5rem 1rem;
+        width: fit-content;
+        box-shadow: 2px 2px 0px var(--border);
+        animation: swipeNudge 1.8s ease-in-out infinite;
+        transform: rotate(-2.2deg);
     }
 }
 
-/* =================================================================
-   MOBILE HORIZONTAL SWIPE CAROUSEL — Product Cards
+/* ================================================================
+   MOBILE — Architecture grid horizontal swipe carousel
    ================================================================ */
 @media (max-width: 768px) {
     .architecture-grid {
         display: flex !important;
         flex-direction: row !important;
         overflow-x: scroll !important;
+        overflow-y: visible !important;
         scroll-snap-type: x mandatory !important;
         -webkit-overflow-scrolling: touch !important;
         gap: 1rem !important;
         padding: 0.5rem 1rem 1.5rem 1rem !important;
-        margin-left: -0.5rem !important;
-        margin-right: -0.5rem !important;
-        width: calc(100% + 1rem) !important;
-        scrollbar-width: none !important;
-        transform: none !important;
-    }
-
-    .architecture-grid::-webkit-scrollbar {
-        display: none;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .architecture-grid .arch-box {
-        flex: 0 0 72vw !important;
-        min-width: 72vw !important;
-        max-width: 72vw !important;
-        scroll-snap-align: center !important;
+        flex: 0 0 82vw !important;
+        min-width: 260px !important;
+        max-width: 82vw !important;
+        scroll-snap-align: start !important;
+        flex-shrink: 0 !important;
         margin: 0 !important;
-        border: 2px solid var(--border) !important;
-        box-shadow: 4px 4px 0px var(--border) !important;
-        background: #ffffff !important;
     }
-
-    .architecture-grid .arch-box:nth-child(1) { transform: rotate(-0.5deg) !important; }
-    .architecture-grid .arch-box:nth-child(2) { transform: rotate(0.5deg) !important; }
-    .architecture-grid .arch-box:nth-child(3) { transform: rotate(-0.4deg) !important; }
 }
 
-/* Prevent auto-detected phone/email links from showing as blue */
-a[href^="tel"],
-a[href^="mailto"] {
-    color: inherit;
+/* ================================================================
+   FOOTER — clean styles
+   ================================================================ */
+
+footer {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+    padding: 1rem 2rem 1rem 1rem;
+    background-color: #1a2318;
+    color: #ffffff;
+}
+
+footer .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+footer img.footer-logo {
+    width: 210px;
+    height: 210px;
+    object-fit: contain;
+    display: block;
+    margin: -40px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.footer-brand {
+    font-family: var(--display-font);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+.footer-col p {
+    font-size: 0.8rem;
+    color: #b8c4b4;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.footer-heading {
+    font-family: var(--mono-font);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px dashed #3a4d36;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-links a,
+.footer-links span {
+    font-size: 0.8rem;
+    color: #b8c4b4;
     text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #d4ebd0;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    footer {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    footer img.footer-logo {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* ================================================================
+   PARTNER CARDS — Licensing section
+   ================================================================ */
+.partner-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.partner-card:hover {
+    transform: translateY(-3px) rotate(0deg) !important;
+    box-shadow: 6px 6px 0px rgba(45, 90, 39, 0.2) !important;
+    z-index: 2;
+}
+
+.partner-card::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 55%;
+    height: 140%;
+    background-image: url('logo-sample.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(8deg);
+}
+
+/* ================================================================
+   TIKTOK SECTION BUTTON
+   ================================================================ */
+.tiktok-cta {
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.tiktok-cta:hover {
+    background-color: #2d5a27 !important;
+    color: #ffffff !important;
+    transform: translate(2px, 2px) !important;
+    box-shadow: 1px 1px 0px rgba(26, 35, 24, 0.4) !important;
+}
+
+/* ── TikTok Section Layout ──────────────────────────────────────────── */
+.tiktok-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.tiktok-text-col {
+    flex: 0 1 auto;
+    min-width: 0;
+    text-align: left;
+}
+
+/* Large brand logo pinned to top-left of the TikTok section */
+.tiktok-corner-logo {
+    position: absolute;
+    top: -1.5rem;
+    left: -1.5rem;
+    width: clamp(100px, 18vw, 180px);
+    height: auto;
+    opacity: 0.12;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* ── Phone Mockup ───────────────────────────────────────────────────── */
+@keyframes phoneWiggle {
+    0%   { transform: rotate(6deg) translateY(0px); }
+    25%  { transform: rotate(8deg) translateY(-6px); }
+    50%  { transform: rotate(5deg) translateY(2px); }
+    75%  { transform: rotate(7.5deg) translateY(-4px); }
+    100% { transform: rotate(6deg) translateY(0px); }
+}
+
+.phone-mockup-wrap {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    animation: phoneWiggle 4s ease-in-out infinite;
+}
+
+.phone-frame {
+    width: 210px;
+    background: #111111;
+    border-radius: 36px;
+    padding: 10px 6px 8px;
+    box-shadow:
+        0 0 0 2px #2a2a2a,
+        0 0 0 4px #111111,
+        0 20px 50px rgba(0,0,0,0.45),
+        6px 6px 0px var(--border);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.phone-notch {
+    width: 70px;
+    height: 22px;
+    background: #111111;
+    border-radius: 0 0 14px 14px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.phone-screen {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 430px;
+}
+
+.phone-screen-img {
+    display: block;
+    min-height: unset;
+    padding: 0;
+}
+
+.phone-screenshot {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    filter: drop-shadow(0px 12px 24px rgba(0,0,0,0.3));
+}
+
+.phone-home-indicator {
+    width: 90px;
+    height: 4px;
+    background: #555555;
+    border-radius: 2px;
+    margin-top: 6px;
+    align-self: center;
+}
+
+/* ── TikTok UI inside the screen ────────────────────────────────────── */
+.tt-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 10px 4px;
+    font-size: 0.55rem;
+    font-weight: 700;
+    font-family: var(--mono-font);
+    color: #111111;
+}
+
+.tt-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 4px 0 6px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #aaaaaa;
+    font-family: var(--mono-font);
+    border-bottom: 1px solid #eeeeee;
+}
+
+.tt-nav-active {
+    color: #111111;
+    border-bottom: 2px solid #111111;
+    padding-bottom: 2px;
+}
+
+.tt-profile-area {
+    padding: 10px 10px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.tt-avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.tt-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #d4ebd0;
+    overflow: hidden;
+    border: 2px solid #1a2318;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tt-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tt-avatar-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    font-family: var(--mono-font);
+    color: #111111;
+}
+
+.tt-stats {
+    display: flex;
+    gap: 12px;
+}
+
+.tt-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tt-stat-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #111111;
+    font-family: var(--mono-font);
+}
+
+.tt-stat-label {
+    font-size: 0.45rem;
+    color: #888888;
+    font-family: var(--mono-font);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.tt-follow-btn {
+    background: #fe2c55;
+    color: #ffffff;
+    font-size: 0.55rem;
+    font-weight: 700;
+    font-family: var(--mono-font);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tt-bio {
+    font-size: 0.48rem;
+    color: #444444;
+    text-align: center;
+    line-height: 1.5;
+    font-family: var(--mono-font);
+    max-width: 150px;
+}
+
+/* ── Video grid ─────────────────────────────────────────────────────── */
+.tt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #e0e0e0;
+    flex: 1;
+}
+
+.tt-thumb {
+    aspect-ratio: 9/16;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 3px;
+}
+
+/* Give each thumbnail a distinct botanical green gradient */
+.tt-thumb-1 { background: linear-gradient(160deg, #3a5c2a 0%, #7aaa58 100%); }
+.tt-thumb-2 { background: linear-gradient(160deg, #2d5520 0%, #5c8c40 100%); }
+.tt-thumb-3 { background: linear-gradient(160deg, #1e3d14 0%, #4a7030 100%); }
+.tt-thumb-4 { background: linear-gradient(160deg, #4a7030 0%, #91c46e 100%); }
+.tt-thumb-5 { background: linear-gradient(160deg, #2a4a1e 0%, #638c48 100%); }
+.tt-thumb-6 { background: linear-gradient(160deg, #355224 0%, #7aaa58 100%); }
+
+.tt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.tt-views {
+    font-size: 0.42rem;
+    color: #ffffff;
+    font-family: var(--mono-font);
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Bottom nav ─────────────────────────────────────────────────────── */
+.tt-bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 6px 4px;
+    border-top: 1px solid #eeeeee;
+    font-size: 0.75rem;
+    color: #555555;
+}
+
+.tt-plus-btn {
+    background: #fe2c55;
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    width: 22px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+/* ── Responsive: stack on small screens ─────────────────────────────── */
+@media (max-width: 680px) {
+    .tiktok-inner {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    .tiktok-text-col {
+        text-align: center;
+    }
+    .tiktok-brand-watermark {
+        font-size: clamp(2.5rem, 14vw, 4rem);
+    }
 }
