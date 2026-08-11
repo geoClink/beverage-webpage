@@ -1,0 +1,111 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background: dark forest green -->
+  <rect width="1200" height="630" fill="#1a2318"/>
+
+  <!-- Subtle grid lines (zine architectural feel) -->
+  <line x1="0" y1="210" x2="1200" y2="210" stroke="#2d5a27" stroke-width="0.75" opacity="0.5"/>
+  <line x1="0" y1="420" x2="1200" y2="420" stroke="#2d5a27" stroke-width="0.75" opacity="0.5"/>
+  <line x1="300" y1="0" x2="300" y2="630" stroke="#2d5a27" stroke-width="0.75" opacity="0.5"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="#2d5a27" stroke-width="0.75" opacity="0.5"/>
+  <line x1="900" y1="0" x2="900" y2="630" stroke="#2d5a27" stroke-width="0.75" opacity="0.5"/>
+
+  <!-- Left accent bar -->
+  <rect x="72" y="72" width="6" height="486" fill="#d4e8cb"/>
+
+  <!-- Top rule line -->
+  <line x1="72" y1="72" x2="1128" y2="72" stroke="#d4e8cb" stroke-width="1.5"/>
+
+  <!-- Bottom rule line -->
+  <line x1="72" y1="558" x2="1128" y2="558" stroke="#d4e8cb" stroke-width="1.5"/>
+
+  <!-- Corner cross marks -->
+  <!-- Top-left -->
+  <line x1="60" y1="72" x2="84" y2="72" stroke="#d4e8cb" stroke-width="1"/>
+  <line x1="72" y1="60" x2="72" y2="84" stroke="#d4e8cb" stroke-width="1"/>
+  <!-- Top-right -->
+  <line x1="1116" y1="72" x2="1140" y2="72" stroke="#d4e8cb" stroke-width="1"/>
+  <line x1="1128" y1="60" x2="1128" y2="84" stroke="#d4e8cb" stroke-width="1"/>
+  <!-- Bottom-left -->
+  <line x1="60" y1="558" x2="84" y2="558" stroke="#d4e8cb" stroke-width="1"/>
+  <line x1="72" y1="546" x2="72" y2="570" stroke="#d4e8cb" stroke-width="1"/>
+  <!-- Bottom-right -->
+  <line x1="1116" y1="558" x2="1140" y2="558" stroke="#d4e8cb" stroke-width="1"/>
+  <line x1="1128" y1="546" x2="1128" y2="570" stroke="#d4e8cb" stroke-width="1"/>
+
+  <!-- Label: issue/edition tag -->
+  <text
+    x="108"
+    y="136"
+    font-family="'Courier New', 'Space Mono', monospace"
+    font-size="13"
+    font-weight="400"
+    letter-spacing="4"
+    fill="#d4e8cb"
+    opacity="0.8"
+  >BOTANICAL BEVERAGES — CRAFT ALLOCATED</text>
+
+  <!-- Main headline: BOTANICAL -->
+  <text
+    x="108"
+    y="298"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="130"
+    font-weight="400"
+    letter-spacing="-2"
+    fill="#faf8f5"
+  >BOTANICAL</text>
+
+  <!-- Main headline: ARCHIVE -->
+  <text
+    x="108"
+    y="418"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="130"
+    font-weight="400"
+    letter-spacing="-2"
+    fill="#d4e8cb"
+  >ARCHIVE</text>
+
+  <!-- Divider rule between headline and footer -->
+  <line x1="108" y1="452" x2="820" y2="452" stroke="#4a5c48" stroke-width="1"/>
+
+  <!-- Tagline -->
+  <text
+    x="108"
+    y="498"
+    font-family="'Courier New', 'Space Mono', monospace"
+    font-size="16"
+    font-weight="400"
+    letter-spacing="2"
+    fill="#faf8f5"
+    opacity="0.7"
+  >Small-batch craft spirits, curated &amp; allocated to the trade.</text>
+
+  <!-- URL -->
+  <text
+    x="108"
+    y="534"
+    font-family="'Courier New', 'Space Mono', monospace"
+    font-size="16"
+    font-weight="400"
+    letter-spacing="3"
+    fill="#d4e8cb"
+    opacity="0.9"
+  >drinkoasa.com</text>
+
+  <!-- Decorative circle (right side accent) -->
+  <circle cx="1060" cy="315" r="140" stroke="#2d5a27" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <circle cx="1060" cy="315" r="110" stroke="#2d5a27" stroke-width="0.75" fill="none" opacity="0.4"/>
+  <circle cx="1060" cy="315" r="4" fill="#d4e8cb" opacity="0.8"/>
+  <!-- Cross through circle -->
+  <line x1="1060" y1="175" x2="1060" y2="455" stroke="#2d5a27" stroke-width="1" opacity="0.5"/>
+  <line x1="920" y1="315" x2="1200" y2="315" stroke="#2d5a27" stroke-width="1" opacity="0.5"/>
+
+  <!-- Small plus marks scattered -->
+  <text x="950" y="175" font-family="monospace" font-size="14" fill="#4a5c48" opacity="0.6">+</text>
+  <text x="1150" y="155" font-family="monospace" font-size="14" fill="#4a5c48" opacity="0.6">+</text>
+  <text x="970" y="480" font-family="monospace" font-size="14" fill="#4a5c48" opacity="0.6">+</text>
+  <text x="1140" y="490" font-family="monospace" font-size="14" fill="#4a5c48" opacity="0.6">+</text>
+
+</svg>
