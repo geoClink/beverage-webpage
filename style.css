@@ -106,10 +106,11 @@ background-color: transparent !important;}
     position: relative;
     top: 10px;
     filter: drop-shadow(0 6px 14px rgba(0,0,0,0.25));
+    transform: rotate(-8deg);
 }
 
 .zine-nav .logo-container img:hover {
-    transform: scale(1.06);
+    transform: rotate(-8deg) scale(1.06);
 }
 
 .arch-box div[id$="-container"] {
@@ -168,7 +169,7 @@ background-color: transparent !important;}
     position: fixed;
     top: 28px;
     left: 0;
-    height: 85px;
+    height: 95px;
     width: 100%;
     background: var(--surface);
     border-bottom: 2px solid var(--border);
@@ -589,6 +590,20 @@ button[type="submit"]:active {
     50% { transform: rotate(0deg) scale(1); }
     75% { transform: rotate(5deg) scale(1.05); }
     100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes logoRoll {
+    0%   { transform: translateX(-280%) translateY(0)    rotate(600deg) scaleY(1); }
+    60%  { transform: translateX(4%)    translateY(0)    rotate(-14deg) scaleY(1); }
+    68%  { transform: translateX(3%)    translateY(5%)   rotate(-10deg) scaleY(0.86); }
+    78%  { transform: translateX(-1%)   translateY(0)    rotate(-3deg)  scaleY(1.07); }
+    87%  { transform: translateX(0.5%)  translateY(2%)   rotate(-9deg)  scaleY(0.97); }
+    94%  { transform: translateX(0)     translateY(0)    rotate(-7deg)  scaleY(1); }
+    100% { transform: translateX(0)     translateY(0)    rotate(-8deg)  scaleY(1); }
+}
+
+.logo-rolling {
+    animation: logoRoll 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
 }
 
 .arch-badge-corner {
@@ -1245,7 +1260,7 @@ footer .footer-brand-container {
         top: 25px !important;
         left: 0 !important;
         width: 100vw !important;
-        height: 60px !important;
+        height: 86px !important;
         padding: 0 1rem !important;
         display: flex !important;
         justify-content: flex-start !important;
@@ -1271,6 +1286,7 @@ footer .footer-brand-container {
         position: static !important;
         top: auto !important;
         filter: drop-shadow(0 4px 10px rgba(0,0,0,0.22)) !important;
+        transform: rotate(-8deg) !important;
     }
 
     .zine-nav .logo-container span {
@@ -1437,6 +1453,7 @@ footer .footer-brand-container {
         margin-top: 0.5rem !important;
         box-shadow: 5px 5px 0px var(--border, #2d5a27) !important;
         position: relative !important;
+        transform: rotate(-1.5deg) !important;
     }
 
     /* 2. Add an eye-catching magazine edition/kicker badge */

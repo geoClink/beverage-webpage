@@ -675,6 +675,15 @@
                     });
                 }
 
+                // Logo roll-in animation on page load
+                const logoImg = document.querySelector('.zine-nav .logo-container img');
+                if (logoImg) {
+                    logoImg.classList.add('logo-rolling');
+                    logoImg.addEventListener('animationend', function() {
+                        logoImg.classList.remove('logo-rolling');
+                    }, { once: true });
+                }
+
                 // Haptic feedback on CTA button taps (mobile only)
                 document.querySelectorAll('.brand-btn, .nav-cta, button[type="submit"], .allocation-cta').forEach(function(btn) {
                     btn.addEventListener('click', function() {
