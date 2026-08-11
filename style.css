@@ -1229,7 +1229,7 @@ html {
         position: static !important;
         top: auto !important;
         filter: drop-shadow(0 4px 10px rgba(0,0,0,0.22)) !important;
-        transform: rotate(-8deg) !important;
+        transform: rotate(-8deg);
     }
 
     .zine-nav .logo-container span {
