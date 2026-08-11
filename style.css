@@ -1901,6 +1901,26 @@ footer .footer-col {
     animation: shake 0.65s ease-in-out;
 }
 
+/* Swipe hint — mobile only */
+.swipe-hint {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .swipe-hint {
+        display: block;
+        text-align: center;
+        font-family: var(--mono-font);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin: -0.5rem 0 1rem 0;
+        opacity: 0.8;
+    }
+}
+
 /* =================================================================
    MOBILE HORIZONTAL SWIPE CAROUSEL — Product Cards
    ================================================================ */
@@ -1925,14 +1945,17 @@ footer .footer-col {
     }
 
     .architecture-grid .arch-box {
-        flex: 0 0 82vw !important;
-        min-width: 82vw !important;
-        max-width: 82vw !important;
+        flex: 0 0 72vw !important;
+        min-width: 72vw !important;
+        max-width: 72vw !important;
         scroll-snap-align: center !important;
         margin: 0 !important;
-        transform: none !important;
         border: 2px solid var(--border) !important;
         box-shadow: 4px 4px 0px var(--border) !important;
         background: #ffffff !important;
     }
+
+    .architecture-grid .arch-box:nth-child(1) { transform: rotate(-2.2deg) !important; }
+    .architecture-grid .arch-box:nth-child(2) { transform: rotate(1.8deg) !important; }
+    .architecture-grid .arch-box:nth-child(3) { transform: rotate(-1.2deg) !important; }
 }
