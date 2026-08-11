@@ -1862,8 +1862,8 @@ footer .footer-col {
 @media screen and (max-width: 768px) {
     footer {
         flex-direction: column !important;
-        padding: 40px 20px !important;
-        gap: 30px !important;
+        padding: 20px 16px !important;
+        gap: 12px !important;
     }
 
     footer .footer-col {
@@ -1874,15 +1874,15 @@ footer .footer-col {
     footer .footer-links {
         display: flex !important;
         flex-direction: column !important;
-        gap: 10px !important;
-        margin-top: 8px !important;
+        gap: 4px !important;
+        margin-top: 4px !important;
     }
 
-    footer .footer-links a, 
+    footer .footer-links a,
     footer .footer-links span {
         display: block !important;
         width: 100% !important;
-        padding: 4px 0 !important;
+        padding: 1px 0 !important;
     }
 }
 
@@ -1955,7 +1955,7 @@ footer .footer-col {
         background: #ffffff !important;
     }
 
-    .architecture-grid .arch-box:nth-child(1) { transform: rotate(-2.2deg) !important; }
-    .architecture-grid .arch-box:nth-child(2) { transform: rotate(1.8deg) !important; }
-    .architecture-grid .arch-box:nth-child(3) { transform: rotate(-1.2deg) !important; }
+    .architecture-grid .arch-box:nth-child(1) { transform: rotate(-0.5deg) !important; }
+    .architecture-grid .arch-box:nth-child(2) { transform: rotate(0.5deg) !important; }
+    .architecture-grid .arch-box:nth-child(3) { transform: rotate(-0.4deg) !important; }
 }
