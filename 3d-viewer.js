@@ -41,58 +41,6 @@ export function initModelViewer(containerId, modelPath, customScale = 2.5, yOffs
     const loader = new GLTFLoader(); 
     const clock = new THREE.Clock(); 
 
-    // Interaction tracking variables for mouse, touch, and device orientation 
-    let mouseX = 0; 
-    let mouseY = 0; 
-    let touchX = 0; 
-    let touchY = 0; 
-    let hasTouch = false; 
-    let targetRotationX = 0; 
-    let targetRotationY = 0; 
-
-    const parentCard = container.closest('.product-card') || container; 
-
-    // --- Mouse Event Listeners --- 
-    parentCard.addEventListener('mousemove', (e) => { 
-        const rect = parentCard.getBoundingClientRect(); 
-        mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1; 
-        mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1); 
-    }); 
-
-    parentCard.addEventListener('mouseleave', () => { 
-        mouseX = 0; 
-        mouseY = 0; 
-    }); 
-
-    // --- Touch Event Listeners --- 
-    parentCard.addEventListener('touchstart', (e) => { 
-        hasTouch = true; 
-        const touch = e.touches[0]; 
-        const rect = parentCard.getBoundingClientRect(); 
-        touchX = ((touch.clientX - rect.left) / rect.width) * 2 - 1; 
-        touchY = -(((touch.clientY - rect.top) / rect.height) * 2 - 1); 
-    }, { passive: true }); 
-
-    parentCard.addEventListener('touchmove', (e) => { 
-        const touch = e.touches[0]; 
-        const rect = parentCard.getBoundingClientRect(); 
-        touchX = ((touch.clientX - rect.left) / rect.width) * 2 - 1; 
-        touchY = -(((touch.clientY - rect.top) / rect.height) * 2 - 1); 
-    }, { passive: true }); 
-
-    parentCard.addEventListener('touchend', () => { 
-        touchX = 0; 
-        touchY = 0; 
-    }); 
-
-    // --- Gyroscope / Device Orientation (Tilt to interact) --- 
-    window.addEventListener('deviceorientation', (e) => { 
-        if (!hasTouch && e.gamma !== null && e.beta !== null) { 
-            targetRotationY += ((e.gamma / 45) * 0.8 - targetRotationY) * 0.1; 
-            targetRotationX += ((e.beta / 45) * 0.8 - targetRotationX) * 0.1; 
-        } 
-    }, true); 
-
     loader.load(modelPath, (gltf) => { 
         model = gltf.scene; 
 
@@ -189,22 +137,9 @@ export function initModelViewer(containerId, modelPath, customScale = 2.5, yOffs
         requestAnimationFrame(animate); 
         const elapsedTime = clock.getElapsedTime(); 
 
-        if (model) { 
-            // Select active input coordinates (touch takes precedence if active) 
-            const inputX = hasTouch ? touchX : mouseX; 
-            const inputY = hasTouch ? touchY : mouseY; 
-
-            // Smoothly interpolate towards input position for a spring/wiggle effect 
-            targetRotationY += (inputX * 0.8 - targetRotationY) * 0.1; 
-            targetRotationX += (inputY * 0.8 - targetRotationX) * 0.1; 
-
-            // Base continuous auto-rotation + directional wiggle tilt 
-            model.rotation.y = (elapsedTime * 0.2) + targetRotationY; 
-            model.rotation.x = targetRotationX; 
-
-            // Organic floating bob with a slightly faster oscillation frequency on interaction 
-            const hoverSpeedMultiplier = (Math.abs(inputX) > 0 || Math.abs(inputY) > 0) ? 1.8 : 1.0; 
-            model.position.y = basePosY + Math.sin(elapsedTime * 1.0 * hoverSpeedMultiplier) * 0.02; 
+        if (model) {
+            model.rotation.y = elapsedTime * 0.2;
+            model.position.y = basePosY + Math.sin(elapsedTime * 1.0) * 0.02;
         } 
 
         renderer.render(scene, camera); 

@@ -729,19 +729,48 @@
 
        <!-- Scripts for Scroll Observer & Mouse Parallax Watermark -->
         <script>
-            // Shake the target section after scroll finishes so the user knows where to look
+            // Shake the target section after scrolling fully stops (handles long scroll distances from footer)
             window.triggerShake = function(targetId) {
                 const element = document.getElementById(targetId);
                 if (!element) return;
-                // Small delay lets smooth-scroll reach the element before the shake starts
-                setTimeout(function() {
+
+                function shake() {
                     element.classList.remove('shake-animation');
-                    void element.offsetWidth; // force reflow so animation restarts
+                    void element.offsetWidth;
                     element.classList.add('shake-animation');
                     element.addEventListener('animationend', function() {
                         element.classList.remove('shake-animation');
                     }, { once: true });
-                }, 450);
+                }
+
+                if ('onscrollend' in window) {
+                    var fired = false;
+                    function handler() {
+                        window.removeEventListener('scrollend', handler);
+                        fired = true;
+                        shake();
+                    }
+                    window.addEventListener('scrollend', handler);
+                    // Fallback: if already at the target (no scroll fires), shake after short delay
+                    setTimeout(function() {
+                        if (!fired) {
+                            window.removeEventListener('scrollend', handler);
+                            shake();
+                        }
+                    }, 600);
+                } else {
+                    // Polling fallback: fire 80ms after scroll position stops changing
+                    var lastY = window.scrollY;
+                    var ticks = 0;
+                    var poll = setInterval(function() {
+                        ticks++;
+                        if (window.scrollY === lastY || ticks > 30) {
+                            clearInterval(poll);
+                            shake();
+                        }
+                        lastY = window.scrollY;
+                    }, 80);
+                }
             };
 
             document.addEventListener("DOMContentLoaded", function () {
