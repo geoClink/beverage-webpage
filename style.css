@@ -130,12 +130,6 @@ background-color: transparent !important;}
 /* Mobile Logo Sizing & Position */
 @media (max-width: 768px) {
 
-    .zine-nav {
-  background-color: #ffffff; /* Ensures it stays white */
-  padding: 3rem 1rem;     /* Increases top/bottom padding to make it taller */
-  /* Keep your existing flex, position, and border rules here */
-}
-
     .zine-nav .logo-container {
         position: absolute !important;
         top: 18px !important;
@@ -411,12 +405,15 @@ header {
     }
 
     /* Ensure any image or raw art module inside the hero scales neatly */
-    .creator-hero-block img,
-    .creator-hero-block .raw-art-module {
+    .creator-hero-block img {
         width: 100% !important;
         height: auto !important;
         max-height: 240px !important;
         object-fit: cover !important;
+    }
+
+    .creator-hero-block .raw-art-module {
+        width: 100% !important;
     }
     
 }
@@ -2073,9 +2070,9 @@ footer img.footer-logo {
 /* Large brand logo pinned to top-left of the TikTok section */
 .tiktok-corner-logo {
     position: absolute;
-    top: -1.5rem;
-    left: -1.5rem;
-    width: clamp(100px, 18vw, 180px);
+    top: -3.5rem;
+    left: -4.5rem;
+    width: clamp(300px, 18vw, 180px);
     height: auto;
     opacity: 0.12;
     pointer-events: none;
