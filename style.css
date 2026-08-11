@@ -1042,6 +1042,7 @@ input[type="submit"]:hover {
 /* Fix anchor jump offset caused by fixed navigation bar */
 html {
     scroll-padding-top: 165px; /* Adjusts clearance so section headings appear fully below the sticky nav */
+    scroll-behavior: smooth;
 }
 
 @keyframes brutalistShake {
