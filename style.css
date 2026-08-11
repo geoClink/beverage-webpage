@@ -123,8 +123,25 @@ background-color: transparent !important;}
     100% { transform: translateX(0)     translateY(0)    rotate(-8deg)   scaleY(1); }
 }
 
+/* Mobile roll-in drops from above — overflow-x:hidden on body clips the horizontal version */
+@keyframes logoRollMobile {
+    0%   { transform: translateY(-220%) rotate(-600deg) scaleY(1); }
+    60%  { transform: translateY(6%)    rotate(-10deg)  scaleY(1); }
+    68%  { transform: translateY(4%)    rotate(-6deg)   scaleY(0.88); }
+    78%  { transform: translateY(-2%)   rotate(-10deg)  scaleY(1.06); }
+    87%  { transform: translateY(1%)    rotate(-7deg)   scaleY(0.97); }
+    94%  { transform: translateY(0)     rotate(-8deg)   scaleY(1); }
+    100% { transform: translateY(0)     rotate(-8deg)   scaleY(1); }
+}
+
 .logo-rolling {
     animation: logoRoll 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+@media (max-width: 768px) {
+    .logo-rolling {
+        animation: logoRollMobile 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+    }
 }
 
 /* Mobile Logo Sizing & Position */
@@ -144,7 +161,7 @@ background-color: transparent !important;}
         position: static !important;
         top: auto !important;
         filter: drop-shadow(0 4px 10px rgba(0,0,0,0.22)) !important;
-        transform: rotate(-8deg) !important;
+        transform: rotate(-8deg);
         margin-left: 25px;
     }
 
