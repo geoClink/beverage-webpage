@@ -365,10 +365,16 @@ header {
     }
 
     /* Ensure any image or raw art module inside the hero scales neatly */
-    .creator-hero-block img,
     .creator-hero-block .raw-art-module {
         width: 100% !important;
         height: auto !important;
+        max-height: none !important;
+    }
+
+    .creator-hero-block .art-box-inner img,
+    .creator-hero-block img {
+        width: 100% !important;
+        height: 240px !important;
         max-height: 240px !important;
         object-fit: cover !important;
     }
@@ -1976,4 +1982,11 @@ footer .footer-col {
     .architecture-grid .arch-box:nth-child(1) { transform: rotate(-0.5deg) !important; }
     .architecture-grid .arch-box:nth-child(2) { transform: rotate(0.5deg) !important; }
     .architecture-grid .arch-box:nth-child(3) { transform: rotate(-0.4deg) !important; }
+}
+
+/* Prevent auto-detected phone/email links from showing as blue */
+a[href^="tel"],
+a[href^="mailto"] {
+    color: inherit;
+    text-decoration: none;
 }
