@@ -729,7 +729,9 @@
 
        <!-- Scripts for Scroll Observer & Mouse Parallax Watermark -->
         <script>
-            // Shake the target section after scrolling fully stops (handles long scroll distances from footer)
+            // Shake the target section after the scroll animation reaches it.
+            // Reads the pixel distance to the element before scrolling starts and
+            // uses that to estimate how long the smooth-scroll will take.
             window.triggerShake = function(targetId) {
                 const element = document.getElementById(targetId);
                 if (!element) return;
@@ -743,34 +745,13 @@
                     }, { once: true });
                 }
 
-                if ('onscrollend' in window) {
-                    var fired = false;
-                    function handler() {
-                        window.removeEventListener('scrollend', handler);
-                        fired = true;
-                        shake();
-                    }
-                    window.addEventListener('scrollend', handler);
-                    // Fallback: if already at the target (no scroll fires), shake after short delay
-                    setTimeout(function() {
-                        if (!fired) {
-                            window.removeEventListener('scrollend', handler);
-                            shake();
-                        }
-                    }, 600);
-                } else {
-                    // Polling fallback: fire 80ms after scroll position stops changing
-                    var lastY = window.scrollY;
-                    var ticks = 0;
-                    var poll = setInterval(function() {
-                        ticks++;
-                        if (window.scrollY === lastY || ticks > 30) {
-                            clearInterval(poll);
-                            shake();
-                        }
-                        lastY = window.scrollY;
-                    }, 80);
-                }
+                // getBoundingClientRect().top is called before the scroll starts
+                // (onclick fires before the browser processes the href), so it
+                // gives the exact pixel distance the page needs to travel.
+                var distance = Math.abs(element.getBoundingClientRect().top);
+                // ~0.4 ms per pixel; floor at 600ms, cap at 1800ms
+                var delay = Math.min(Math.max(600, distance * 0.4), 1800);
+                setTimeout(shake, delay);
             };
 
             document.addEventListener("DOMContentLoaded", function () {

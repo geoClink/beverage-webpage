@@ -1836,14 +1836,15 @@ button:hover,
 .form-module::before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 100%;
+    top: -5%;
+    right: -5%;
+    left: auto;
+    transform: none;
+    width: 75%;
+    height: 75%;
     background-image: url('logo-sample.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top right;
     background-size: contain;
     opacity: 0.04;
     pointer-events: none;
