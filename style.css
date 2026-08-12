@@ -2415,6 +2415,7 @@ footer img.footer-logo {
         align-items: center !important;
         gap: 0.9rem !important;
         margin: 0 !important;
+        margin-right: 4rem !important;
         flex-shrink: 1 !important;
     }
 
