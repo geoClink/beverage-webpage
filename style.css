@@ -2368,6 +2368,116 @@ footer img.footer-logo {
     border-radius: 3px;
 }
 
+/* ── Tablet nav fix: 769px–1100px ───────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .zine-nav {
+        overflow: hidden !important;
+        height: 70px !important;
+        justify-content: space-between !important;
+        padding: 0 1.5rem !important;
+    }
+
+    .zine-nav .nav-brand {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .zine-nav .logo-container {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        overflow: hidden !important;
+        gap: 0.6rem !important;
+    }
+
+    .zine-nav .logo-container img {
+        height: 52px !important;
+        width: auto !important;
+        transform: none !important;
+        position: static !important;
+        top: auto !important;
+        filter: none !important;
+        animation: none !important;
+    }
+
+    .zine-nav .logo-container span {
+        display: inline !important;
+        margin-left: 0.5rem !important;
+        font-size: 1rem !important;
+    }
+
+    .zine-nav .nav-links {
+        display: flex !important;
+        gap: 1.25rem !important;
+        margin-left: 0 !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .zine-nav .nav-links a:not(.nav-cta) {
+        display: inline-block !important;
+        font-size: 0.65rem !important;
+    }
+
+    .zine-nav .nav-links .nav-cta {
+        margin: 0 !important;
+        font-size: 0.65rem !important;
+        padding: 0.3rem 0.5rem !important;
+    }
+
+    /* Architecture grid — horizontal scroll carousel */
+    .architecture-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: scroll !important;
+        overflow-y: visible !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 1.25rem !important;
+        padding: 0.5rem 1.5rem 1.5rem 1.5rem !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .architecture-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .architecture-grid .arch-box {
+        flex: 0 0 62vw !important;
+        min-width: 300px !important;
+        max-width: 62vw !important;
+        scroll-snap-align: start !important;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Show swipe hint on tablet */
+    .swipe-hint {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.4rem !important;
+        font-family: var(--mono-font) !important;
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.12em !important;
+        text-transform: uppercase !important;
+        color: var(--accent) !important;
+        background: var(--accent-light) !important;
+        border: 1.5px solid var(--border) !important;
+        padding: 0.45rem 0.8rem !important;
+        margin: -1.8rem 0 1.5rem 1.5rem !important;
+        width: fit-content !important;
+        box-shadow: 2px 2px 0px var(--border) !important;
+        animation: swipeNudge 1.8s ease-in-out infinite !important;
+        transform: rotate(-2.2deg) !important;
+    }
+}
+
 /* ── Responsive: stack on small screens ─────────────────────────────── */
 @media (max-width: 680px) {
     .tiktok-inner {
